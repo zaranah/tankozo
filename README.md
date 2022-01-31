@@ -1,7 +1,10 @@
-# README
+# Tankozo
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Introduction
+Tankozo is the application to find a tasty restaurants.
+
+## Features
+
 
 Things you may want to cover:
 
