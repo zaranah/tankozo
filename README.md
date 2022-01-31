@@ -2,26 +2,25 @@
 
 ## Introduction
 Tankozo is the application to find a tasty restaurants.
+https://tankozo.herokuapp.com/
 
-## Features
+## Description
+To know some real good restaurants.
 
+## version
+Ruby 2.6.5
+Rails 8.0.0
 
-Things you may want to cover:
+## Usage
+### Introducer
+#### 1. Signup
+#### 2. Post a good restaurant
+### Viewer1
+#### 1. Signup
+#### 2. See some restaurants
+#### 3. Likes ones
+### Viewer2
+#### 1. See some restaurants
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Author
+https://github.com/zaranah
