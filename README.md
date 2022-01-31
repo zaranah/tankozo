@@ -25,9 +25,9 @@ Rails 8.0.0
 ## Author
 https://github.com/zaranah
 
-# テーブル設計
+# Tables
 
-## users テーブル
+## users table
 
 | Column             | Type    | Options                   |
 | ------------------ | ------- | ------------------------- |
@@ -44,7 +44,7 @@ https://github.com/zaranah
 - has_many :hopes
 - has_many :likes
 
-## restaurants テーブル
+## restaurants table
 
 | Column                 | Type       | Options                        |
 | ---------------------- | ---------- | ------------------------------ |
@@ -64,7 +64,7 @@ https://github.com/zaranah
 - has_many :hopes
 - has_many :likes
 
-## comments テーブル
+## comments table
 
 | Column     | Type       | Options                        |
 | ---------- | ---------- | ------------------------------ |
@@ -77,7 +77,7 @@ https://github.com/zaranah
 - belongs_to :user
 - belongs_to :restaurant
 
-## hopes テーブル
+## hopes table
 
 | Column     | Type       | Options                        |
 | ---------- | ---------- | ------------------------------ |
@@ -89,7 +89,7 @@ https://github.com/zaranah
 - belongs_to :user
 - belongs_to :restaurant
 
-## likes テーブル
+## likes table
 
 | Column     | Type       | Options                        |
 | ---------- | ---------- | ------------------------------ |
