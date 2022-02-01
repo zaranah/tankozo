@@ -1,1 +1,29 @@
-edit
+<body class="text-center">
+  <main class="form-signin">
+    <%= form_with model: current_user, local: true do |f| %>
+      <div class="mb-4" alt="">
+        <%= link_to image_tag('yummy.jpeg' , size: '300x200'), "/" %>
+      </div>
+      <h1 class="h3 mb-3 fw-normal">Please Edit</h1>
+
+      <%= render 'shared/error_messages', model: f.object %>
+      
+      <div class="collection">
+        <%= f.collection_select(:favorite_taste_id, FavoriteTaste.all, :id, :name, {}, {class:"select-box", id:"favorite-taste"}) %>
+      </div>
+      <div class="form-floating">
+        <%= f.text_area :nickname, class:"form-control nickname", id:"floatingInputname", placeholder:"Nickname", autofocus: true %>
+        <label for="floatingInput">Nickname</label>
+      </div>
+      <div class="form-floating">
+        <%= f.email_field :email, class:"form-control email", id:"floatingInput", placeholder:"name@example.com" %>
+        <label for="floatingInput">Email address</label>
+      </div>
+
+      <div class="checkbox mb-3">
+      </div>
+      <%= f.submit "Update", class: "w-100 btn btn-lg btn-primary" %>
+      <p class="mt-5 mb-3 text-muted">&copy; Tankozo</p>
+    <% end %>
+  </main>
+</body>
