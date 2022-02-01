@@ -1,4 +1,8 @@
 class Rastaurant < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :prefecture
+  belongs_to :genre
+  belongs_to :price
 
   belongs_to :user
 
