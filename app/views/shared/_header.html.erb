@@ -21,12 +21,12 @@
       <div class="dropdown text-end">
         <% if user_signed_in? %>
         <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-          <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+          <img src="<%= asset_path "eatingcat.jpg" %>" alt="mdo" width="32" height="32" class="rounded-circle">
           <%# ↑にたん小僧のアバターを入れる %>
           </a>
           <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-            <li><%= link_to 'My page', '#', class: "dropdown-item" %></li>
-            <li><%= link_to 'Edit', '#', class: "dropdown-item" %></li>
+            <li><%= link_to 'My page', user_path(current_user), class: "dropdown-item" %></li>
+            <li><%= link_to 'Edit', edit_user_path(current_user), class: "dropdown-item" %></li>
             <li><hr class="dropdown-divider"></li>
             <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
           </ul>
