@@ -16,5 +16,4 @@ class Restaurant < ApplicationRecord
   validates :opinion, presence: true
 
   validates :image, presence: true
-
 end

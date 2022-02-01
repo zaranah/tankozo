@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :favorite_taste
-  
+
   has_many :restaurants
 
   validates :nickname, presence: true

@@ -70,7 +70,7 @@ RSpec.describe Restaurant, type: :model do
       it 'userが紐付いていなければ出品できない' do
         @restaurant.user = nil
         @restaurant.valid?
-        expect(@restaurant.errors.full_messages).to include("User must exist")
+        expect(@restaurant.errors.full_messages).to include('User must exist')
       end
     end
   end
