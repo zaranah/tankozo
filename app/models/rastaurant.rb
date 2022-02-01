@@ -5,6 +5,7 @@ class Rastaurant < ApplicationRecord
   belongs_to :price
 
   belongs_to :user
+  has_one_attached :image
 
   validates :name, presence: true
   validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
