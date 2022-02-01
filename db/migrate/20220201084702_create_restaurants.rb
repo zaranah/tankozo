@@ -1,7 +1,7 @@
-class CreateRastaurants < ActiveRecord::Migration[6.0]
+class CreateRestaurants < ActiveRecord::Migration[6.0]
   def change
-    create_table :rastaurants do |t|
-      t.string :nickname,       null: false
+    create_table :restaurants do |t|
+      t.string :name,       null: false
       t.integer :prefecture_id, null: false
       t.string :station,        null: false
       t.integer :genre_id,      null: false

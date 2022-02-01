@@ -1,0 +1,15 @@
+.new {
+  margin-bottom: 10px;
+}
+
+.click-upload {
+  min-width: 250px;
+}
+
+.click-upload>p {
+  margin-bottom: 15px;
+}
+
+.opinion {
+  padding-bottom: 200px;
+}
