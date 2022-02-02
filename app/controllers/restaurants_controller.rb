@@ -26,7 +26,7 @@ class RestaurantsController < ApplicationController
   def edit
   end
 
-  def update 
+  def update
     if @restaurant.update(restaurant_params)
       redirect_to restaurant_path(@restaurant)
     else
