@@ -9,7 +9,7 @@ To know some real good restaurants.
 
 ## version
 Ruby 2.6.5
-Rails 8.0.0
+Rails 6.0.0
 
 ## Usage
 ### Introducer
