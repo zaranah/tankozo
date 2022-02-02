@@ -1,5 +1,7 @@
 class RestaurantsController < ApplicationController
-  before_action :authenticate_user!, only: :new
+  before_action :authenticate_user!, only: [:new, :edit]
+  before_action :set_item, only: [:edit, :show, :update]
+  before_action :move_to_index, only: [:edit]
 
   def index
     @restaurants = Restaurant.order('created_at DESC')
@@ -19,10 +21,28 @@ class RestaurantsController < ApplicationController
   end
 
   def show
-    @restaurant = Restaurant.find(params[:id])
+  end
+
+  def edit
+  end
+
+  def update 
+    if @restaurant.update(restaurant_params)
+      redirect_to restaurant_path(@restaurant)
+    else
+      render :edit
+    end
   end
 
   private
+
+  def set_item
+    @restaurant = Restaurant.find(params[:id])
+  end
+
+  def move_to_index
+    redirect_to action: :index unless current_user.id == @restaurant.user_id
+  end
 
   def restaurant_params
     params.require(:restaurant).permit(
