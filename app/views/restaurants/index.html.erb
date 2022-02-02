@@ -7,7 +7,7 @@
     <div class="wrapper">
       <% @restaurants.each do |restaurant| %>
         <div class="restaurants-index">
-          <%= image_tag restaurant.image.variant(resize: '300x250!', gravity: "center"), class: "img" %>
+          <%= link_to image_tag(restaurant.image , size: '320x270'), restaurant_path(restaurant), class: "img" %>
             <div class="info">
               <div class="index-prefecture">
                 <%= restaurant.prefecture.name %>

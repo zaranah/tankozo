@@ -1,0 +1,71 @@
+.show-main {
+  text-align: center;
+  position: relative;
+}
+
+.showcontent {
+  justify-content: center;
+  width: 500px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.show-line-btn{
+  display: flex;
+  justify-content: right;
+  margin: 20px 0;
+  width: 500px;
+  text-decoration: none
+}
+
+.show-edit {
+  text-decoration: none;
+  color: black;
+}
+
+.show-delete {
+  margin: 0 10px;
+  text-decoration: none;
+  color: black;
+}
+
+.show-name {
+  margin-top: 30px;
+}
+
+.show-r {
+  margin-top: 15px;
+}
+
+.show-line {
+  display: flex;
+  justify-content: center;
+}
+
+.station, .food, .user-taste {
+  margin-left: 10px;
+}
+
+.opinions {
+  text-align: center;
+  width: 500px;
+  margin: 15px auto 0;
+}
+
+.show-line-author {
+  display: flex;
+  justify-content: center;
+  margin: 15px 0;
+  font-size: 16px;
+}
+
+.user-name{
+  text-decoration: none;
+  color: black;
+}
+
+.user-taste {
+  margin: 0 0 0 15px;
+}
