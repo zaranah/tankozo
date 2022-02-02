@@ -5,17 +5,17 @@
           <%= image_tag @restaurant.image.variant(resize: '500x500') %>
         </div>
 
-        <%# 3箇所パスを変えるの忘れない %>
+        <%# 2箇所パスを変えるの忘れない %>
         <div class="show-line-btn">
           <% if user_signed_in? && current_user.id == @restaurant.user_id %>
             <div><%=link_to "Edit", edit_restaurant_path(@restaurant), class:"show-edit" %></div>
-            <div><%=link_to "Delete", root_path, class:"show-delete" %></div>
+            <div><%=link_to "Delete", restaurant_path(@restaurant), method: :delete, class:"show-delete" %></div>
           <% elsif  user_signed_in? && current_user.id != @restaurant.user_id  %>
             <div><%=link_to "行きたい", root_path, class:"show-edit" %></div>
             <div><%=link_to "よかった", root_path, class:"show-delete" %></div>
           <% end %>
         </div>
-        <%# 3箇所パスを変えるの忘れない %>
+        <%# 2箇所パスを変えるの忘れない %>
 
         <h1 class="show-name"><%= @restaurant.name %></h1>
         <div class="show-line">
