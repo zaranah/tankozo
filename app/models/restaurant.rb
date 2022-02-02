@@ -8,11 +8,11 @@ class Restaurant < ApplicationRecord
   has_one_attached :image
 
   validates :name, presence: true
-  validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
+  validates :prefecture_id, numericality: { other_than: 1, message: 'を入力してください' }
   validates :station, presence: true
-  validates :genre_id, numericality: { other_than: 1, message: "can't be blank" }
+  validates :genre_id, numericality: { other_than: 1, message: 'を入力してください' }
   validates :food, presence: true
-  validates :price_id, numericality: { other_than: 1, message: "can't be blank" }
+  validates :price_id, numericality: { other_than: 1, message: 'を入力してください' }
   validates :opinion, presence: true
 
   validates :image, presence: true

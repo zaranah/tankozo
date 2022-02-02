@@ -44,7 +44,7 @@
   justify-content: center;
 }
 
-.station, .food, .user-taste {
+.show-station, .show-food, .user-taste {
   margin-left: 10px;
 }
 

@@ -2,3 +2,17 @@ ja:
   time:
     formats:
       default: "%Y/%m/%d"
+  activerecord:
+    attributes:
+      user:
+        nickname: ニックネーム
+        favorite_taste_id: お好みの味付け
+      restaurant:
+        name: 店舗名
+        prefecture_id: 都道府県
+        station: 駅名
+        genre_id: ジャンル
+        food: 食品名
+        price_id: 価格帯
+        opinion: 評価コメント
+        image: 画像

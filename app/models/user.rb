@@ -10,5 +10,5 @@ class User < ApplicationRecord
   has_many :restaurants
 
   validates :nickname, presence: true
-  validates :favorite_taste_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
+  validates :favorite_taste_id, presence: true, numericality: { other_than: 1, message: 'を入力してください' }
 end
