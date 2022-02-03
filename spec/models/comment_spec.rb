@@ -15,8 +15,8 @@ RSpec.describe Comment, type: :model do
       it 'コメントが空では投稿できない' do
         @comment.comment = ''
         @comment.valid?
-        expect(@comment.errors.full_messages).to include("コメントを入力してください")
-      end     
+        expect(@comment.errors.full_messages).to include('コメントを入力してください')
+      end
       it 'ユーザーが紐付いていなければ投稿できない' do
         @comment.user = nil
         @comment.valid?
@@ -29,5 +29,4 @@ RSpec.describe Comment, type: :model do
       end
     end
   end
-
 end
