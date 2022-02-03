@@ -16,3 +16,5 @@ ja:
         price_id: 価格帯
         opinion: 評価コメント
         image: 画像
+      comment:
+        comment: コメント
