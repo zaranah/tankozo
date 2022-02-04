@@ -8,7 +8,9 @@
 
         <div class="show-line-btn">
           <% if user_signed_in? && current_user.id == @restaurant.user_id %>
-            <div class="showmain-likestotal">よかった総数</div><%# 総数入れるの忘れない %>
+            <div class="showmain-likestotal">
+              <small class="text-muted"><i class="fas fa-running faa-passing-reverse hope-btn" id="hope-btn"></i><%= @restaurant.hopes.length %><i class="far fa-heart faa-ring like-btn" id="like-btn"></i><%= @restaurant.likes.length %></small>
+            </div>
             <div><%=link_to "Edit", edit_restaurant_path(@restaurant), class:"show-edit" %></div>
             <div><%=link_to "Delete", restaurant_path(@restaurant), method: :delete, class:"show-delete" %></div>
           <% elsif  user_signed_in? && current_user.id != @restaurant.user_id  %>
@@ -55,8 +57,9 @@
             </div>
             <%# よかった条件分岐 //%>
           <% else %>
-            <div class="showmain-likestotal logout-hope">行きたい総数</div><%= @restaurant.hopes.length %>
-            <div class="showmain-likestotal logout-like">よかった総数</div><%= @restaurant.likes.length %>
+            <div class="showmain-likestotal">
+              <small class="text-muted"><i class="fas fa-running faa-passing-reverse hope-btn" id="hope-btn"></i><%= @restaurant.hopes.length %> 行きたい<i class="far fa-heart faa-ring like-btn" id="like-btn"></i><%= @restaurant.likes.length %> よかった</small>
+            </div>
           <% end %>
         </div>
         <h1 class="show-name"><%= @restaurant.name %></h1>

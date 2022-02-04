@@ -60,5 +60,4 @@ class RestaurantsController < ApplicationController
       :name, :prefecture_id, :station, :genre_id, :food, :price_id, :opinion, :image
     ).merge(user_id: current_user.id)
   end
-
 end
