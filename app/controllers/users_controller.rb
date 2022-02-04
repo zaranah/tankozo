@@ -15,6 +15,9 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user_restaurants = @user.restaurants
+    @user_hopes = @user.hopes
+    @user_likes = @user.likes
   end
 
   private
