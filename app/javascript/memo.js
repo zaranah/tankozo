@@ -27,10 +27,24 @@ function comment (){
     XHR.responseType = "json";
     XHR.send(formData);
     XHR.onload = () => {
+      // const item_null = XHR.response.comment.comment;
+      
+      // if (XHR.status == 500) {
+      //   alert(`コメントを入力してください`);
+      //   return null;
+      // };
       if (XHR.status != 200) {
         alert(`Error ${XHR.status}: ${XHR.statusText}`);
         return null;
       };
+      const item_null = XHR.response.comment.comment;
+      console.log(item_null)
+
+      if (item_null == '') {
+        alert(`コメントを入力してください`);
+        return null;
+      };
+      debugger
       const list = document.getElementById("list");
       const formText = document.getElementById("comment-text");
       list.insertAdjacentHTML("afterend", buildHTML(XHR));

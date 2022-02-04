@@ -2,9 +2,15 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!, only: :create
 
   def create
-    comment = Comment.create(comment_params)
-    userid = comment.user_id
-    user = User.find(userid)
+    comment = Comment.new(comment_params)
+      if comment.save
+      # comment = Comment.create(comment_params)
+        userid = comment.user_id
+        user = User.find(userid)
+      # else
+      # redirect_to restaurant_path(@restaurant)
+        # render 'error' 
+      end
     render json: { comment: comment, user: user }
   end
 

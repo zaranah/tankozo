@@ -81,7 +81,7 @@
     <div class="comment-container">
       <div class="comment-in">
       <% if user_signed_in? %>
-        <%= form_with(model: [@restaurant, @comment], id: "comment-form", local: true) do |form| %>
+        <%= form_with(model: [@restaurant, @comment], id: "comment-form") do |form| %>
           <div><%= form.text_area :comment, placeholder: "コメントする", rows: "2",  class:"comment-form", id: "comment-text"%></div>
           <div><%= form.submit "SEND", class: "comment-submit" , id: "comment-submit" %></div>
         <% end %>
