@@ -18,6 +18,12 @@ class UsersController < ApplicationController
     @user_restaurants = @user.restaurants
     @user_hopes = @user.hopes
     @user_likes = @user.likes
+
+    @likes_count = 0
+      @user_restaurants.each do |restaurant|
+      @likes_count += restaurant.likes.count
+      end
+
   end
 
   private
