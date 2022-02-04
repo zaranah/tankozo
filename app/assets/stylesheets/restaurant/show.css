@@ -1,7 +1,7 @@
 .show-main {
   text-align: center;
   position: relative;
-  height: 850px;
+  height: 900px;
 }
 
 .showcontent {
@@ -21,6 +21,10 @@
   text-decoration: none;
 }
 
+.showmain-likestotal {
+  margin-right: 15px;
+}
+
 .show-edit {
   text-decoration: none;
   color: peachpuff;
@@ -30,6 +34,51 @@
   margin: 0 10px;
   text-decoration: none;
   color: peachpuff;
+}
+
+.show-form {
+  text-decoration: none;
+}
+
+.show-hope {
+  color: #ffbf84;
+}
+
+.hope-btn {
+  color: #ffbf84;
+}
+
+.unhope-btn {
+  color: lightgray;
+}
+
+.fa-running {
+  margin: 0 10px;
+  width: 25px;
+  height: 30px;
+  font-size: 25px;
+}
+
+.show-like {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #ffbcf9;
+}
+
+.like-btn {
+  color: #ffbcf9;
+}
+
+.unlike-btn {
+  color: lightgray;
+}
+
+.fa-heart {
+  margin: 0 10px;
+
+  width: 25px;
+  height: 30px;
+  font-size: 25px;
 }
 
 .show-name {

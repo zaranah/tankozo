@@ -1,0 +1,17 @@
+<% if @like.present? %>
+  <div class="show-like">
+    <%=link_to restaurant_like_path(@restaurant.id, @like[0].id), method: :delete, class:"show-form", remote: true do %>
+      <i class="far fa-heart faa-ring animated-hover like-btn" id="like-btn"></i>
+    <% end %>
+    <%= @restaurant.likes.length %>
+    よかった
+  </div>
+<% else %>
+  <div class="show-like">
+    <%=link_to restaurant_likes_path(@restaurant.id), method: :post, class:"show-form", remote: true do %>
+      <i class="far fa-heart faa-tada animated-hover unlike-btn" id="unlike-btn"></i>
+    <% end %>
+    <%= @restaurant.likes.length %>
+    よかった
+  </div>
+<% end %>

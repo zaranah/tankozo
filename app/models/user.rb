@@ -9,6 +9,8 @@ class User < ApplicationRecord
 
   has_many :restaurants
   has_many :comments
+  has_many :likes
+  has_many :hopes
 
   validates :nickname, presence: true
   validates :favorite_taste_id, presence: true, numericality: { other_than: 1, message: 'を入力してください' }
