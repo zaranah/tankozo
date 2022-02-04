@@ -5,17 +5,57 @@
         <div class="show-img" alt="">
           <%= image_tag @restaurant.image.variant(resize: '500x500') %>
         </div>
-        <%# 2箇所パスを変えるの忘れない %>
+
         <div class="show-line-btn">
           <% if user_signed_in? && current_user.id == @restaurant.user_id %>
+            <div class="showmain-likestotal">よかった総数</div><%# 総数入れるの忘れない %>
             <div><%=link_to "Edit", edit_restaurant_path(@restaurant), class:"show-edit" %></div>
             <div><%=link_to "Delete", restaurant_path(@restaurant), method: :delete, class:"show-delete" %></div>
           <% elsif  user_signed_in? && current_user.id != @restaurant.user_id  %>
-            <div><%=link_to "行きたい", root_path, class:"show-edit" %></div>
-            <div><%=link_to "よかった", root_path, class:"show-delete" %></div>
+            <%# 行きたい条件分岐 %>
+            <div id="run">
+              <% if @hope.present? %>
+                <div class="show-hope">
+                  <%=link_to restaurant_hope_path(@restaurant.id, @hope[0].id), method: :delete, class:"show-form", remote: true do %>
+                    <i class="fas fa-running faa-passing-reverse animated-hover hope-btn" id="hope-btn"></i>
+                  <% end %>
+                  <%= @restaurant.hopes.length %>
+                  行きたい
+                </div>
+              <% else %>
+                <div class="show-hope">
+                  <%=link_to restaurant_hopes_path(@restaurant.id), method: :post, class:"show-form", remote: true do %>
+                    <i class="fas fa-running faa-passing animated-hover unhope-btn" id="unhope-btn"></i>
+                  <% end %>
+                  <%= @restaurant.hopes.length %>
+                  行きたい
+                </div>
+              <% end %>
+            </div>
+            <%# 行きたい条件分岐 // %>
+            <%# よかった条件分岐 %>
+            <div id="heart">
+              <% if @like.present? %>
+                <div class="show-like">
+                  <%=link_to restaurant_like_path(@restaurant.id, @like[0].id), method: :delete, class:"show-form", remote: true do %>
+                    <i class="far fa-heart faa-ring animated-hover like-btn" id="like-btn"></i>
+                  <% end %>
+                  <%= @restaurant.likes.length %>
+                  よかった
+                </div>
+              <% else %>
+                <div class="show-like">
+                  <%=link_to restaurant_likes_path(@restaurant.id), method: :post, class:"show-form", remote: true do %>
+                    <i class="far fa-heart faa-tada animated-hover unlike-btn" id="unlike-btn"></i>
+                  <% end %>
+                  <%= @restaurant.likes.length %>
+                  よかった
+                </div>
+              <% end %>
+            </div>
+            <%# よかった条件分岐 //%>
           <% end %>
         </div>
-        <%# 2箇所パスを変えるの忘れない %>
         <h1 class="show-name"><%= @restaurant.name %></h1>
         <div class="show-line">
           <div class="show-r prefecture"><%= @restaurant.prefecture.name %></div>
@@ -36,7 +76,6 @@
 
   <div class="show-sub">
     <div class="comment-container">
-
       <div class="comment-in">
       <% if user_signed_in? %>
         <%= form_with(model: [@restaurant, @comment], id: "comment-form", local: true) do |form| %>
@@ -48,7 +87,6 @@
       <% end %>
       <div class="comments">
         <h4>＜コメント一覧＞</h4>
-
         <div class="comments-texts"><% @comments.each do |comment| %>
           <div id="list"></div>
           <div class="comment-text">
