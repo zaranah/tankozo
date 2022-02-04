@@ -1,4 +1,5 @@
 class HopesController < ApplicationController
+  before_action :authenticate_user!, only: [:create, :destroy]
   before_action :set_hope
 
   def create

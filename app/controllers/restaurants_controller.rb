@@ -23,7 +23,10 @@ class RestaurantsController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @restaurant.comments.order('created_at DESC').includes(:user)
-    @like = Like.where(user_id: current_user.id, restaurant_id: @restaurant.id)
+    if user_signed_in?
+      @like = Like.where(user_id: current_user.id, restaurant_id: @restaurant.id)
+      @hope = Hope.where(user_id: current_user.id, restaurant_id: @restaurant.id)
+    end
   end
 
   def edit

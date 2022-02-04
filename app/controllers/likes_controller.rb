@@ -1,4 +1,5 @@
 class LikesController < ApplicationController
+  before_action :authenticate_user!, only: [:create, :destroy]
   before_action :set_like
 
   def create
