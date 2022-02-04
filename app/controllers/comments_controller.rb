@@ -3,14 +3,10 @@ class CommentsController < ApplicationController
 
   def create
     comment = Comment.new(comment_params)
-      if comment.save
-      # comment = Comment.create(comment_params)
-        userid = comment.user_id
-        user = User.find(userid)
-      # else
-      # redirect_to restaurant_path(@restaurant)
-        # render 'error' 
-      end
+    if comment.save
+      userid = comment.user_id
+      user = User.find(userid)
+    end
     render json: { comment: comment, user: user }
   end
 
