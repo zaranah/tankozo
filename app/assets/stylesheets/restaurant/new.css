@@ -1,5 +1,13 @@
 .new {
   margin-bottom: 10px;
+  
+}
+
+.select-box {
+  padding-left: 10px;
+  height: 15px;
+  border-radius: 0.25rem;
+  color: #212529;
 }
 
 .click-upload {
@@ -12,4 +20,32 @@
 
 .opinion {
   padding-bottom: 200px;
+
+}
+
+.form-image{
+  text-align: left;
+}
+
+.comment-in {
+  width: 500px;
+  margin: 15px auto 0;
+}
+
+.re-submit {
+  width: 300px;
+  height: 50px;
+  margin: 10px auto 20px;
+  border-radius: 0.25rem;
+  color: #fff;
+  border: 0;
+  font-size: 18px;
+}
+
+.sub-new {
+  background-color: #FFE3E3;
+}
+
+.sub-edit {
+  background-color: #DFF0FF;
 }

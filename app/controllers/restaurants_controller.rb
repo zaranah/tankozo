@@ -2,7 +2,7 @@ class RestaurantsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :destroy]
   before_action :set_item, only: [:edit, :show, :update, :destroy]
   before_action :move_to_index, only: [:edit, :destroy]
-  before_action :header_item, only: [:index, :new, :edit, :show]
+  before_action :header_item
 
   def index
     @restaurants = Restaurant.order('created_at DESC')

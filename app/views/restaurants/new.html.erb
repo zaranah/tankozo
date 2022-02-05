@@ -30,17 +30,16 @@
         <%= f.collection_select(:price_id, Price.all, :id, :name, {}, {class:"select-box", id:"price"}) %>
       </div>
       <div class="form-floating new">
-        <%= f.text_area :opinion, class:"form-control opinion", id:"opinion", placeholder:"評価コメント" %>
+        <%= f.text_area :opinion, class:"form-control opinion h-auto pb-5", id:"opinion", placeholder:"評価コメント" %>
         <label for="floatingPassword" class="opinion">評価コメント</label>
       </div>
-      <h6>食品画像</h6>
-      <div class="click-upload">
-        <%= f.file_field :image, id:"image" %>
+      <div class="form-control">
+        <div class="form-image">食品画像</div>
+        <div class="form-control-sm">
+          <%= f.file_field :image, id:"image" %>
+        </div>
       </div>
-
-      <div class="checkbox mb-3">
-      </div>
-      <button class="w-100 btn btn-lg btn-primary postbtn" type="submit">Submit</button>
+      <div><%= f.submit "SEND", class: "re-submit sub-new" %></div>
       <p class="mt-5 mb-3 text-muted">&copy; Tankozo</p>
     <% end %>
   </main>

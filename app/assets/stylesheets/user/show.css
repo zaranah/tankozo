@@ -1,3 +1,10 @@
+.no-list{
+  font-size: 20px;
+  color: gray;
+  text-align: center;
+  margin: auto;
+}
+
 .show-nickname {
   text-align: center;
 }
