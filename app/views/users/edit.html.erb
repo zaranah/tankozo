@@ -2,7 +2,13 @@
   <main class="form-signin">
     <%= form_with model: current_user, local: true do |f| %>
       <div class="mb-4" alt="">
-        <%= link_to image_tag('yummy.jpeg' , size: '300x200'), "/" %>
+        <% if @likes_count <= 5 %>
+          <%= image_tag 'tankozo1.png', :size => '300x300'%>
+        <% elsif @likes_count <= 9 %>
+          <%= image_tag 'tankozo2.png', :size => '300x300'%>
+        <% else%>
+          <%= image_tag 'tankozo3.png', :size => '300x300'%>
+        <% end %>
       </div>
       <h1 class="h3 mb-3 fw-normal">Please Edit</h1>
 

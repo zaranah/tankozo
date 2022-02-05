@@ -1,5 +1,10 @@
+.topimage-box {
+  text-align: center;
+}
+
 .top-image {
-  margin: 0 auto 30px;
+  margin-bottom:50px;
+  /* margin-left:250px; */
 }
 
 .inner {
