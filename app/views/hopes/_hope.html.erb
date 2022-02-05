@@ -1,7 +1,7 @@
 <% if @hope.present? %>
   <div class="show-hope">
     <%=link_to restaurant_hope_path(@restaurant.id, @hope[0].id), method: :delete, class:"show-form", remote: true do %>
-      <i class="fas fa-running faa-passing-reverse animated-hover hope-btn"  id="hope-btn"></i>
+      <i class="fas fa-running faa-horizontal animated-hover hope-btn"  id="hope-btn"></i>
     <% end %>
     <%= @restaurant.hopes.length %>
     行きたい
@@ -9,7 +9,7 @@
 <% else %>
   <div class="show-hope">
     <%=link_to restaurant_hopes_path(@restaurant.id), method: :post, class:"show-form", remote: true do %>
-      <i class="fas fa-running faa-passing animated-hover unhope-btn" id="unhope-btn"></i>
+      <i class="fas fa-running faa-horizontal animated-hover unhope-btn" id="unhope-btn"></i>
     <% end %>
     <%= @restaurant.hopes.length %>
     行きたい
