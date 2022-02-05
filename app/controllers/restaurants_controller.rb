@@ -62,7 +62,7 @@ class RestaurantsController < ApplicationController
       @user_restaurants = @user.restaurants
       @likes_count = 0
       @user_restaurants.each do |restaurant|
-      @likes_count += restaurant.likes.count
+        @likes_count += restaurant.likes.count
       end
     end
   end

@@ -31,11 +31,11 @@ class UsersController < ApplicationController
   end
 
   def header_item
-      @user_restaurants = @user.restaurants
-      @likes_count = 0
-      @user_restaurants.each do |restaurant|
+    @user_restaurants = @user.restaurants
+    @likes_count = 0
+    @user_restaurants.each do |restaurant|
       @likes_count += restaurant.likes.count
-      end
+    end
   end
 
   def user_params
