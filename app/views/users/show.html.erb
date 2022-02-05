@@ -1,10 +1,16 @@
 <main>
   <main class="form-signin">
-      <div class="mb-4" alt="">
-        <%= link_to image_tag('eatingcat.jpg' , size: '300x200'), "/" %>
-      </div>
-      <h1 class="show-nickname"><%= @user.nickname %></h1>
-      <div class="show-taste"><%= @user.favorite_taste.name %></div>
+    <div class="mb-4" alt="">
+      <% if @likes_count <= 5 %>
+        <%= image_tag 'tankozo1.png', :size => '300x300'%>
+      <% elsif @likes_count <= 9 %>
+        <%= image_tag 'tankozo2.png', :size => '300x300'%>
+      <% else%>
+        <%= image_tag 'tankozo3.png', :size => '300x300'%>
+      <% end %>
+    </div>
+    <h1 class="show-nickname"><%= @user.nickname %></h1>
+    <div class="show-taste"><%= @user.favorite_taste.name %></div>
   </main>
 
   <h2 class="titlename">投稿リスト</h2>

@@ -2,6 +2,7 @@ class RestaurantsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :destroy]
   before_action :set_item, only: [:edit, :show, :update, :destroy]
   before_action :move_to_index, only: [:edit, :destroy]
+  before_action :header_item, only: [:index, :new, :edit, :show]
 
   def index
     @restaurants = Restaurant.order('created_at DESC')
@@ -53,6 +54,17 @@ class RestaurantsController < ApplicationController
 
   def move_to_index
     redirect_to action: :index unless current_user.id == @restaurant.user_id
+  end
+
+  def header_item
+    if user_signed_in?
+      @user = current_user
+      @user_restaurants = @user.restaurants
+      @likes_count = 0
+      @user_restaurants.each do |restaurant|
+        @likes_count += restaurant.likes.count
+      end
+    end
   end
 
   def restaurant_params

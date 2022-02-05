@@ -2,9 +2,8 @@
   <div class="container">
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
       <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
-        <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
-        <a>Tankozo</a>
-        <%# ↑ xlink:href=の部分をたん小僧のミニアイコンにする %>
+        <img src="<%= asset_path "tankozo1.png" %>" width="40" height="32" class="bi me-2">
+        <%# <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg> %>
       </a>
 
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
@@ -20,8 +19,14 @@
 
       <div class="dropdown text-end">
         <% if user_signed_in? %>
-        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-          <img src="<%= asset_path "eatingcat.jpg" %>" alt="mdo" width="32" height="32" class="rounded-circle">
+          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+          <% if @likes_count <= 5 %>
+            <img src="<%= asset_path "tankozo1.png" %>" alt="mdo" width="32" height="32" class="rounded-circle">
+          <% elsif @likes_count <= 9 %>
+            <img src="<%= asset_path "tankozo2.png" %>" alt="mdo" width="32" height="32" class="rounded-circle">
+          <% else%>
+            <img src="<%= asset_path "tankozo3.png" %>" alt="mdo" width="32" height="32" class="rounded-circle">
+          <% end %>
           <%# ↑にたん小僧のアバターを入れる %>
           </a>
           <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
