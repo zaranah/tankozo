@@ -5,6 +5,15 @@ class RestaurantsController < ApplicationController
 
   def index
     @restaurants = Restaurant.order('created_at DESC')
+
+    if user_signed_in?
+      @user = current_user
+      @user_restaurants = @user.restaurants
+      @likes_count = 0
+      @user_restaurants.each do |restaurant|
+      @likes_count += restaurant.likes.count
+      end
+    end
   end
 
   def new

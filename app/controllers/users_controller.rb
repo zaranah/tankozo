@@ -20,9 +20,9 @@ class UsersController < ApplicationController
     @user_likes = @user.likes
 
     @likes_count = 0
-      @user_restaurants.each do |restaurant|
-      @likes_count += restaurant.likes.count
-      end
+    @user_restaurants.each do |restaurant|
+    @likes_count += restaurant.likes.count
+    end
 
   end
 
