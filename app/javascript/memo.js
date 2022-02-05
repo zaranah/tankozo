@@ -44,7 +44,6 @@ function comment (){
         alert(`コメントを入力してください`);
         return null;
       };
-      debugger
       const list = document.getElementById("list");
       const formText = document.getElementById("comment-text");
       list.insertAdjacentHTML("afterend", buildHTML(XHR));
