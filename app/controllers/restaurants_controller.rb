@@ -47,8 +47,23 @@ class RestaurantsController < ApplicationController
   end
 
   def search
-    @restaurants = Restaurant.search(params[:keyword])
-    # @restaurants = SearchRestaurantsService.search(params[:keyword])
+    if params[:q]&.dig(:name)
+      squished_keywords = params[:q][:name].squish
+      params[:q][:name_cont_any] = squished_keywords.split(" ")
+    end
+
+    if params[:q]&.dig(:station)
+      squished_keywords = params[:q][:station].squish
+      params[:q][:station_cont_any] = squished_keywords.split(" ")
+    end
+
+    if params[:q]&.dig(:food)
+      squished_keywords = params[:q][:food].squish
+      params[:q][:food_cont_any] = squished_keywords.split(" ")
+    end
+
+    @q = Restaurant.ransack(params[:q])
+    @restaurants = @q.result
   end
 
   private

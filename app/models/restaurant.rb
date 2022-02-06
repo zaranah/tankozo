@@ -19,13 +19,4 @@ class Restaurant < ApplicationRecord
   validates :opinion, presence: true
 
   validates :image, presence: true
-
-  def self.search(search)
-    if search != ""
-      search = "%#{search}%"
-      Restaurant.find_by_sql(["select * from restaurants where name like ? OR station like ? OR food like ? ", search, search, search]) 
-    else
-      Restaurant.all
-    end
-  end
 end
