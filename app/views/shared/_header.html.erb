@@ -5,16 +5,13 @@
         <img src="<%= asset_path "tankozoheader.png" %>" width="100%" height="40" class="bi me-2">
       </a>
 
-      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="#" class="nav-link px-2 link-secondary"></a></li>
-        <li><a href="#" class="nav-link px-2 link-dark"></a></li>
-        <li><a href="#" class="nav-link px-2 link-dark"></a></li>
-        <li><a href="#" class="nav-link px-2 link-dark"></a></li>
-      </ul>
+      <div class="col-lg-auto ms-lg-auto ">
+        <div><%= link_to 'Multiple search', search_restaurants_path, class:"nav-link link-light multi" %></div>
+      </div>
 
-      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-        <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-      </form>
+      <%= search_form_for Restaurant.ransack(params[:q]), url: search_restaurants_path, html: {id: "detailed-search-form"}, class: "col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" do |f| %>
+        <%= f.text_field :name_or_station_or_food_cont, placeholder: "Search...", class: "form-control" %>
+      <% end %>
 
       <div class="dropdown text-end">
         <% if user_signed_in? %>

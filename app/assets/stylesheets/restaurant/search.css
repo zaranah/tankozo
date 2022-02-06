@@ -1,0 +1,33 @@
+.separate {
+  display: flex;
+}
+
+.separate-left {
+  width: 30vw;
+}
+
+.search-title {
+  padding-top: 20px;
+  margin-bottom: 20px;
+}
+
+.search-check{
+  display:block;
+}
+
+.search-submit {
+  background-color: rgb(241, 201, 139);
+}
+
+.separate-right {
+  width: 70vw;
+}
+
+.search-zero{
+  text-align: center;
+}
+
+.search-zeroin {
+  margin-top: 20px;
+	text-align:center;
+}

@@ -13,21 +13,21 @@
         <label for="floatingInput">店舗名</label>
       </div>
       <div class="collection">
-        <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box", id:"prefecture"}) %>
+        <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {include_blank: "都道府県"}, {class:"select-box", id:"prefecture"}) %>
       </div>
       <div class="form-floating new">
         <%= f.text_field :station, class:"form-control station", id:"floatingInputname", placeholder:"Nickname" %>
         <label for="floatingInput">駅名</label>
       </div>
       <div class="collection">
-        <%= f.collection_select(:genre_id, Genre.all, :id, :name, {}, {class:"select-box", id:"genre"}) %>
+        <%= f.collection_select(:genre_id, Genre.all, :id, :name, {include_blank: "ジャンル"}, {class:"select-box", id:"genre"}) %>
       </div>
       <div class="form-floating new">
         <%= f.text_field :food, class:"form-control food", id:"floatingInput", placeholder:"アヒージョ" %>
         <label for="floatingInput">食品名</label>
       </div>
       <div class="collection">
-        <%= f.collection_select(:price_id, Price.all, :id, :name, {}, {class:"select-box", id:"price"}) %>
+        <%= f.collection_select(:price_id, Price.all, :id, :name, {include_blank: "価格帯"}, {class:"select-box", id:"price"}) %>
       </div>
       <div class="form-floating new">
         <%= f.text_area :opinion, class:"form-control opinion h-auto pb-5", id:"opinion", placeholder:"評価コメント" %>
