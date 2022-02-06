@@ -46,6 +46,11 @@ class RestaurantsController < ApplicationController
     redirect_to root_path
   end
 
+  def search
+    @restaurants = Restaurant.search(params[:keyword])
+    # @restaurants = SearchRestaurantsService.search(params[:keyword])
+  end
+
   private
 
   def set_item
