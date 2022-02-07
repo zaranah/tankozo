@@ -30,10 +30,18 @@
   color: peachpuff;
 }
 
+.show-edit:hover {
+  color: rgb(250, 135, 34);
+}
+
 .show-delete {
   margin: 0 10px;
   text-decoration: none;
   color: peachpuff;
+}
+
+.show-delete:hover {
+  color: rgb(250, 135, 34);
 }
 
 .show-form {
@@ -116,6 +124,10 @@
   color: peachpuff;
 }
 
+.user-name:hover{
+  color: rgb(250, 135, 34);
+}
+
 .user-taste {
   margin: 0 0 0 15px;
 }
@@ -157,6 +169,10 @@
   font-size: 18px;
 }
 
+.comment-submit:hover {
+  background-color: rgb(250, 203, 162);
+}
+
 .comments {
   padding: 25px 0;
 }
@@ -173,6 +189,10 @@
 .comment-nickname {
   text-decoration: none;
   color: peachpuff;
+}
+
+.comment-nickname:hover {
+  color: rgb(250, 135, 34);
 }
 
 .comment-time {

@@ -46,6 +46,14 @@
   background-color: #FFE3E3;
 }
 
+.sub-new:hover {
+  background-color: #ffb8d6;
+}
+
 .sub-edit {
   background-color: #DFF0FF;
+}
+
+.sub-edit:hover {
+  background-color: #afd9fd;
 }

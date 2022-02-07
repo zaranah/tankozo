@@ -28,3 +28,7 @@
 .sub-user {
   background-color: rgb(199, 198, 198);
 }
+
+.sub-user:hover {
+  background-color: rgb(150, 146, 146);
+}

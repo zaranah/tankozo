@@ -12,8 +12,11 @@ padding: 0.5rem 1rem;
 color: rgba(24, 24, 24, 0.753);
 text-decoration: none;
 transition: color 0.15s ease-in-out;
+transition: background-color 0.15s ease-in-out;
 }
   
 .multi-btn:hover{
 color: white;
+background-color: #b7bbbe;
+border-bottom: solid 3px #d7d7d7;
 }
