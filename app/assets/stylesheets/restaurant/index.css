@@ -1,10 +1,9 @@
-.topimage-box {
-  text-align: center;
+.topimage-backbox {
+  background-color: #fff7e3;
 }
 
-.top-image {
-  margin-bottom:50px;
-  /* margin-left:250px; */
+.topimage-box {
+  text-align: center;
 }
 
 .inner {

@@ -1,9 +1,19 @@
 .multi{
-  border-radius: 0.25rem;
-  margin-right: 1rem;
-  height: 39px;
-  color: aqua;
-  background-color: #ced4da;
-  color: white;
+border-radius: 0.25rem;
+margin-right: 1rem;
+height: 39px;
+background-color: #ced4da;
+color: white;
 }
 
+.multi-btn{
+display: block;
+padding: 0.5rem 1rem;
+color: rgba(24, 24, 24, 0.753);
+text-decoration: none;
+transition: color 0.15s ease-in-out;
+}
+  
+.multi-btn:hover{
+color: white;
+}
