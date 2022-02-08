@@ -21,8 +21,8 @@
   margin-bottom: -1px;
 }
 
-.form-signin input[type="password"] {
-  margin-bottom: -1px;
+.password {
+  margin-bottom: -2px;
 }
 
 .sub-user {
