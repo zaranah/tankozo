@@ -17,7 +17,7 @@
   <div class="album py-5 bg-light">
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <% if @user_restaurants == nil %>
+        <% if @user_restaurants.count == 0 %>
           <div class="no-list"><i class="fas fa-frog faa-bounce animated"></i> 未登録</div>
         <% else %>
           <% @user_restaurants.each do |restaurant| %>
@@ -47,7 +47,7 @@
   <div class="album py-5 bg-light">
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <% if @user_hopes == nil %>
+        <% if @user_hopes.count == 0 %>
           <div class="no-list"><i class="fas fa-frog faa-bounce animated"></i> 未登録</div>
         <% else %>
           <% @user_hopes.each do |hope| %>
@@ -74,7 +74,7 @@
   <div class="album py-5 bg-light">
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <% if @user_likes == nil %>
+        <% if @user_likes.count == 0 %>
           <div class="no-list"><i class="fas fa-frog faa-bounce animated"></i> 未登録</div>
         <% else %>
           <% @user_likes.each do |like| %>
