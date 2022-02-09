@@ -200,7 +200,6 @@ RSpec.describe "店舗編集", type: :system do
   end
 end
 
-
 RSpec.describe "店舗削除", type: :system do
   before do
     @restaurant1 = FactoryBot.create(:restaurant)
@@ -227,6 +226,20 @@ RSpec.describe "店舗削除", type: :system do
 
       # トップページにはツイート1の内容が存在しないことを確認する（店舗名）
       expect(page).to have_no_content("#{@restaurant1.name}")
+    end
+    it '店舗を削除すると、店舗内のコメントがすべて削除されている' do
+      # 店舗１を投稿したユーザーでログインする
+      sign_in(@restaurant1.user)
+      # 店舗１の店舗詳細ページへ遷移する
+      visit restaurant_path(@restaurant1)
+      # コメントを5つDBに追加する
+      FactoryBot.create_list(:comment, 5, restaurant_id: @restaurant1.id, user_id: @restaurant1.user.id)
+      # 「チャットを終了する」ボタンをクリックすることで、作成した5つのメッセージが削除されていることを確認する
+      expect {
+        find_link('Delete',  href: restaurant_path(@restaurant1)).click
+      }.to change { @restaurant1.comments.count }.by(-5)
+      # トップページに遷移していることを確認する
+      expect(current_path).to eq(root_path)
     end
   end
   context '店舗削除ができないとき' do
