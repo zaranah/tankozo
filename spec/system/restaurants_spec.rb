@@ -192,6 +192,10 @@ RSpec.describe "店舗編集", type: :system do
       visit restaurant_path(@restaurant2)
       # 店舗2に「編集」へのリンクがないことを確認する
       expect(page).to have_no_content('Edit')
+      # 編集ページへの推移を試みる
+      visit edit_restaurant_path(@restaurant2)
+      # 編集ページへ推移できず、ログインページにいることを確認する
+      expect(current_path).to eq(new_user_session_path)
     end
   end
 end
