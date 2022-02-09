@@ -9,29 +9,29 @@
       <%= render 'shared/error_messages', model: f.object %>
       
       <div class="form-floating new">
-        <%= f.text_field :name, class:"form-control restaurant-name", id:"floatingInputname", placeholder:"店舗名", autofocus: true %>
-        <label for="floatingInput">店舗名</label>
+        <%= f.text_field :name, class:"form-control restaurant-name", id:"floatingInputName", placeholder:"店舗名", autofocus: true %>
+        <label for="floatingInputName">店舗名</label>
       </div>
       <div class="collection">
         <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {include_blank: "都道府県"}, {class:"select-box", id:"prefecture"}) %>
       </div>
       <div class="form-floating new">
-        <%= f.text_field :station, class:"form-control station", id:"floatingInputname", placeholder:"Nickname" %>
-        <label for="floatingInput">駅名</label>
+        <%= f.text_field :station, class:"form-control station", id:"floatingInputStation", placeholder:"Nickname" %>
+        <label for="floatingInputStation">駅名</label>
       </div>
       <div class="collection">
         <%= f.collection_select(:genre_id, Genre.all, :id, :name, {include_blank: "ジャンル"}, {class:"select-box", id:"genre"}) %>
       </div>
       <div class="form-floating new">
-        <%= f.text_field :food, class:"form-control food", id:"floatingInput", placeholder:"アヒージョ" %>
-        <label for="floatingInput">食品名</label>
+        <%= f.text_field :food, class:"form-control food", id:"floatingInputFood", placeholder:"アヒージョ" %>
+        <label for="floatingInputFood">食品名</label>
       </div>
       <div class="collection">
         <%= f.collection_select(:price_id, Price.all, :id, :name, {include_blank: "価格帯"}, {class:"select-box", id:"price"}) %>
       </div>
       <div class="form-floating new">
-        <%= f.text_area :opinion, class:"form-control opinion h-auto pb-5", id:"opinion", placeholder:"評価コメント" %>
-        <label for="floatingPassword" class="opinion">評価コメント</label>
+        <%= f.text_area :opinion, class:"form-control opinion h-auto pb-5", id:"floatingInputOpinion", placeholder:"評価コメント" %>
+        <label for="floatingInputOpinion" class="opinion">評価コメント</label>
       </div>
       <div class="form-control">
         <div class="form-image">食品画像</div>
