@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "コメント投稿", type: :system do
+RSpec.describe 'コメント投稿', type: :system do
   before do
     @restaurant = FactoryBot.create(:restaurant)
     @comment = FactoryBot.create(:comment)
@@ -14,11 +14,11 @@ RSpec.describe "コメント投稿", type: :system do
       visit restaurant_path(@restaurant)
       # フォームに情報を入力してコメントするとCommentモデルのカウントが1上がっていることを確認する
       post = @comment.comment
-      expect {
+      expect do
         fill_in 'comment[comment]', with: post
         click_button 'SEND'
         visit current_path
-      }.to change { Comment.count }.by(1)
+      end.to change { Comment.count }.by(1)
       # 詳細ページにいることを確認する
       expect(current_path).to eq(restaurant_path(@restaurant))
       # 詳細ページ上に先ほどのコメント内容が含まれていることを確認する
@@ -35,9 +35,9 @@ RSpec.describe "コメント投稿", type: :system do
       # フォームに空で入力する
       fill_in 'comment[comment]', with: ''
       # DBに保存されていないことを確認する
-      expect {
+      expect do
         find('input[name="commit"]').click
-      }.not_to change { Comment.count }
+      end.not_to change { Comment.count }
       # 詳細ページにいることを確認する
       expect(current_path).to eq(restaurant_path(@restaurant))
     end

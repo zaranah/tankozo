@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "店舗投稿", type: :system do
+RSpec.describe '店舗投稿', type: :system do
   before do
     @restaurant = FactoryBot.create(:restaurant)
   end
@@ -36,11 +36,11 @@ RSpec.describe "店舗投稿", type: :system do
       # 添付する画像を定義する
       image_path = Rails.root.join('public/images/test_image.png')
       # 画像選択フォームに画像を添付する
-      attach_file('restaurant[image]', image_path )
+      attach_file('restaurant[image]', image_path)
       # 送信するとTweetモデルのカウントが1上がることを確認する
-      expect{
+      expect do
         find('input[name="commit"]').click
-      }.to change { Restaurant.count }.by(1)
+      end.to change { Restaurant.count }.by(1)
       # トップページにいることを確認する
       expect(current_path).to eq(root_path)
       # トップページ上に先ほどの投稿内容が含まれていることを確認する
@@ -75,9 +75,9 @@ RSpec.describe "店舗投稿", type: :system do
       ).to have_content('〜1,000円')
       fill_in '評価コメント', with: ''
       # DBに保存されていないことを確認する
-      expect{
+      expect  do
         find('input[name="commit"]').click
-      }.not_to change { Restaurant.count }
+      end.not_to change { Restaurant.count }
       # 新規登録ページにいることを確認する
       expect(current_path).to eq(restaurants_path)
     end
@@ -96,7 +96,7 @@ RSpec.describe "店舗投稿", type: :system do
   end
 end
 
-RSpec.describe "店舗編集", type: :system do
+RSpec.describe '店舗編集', type: :system do
   before do
     @restaurant1 = FactoryBot.create(:restaurant)
     @restaurant2 = FactoryBot.create(:restaurant)
@@ -118,19 +118,19 @@ RSpec.describe "店舗編集", type: :system do
       ).to eq(@restaurant1.name)
       expect(
         find('#prefecture').value
-      ).to eq("#{@restaurant1.prefecture_id}")
+      ).to eq(@restaurant1.prefecture_id.to_s)
       expect(
         find('#floatingInputStation').value
       ).to eq(@restaurant1.station)
       expect(
         find('#genre').value
-      ).to eq("#{@restaurant1.genre_id}")
+      ).to eq(@restaurant1.genre_id.to_s)
       expect(
         find('#floatingInputFood').value
       ).to eq(@restaurant1.food)
       expect(
         find('#price').value
-      ).to eq("#{@restaurant1.price_id}")
+      ).to eq(@restaurant1.price_id.to_s)
       expect(
         find('#floatingInputOpinion').value
       ).to eq(@restaurant1.opinion)
@@ -154,11 +154,11 @@ RSpec.describe "店舗編集", type: :system do
       # 添付する画像を定義する
       image_path = Rails.root.join('public/images/test_image2.png')
       # 画像選択フォームに画像を添付する
-      attach_file('restaurant[image]', image_path )
+      attach_file('restaurant[image]', image_path)
       # 編集してもTweetモデルのカウントは変わらないことを確認する
-      expect{
+      expect do
         find('input[name="commit"]').click
-      }.to change { Restaurant.count }.by(0)
+      end.to change { Restaurant.count }.by(0)
       # 店舗詳細ページに推移したことを確認する
       expect(current_path).to eq(restaurant_path(@restaurant1))
       # トップページには先ほど変更した内容のツイートが存在することを確認する（店舗名）
@@ -196,7 +196,7 @@ RSpec.describe "店舗編集", type: :system do
   end
 end
 
-RSpec.describe "店舗削除", type: :system do
+RSpec.describe '店舗削除', type: :system do
   before do
     @restaurant1 = FactoryBot.create(:restaurant)
     @restaurant2 = FactoryBot.create(:restaurant)
@@ -211,13 +211,13 @@ RSpec.describe "店舗削除", type: :system do
       # 店舗1に「削除」へのリンクがあることを確認する
       expect(page).to have_content('Delete')
       # 投稿を削除するとレコードの数が1減ることを確認する
-      expect{
+      expect do
         find_link('Delete', href: restaurant_path(@restaurant1)).click
-      }.to change { Restaurant.count }.by(-1)
+      end.to change { Restaurant.count }.by(-1)
       # トップページに遷移したことを確認する
       expect(current_path).to eq(root_path)
       # トップページにはツイート1の内容が存在しないことを確認する（店舗名）
-      expect(page).to have_no_content("#{@restaurant1.name}")
+      expect(page).to have_no_content(@restaurant1.name.to_s)
     end
     it '店舗を削除すると、店舗内のコメントがすべて削除されている' do
       # 店舗１を投稿したユーザーでログインする
@@ -227,9 +227,9 @@ RSpec.describe "店舗削除", type: :system do
       # コメントを5つDBに追加する
       FactoryBot.create_list(:comment, 5, restaurant_id: @restaurant1.id, user_id: @restaurant1.user.id)
       # 「チャットを終了する」ボタンをクリックすることで、作成した5つのメッセージが削除されていることを確認する
-      expect {
-        find_link('Delete',  href: restaurant_path(@restaurant1)).click
-      }.to change { @restaurant1.comments.count }.by(-5)
+      expect do
+        find_link('Delete', href: restaurant_path(@restaurant1)).click
+      end.to change { @restaurant1.comments.count }.by(-5)
       # トップページに遷移していることを確認する
       expect(current_path).to eq(root_path)
     end
@@ -256,7 +256,7 @@ RSpec.describe "店舗削除", type: :system do
   end
 end
 
-RSpec.describe "店舗詳細", type: :system do
+RSpec.describe '店舗詳細', type: :system do
   before do
     @restaurant1 = FactoryBot.create(:restaurant)
     @restaurant2 = FactoryBot.create(:restaurant)
@@ -270,14 +270,14 @@ RSpec.describe "店舗詳細", type: :system do
     # 詳細ページに遷移する
     visit restaurant_path(@restaurant1)
     # 詳細ページにツイートの内容が含まれている
-    expect(page).to have_content("#{@restaurant1.name}")
-    expect(page).to have_content("#{@restaurant1.prefecture.name}")
-    expect(page).to have_content("#{@restaurant1.station}")
-    expect(page).to have_content("#{@restaurant1.genre.name}")
-    expect(page).to have_content("#{@restaurant1.food}")
-    expect(page).to have_content("#{@restaurant1.price.name}")
-    expect(page).to have_content("#{@restaurant1.opinion}")
-    expect(page).to have_content("#{@restaurant1.name}")
+    expect(page).to have_content(@restaurant1.name.to_s)
+    expect(page).to have_content(@restaurant1.prefecture.name.to_s)
+    expect(page).to have_content(@restaurant1.station.to_s)
+    expect(page).to have_content(@restaurant1.genre.name.to_s)
+    expect(page).to have_content(@restaurant1.food.to_s)
+    expect(page).to have_content(@restaurant1.price.name.to_s)
+    expect(page).to have_content(@restaurant1.opinion.to_s)
+    expect(page).to have_content(@restaurant1.name.to_s)
     # コメント用のフォームが存在する
     expect(page).to have_selector('form[id="comment-form"]')
     # 店舗投稿内に「行きたい」・「よかった」ボタンがないことを確認する
@@ -291,14 +291,14 @@ RSpec.describe "店舗詳細", type: :system do
     # 詳細ページに遷移する
     visit restaurant_path(@restaurant2)
     # 詳細ページにツイートの内容が含まれている
-    expect(page).to have_content("#{@restaurant2.name}")
-    expect(page).to have_content("#{@restaurant2.prefecture.name}")
-    expect(page).to have_content("#{@restaurant2.station}")
-    expect(page).to have_content("#{@restaurant2.genre.name}")
-    expect(page).to have_content("#{@restaurant2.food}")
-    expect(page).to have_content("#{@restaurant2.price.name}")
-    expect(page).to have_content("#{@restaurant2.opinion}")
-    expect(page).to have_content("#{@restaurant2.name}")
+    expect(page).to have_content(@restaurant2.name.to_s)
+    expect(page).to have_content(@restaurant2.prefecture.name.to_s)
+    expect(page).to have_content(@restaurant2.station.to_s)
+    expect(page).to have_content(@restaurant2.genre.name.to_s)
+    expect(page).to have_content(@restaurant2.food.to_s)
+    expect(page).to have_content(@restaurant2.price.name.to_s)
+    expect(page).to have_content(@restaurant2.opinion.to_s)
+    expect(page).to have_content(@restaurant2.name.to_s)
     # コメント用のフォームが存在する
     expect(page).to have_selector('form[id="comment-form"]')
     # 店舗投稿内に「行きたい」・「よかった」ボタンがあることを確認する
@@ -312,24 +312,24 @@ RSpec.describe "店舗詳細", type: :system do
     # 詳細ページに遷移する
     visit restaurant_path(@restaurant1)
     # 詳細ページにツイートの内容が含まれている
-    expect(page).to have_content("#{@restaurant1.name}")
-    expect(page).to have_content("#{@restaurant1.prefecture.name}")
-    expect(page).to have_content("#{@restaurant1.station}")
-    expect(page).to have_content("#{@restaurant1.genre.name}")
-    expect(page).to have_content("#{@restaurant1.food}")
-    expect(page).to have_content("#{@restaurant1.price.name}")
-    expect(page).to have_content("#{@restaurant1.opinion}")
-    expect(page).to have_content("#{@restaurant1.name}")
+    expect(page).to have_content(@restaurant1.name.to_s)
+    expect(page).to have_content(@restaurant1.prefecture.name.to_s)
+    expect(page).to have_content(@restaurant1.station.to_s)
+    expect(page).to have_content(@restaurant1.genre.name.to_s)
+    expect(page).to have_content(@restaurant1.food.to_s)
+    expect(page).to have_content(@restaurant1.price.name.to_s)
+    expect(page).to have_content(@restaurant1.opinion.to_s)
+    expect(page).to have_content(@restaurant1.name.to_s)
     # フォームが存在しないことを確認する
     expect(page).to have_no_selector('form[id="comment-form"]')
     # 「コメントの投稿には新規登録/ログインが必要です」が表示されていることを確認する
-    expect(page).to have_content("コメントの投稿には新規登録/ログインが必要です")
+    expect(page).to have_content('コメントの投稿には新規登録/ログインが必要です')
     # 店舗投稿内に「行きたい」・「よかった」ボタンを押せないことを確認する
-    expect {
+    expect do
       find('.fa-running').click
-    }.not_to change { Hope.count }
-    expect {
+    end.not_to change { Hope.count }
+    expect do
       find('.fa-heart').click
-    }.not_to change { Like.count }
+    end.not_to change { Like.count }
   end
 end
