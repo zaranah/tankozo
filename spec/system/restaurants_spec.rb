@@ -161,10 +161,6 @@ RSpec.describe "店舗編集", type: :system do
       }.to change { Restaurant.count }.by(0)
       # 店舗詳細ページに推移したことを確認する
       expect(current_path).to eq(restaurant_path(@restaurant1))
-      
-      # トップページには先ほど変更した内容のツイートが存在することを確認する（画像）
-      # expect(page).to have_selector ".bd-placeholder-img[src="Rails.root.join('public/images/test_image2.png')"]"
-
       # トップページには先ほど変更した内容のツイートが存在することを確認する（店舗名）
       expect(page).to have_content("#{@restaurant1.name}+編集したテキスト")
     end
@@ -220,10 +216,6 @@ RSpec.describe "店舗削除", type: :system do
       }.to change { Restaurant.count }.by(-1)
       # トップページに遷移したことを確認する
       expect(current_path).to eq(root_path)
-
-      # # トップページにはツイート1の内容が存在しないことを確認する（画像）
-      # expect(page).to have_no_selector ".content_post[style='background-image: url(#{@tweet1.image});']"
-
       # トップページにはツイート1の内容が存在しないことを確認する（店舗名）
       expect(page).to have_no_content("#{@restaurant1.name}")
     end
@@ -261,5 +253,83 @@ RSpec.describe "店舗削除", type: :system do
       # 店舗2に「編集」へのリンクがないことを確認する
       expect(page).to have_no_content('Delete')
     end
+  end
+end
+
+RSpec.describe "店舗詳細", type: :system do
+  before do
+    @restaurant1 = FactoryBot.create(:restaurant)
+    @restaurant2 = FactoryBot.create(:restaurant)
+  end
+
+  it 'ログインしたユーザーは自分が投稿した店舗詳細ページに遷移してコメント投稿欄が表示される' do
+    # 店舗１を投稿したユーザーでログインする
+    sign_in(@restaurant1.user)
+    # 店舗投稿内に「詳細」へのリンクがあることを確認する
+    expect(page).to have_content('View')
+    # 詳細ページに遷移する
+    visit restaurant_path(@restaurant1)
+    # 詳細ページにツイートの内容が含まれている
+    expect(page).to have_content("#{@restaurant1.name}")
+    expect(page).to have_content("#{@restaurant1.prefecture.name}")
+    expect(page).to have_content("#{@restaurant1.station}")
+    expect(page).to have_content("#{@restaurant1.genre.name}")
+    expect(page).to have_content("#{@restaurant1.food}")
+    expect(page).to have_content("#{@restaurant1.price.name}")
+    expect(page).to have_content("#{@restaurant1.opinion}")
+    expect(page).to have_content("#{@restaurant1.name}")
+    # コメント用のフォームが存在する
+    expect(page).to have_selector('form[id="comment-form"]')
+    # 店舗投稿内に「行きたい」・「よかった」ボタンがないことを確認する
+    expect(page).to have_no_content('行きたい' && 'よかった')
+  end
+  it 'ログインしたユーザーは自分が投稿していない店舗詳細ページに遷移してコメント投稿欄、「行きたい」・「よかった」ボタンが表示される' do
+    # 店舗１を投稿したユーザーでログインする
+    sign_in(@restaurant1.user)
+    # 店舗投稿内に「詳細」へのリンクがあることを確認する
+    expect(page).to have_content('View')
+    # 詳細ページに遷移する
+    visit restaurant_path(@restaurant2)
+    # 詳細ページにツイートの内容が含まれている
+    expect(page).to have_content("#{@restaurant2.name}")
+    expect(page).to have_content("#{@restaurant2.prefecture.name}")
+    expect(page).to have_content("#{@restaurant2.station}")
+    expect(page).to have_content("#{@restaurant2.genre.name}")
+    expect(page).to have_content("#{@restaurant2.food}")
+    expect(page).to have_content("#{@restaurant2.price.name}")
+    expect(page).to have_content("#{@restaurant2.opinion}")
+    expect(page).to have_content("#{@restaurant2.name}")
+    # コメント用のフォームが存在する
+    expect(page).to have_selector('form[id="comment-form"]')
+    # 店舗投稿内に「行きたい」・「よかった」ボタンがあることを確認する
+    expect(page).to have_content('行きたい' && 'よかった')
+  end
+  it 'ログインしていない状態でツイート詳細ページに遷移できるもののコメント投稿欄が表示されない' do
+    # トップページに移動する
+    visit root_path
+    # ツイートに「詳細」へのリンクがあることを確認する
+    expect(page).to have_content('View')
+    # 詳細ページに遷移する
+    visit restaurant_path(@restaurant1)
+    # 詳細ページにツイートの内容が含まれている
+    expect(page).to have_content("#{@restaurant1.name}")
+    expect(page).to have_content("#{@restaurant1.prefecture.name}")
+    expect(page).to have_content("#{@restaurant1.station}")
+    expect(page).to have_content("#{@restaurant1.genre.name}")
+    expect(page).to have_content("#{@restaurant1.food}")
+    expect(page).to have_content("#{@restaurant1.price.name}")
+    expect(page).to have_content("#{@restaurant1.opinion}")
+    expect(page).to have_content("#{@restaurant1.name}")
+    # フォームが存在しないことを確認する
+    expect(page).to have_no_selector('form[id="comment-form"]')
+    # 「コメントの投稿には新規登録/ログインが必要です」が表示されていることを確認する
+    expect(page).to have_content("コメントの投稿には新規登録/ログインが必要です")
+    # 店舗投稿内に「行きたい」・「よかった」ボタンを押せないことを確認する
+    expect {
+      find('.fa-running').click
+    }.not_to change { Hope.count }
+    expect {
+      find('.fa-heart').click
+    }.not_to change { Like.count }
   end
 end
