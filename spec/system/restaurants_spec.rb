@@ -95,3 +95,103 @@ RSpec.describe "店舗投稿", type: :system do
     end
   end
 end
+
+RSpec.describe "店舗編集", type: :system do
+  before do
+    @restaurant1 = FactoryBot.create(:restaurant)
+    @restaurant2 = FactoryBot.create(:restaurant)
+  end
+
+  context '店舗編集ができるとき' do
+    it 'ログインしたユーザーは自分が投稿した店舗の編集ができる' do
+      # 店舗１を投稿したユーザーでログインする
+      sign_in(@restaurant1.user)
+      # 店舗１の店舗詳細ページへ遷移する
+      visit restaurant_path(@restaurant1)
+      # 店舗1に「編集」へのリンクがあることを確認する
+      expect(page).to have_content('Edit')
+      # 編集ページへ遷移する
+      visit edit_restaurant_path(@restaurant1)
+      # すでに投稿済みの内容がフォームに入っていることを確認する
+      expect(
+        find('#floatingInputName').value
+      ).to eq(@restaurant1.name)
+      expect(
+        find('#prefecture').value
+      ).to eq("#{@restaurant1.prefecture_id}")
+      expect(
+        find('#floatingInputStation').value
+      ).to eq(@restaurant1.station)
+      expect(
+        find('#genre').value
+      ).to eq("#{@restaurant1.genre_id}")
+      expect(
+        find('#floatingInputFood').value
+      ).to eq(@restaurant1.food)
+      expect(
+        find('#price').value
+      ).to eq("#{@restaurant1.price_id}")
+      expect(
+        find('#floatingInputOpinion').value
+      ).to eq(@restaurant1.opinion)
+      # 投稿内容を編集する
+      fill_in '店舗名', with: "#{@restaurant1.name}+編集したテキスト"
+      expect(
+        all('.collection')[0].click
+      ).to have_content('北海道')
+      all('option[value="3"]')[0].click
+      fill_in '駅名', with: "#{@restaurant1.station}+編集したテキスト"
+      expect(
+        all('.collection')[1].click
+      ).to have_content('寿司')
+      all('option[value="3"]')[1].click
+      fill_in '食品名', with: "#{@restaurant1.food}+編集したテキスト"
+      expect(
+        all('.collection')[2].click
+      ).to have_content('〜1,000円')
+      all('option[value="3"]')[2].click
+      fill_in '評価コメント', with: "#{@restaurant1.opinion}+編集したテキスト"
+      # 添付する画像を定義する
+      image_path = Rails.root.join('public/images/test_image2.png')
+      # 画像選択フォームに画像を添付する
+      attach_file('restaurant[image]', image_path )
+      # 編集してもTweetモデルのカウントは変わらないことを確認する
+      expect{
+        find('input[name="commit"]').click
+      }.to change { Restaurant.count }.by(0)
+      # 店舗詳細ページに推移したことを確認する
+      expect(current_path).to eq(restaurant_path(@restaurant1))
+      
+      # トップページには先ほど変更した内容のツイートが存在することを確認する（画像）
+      # expect(page).to have_selector ".bd-placeholder-img[src="Rails.root.join('public/images/test_image2.png')"]"
+
+      # トップページには先ほど変更した内容のツイートが存在することを確認する（店舗名）
+      expect(page).to have_content("#{@restaurant1.name}+編集したテキスト")
+    end
+  end
+
+  context '店舗編集ができないとき' do
+    it 'ログインしたユーザーは自分以外が投稿したツイートの編集画面には遷移できない' do
+      # 店舗1を投稿したユーザーでログインする
+      sign_in(@restaurant1.user)
+      # 店舗2の店舗詳細ページへ遷移する
+      visit restaurant_path(@restaurant2)
+      # 店舗2に「編集」へのリンクがないことを確認する
+      expect(page).to have_no_content('Edit')
+      # 編集ページへの推移を試みる
+      visit edit_restaurant_path(@restaurant2)
+      # 編集ページへ推移できず、トップページにいることを確認する
+      expect(current_path).to eq(root_path)
+    end
+    it 'ログインしていないとツイートの編集画面には遷移できない' do
+      # 店舗1の店舗詳細ページへ遷移する
+      visit restaurant_path(@restaurant1)
+      # 店舗1に「編集」へのリンクがないことを確認する
+      expect(page).to have_no_content('Edit')
+      # 店舗2の店舗詳細ページへ遷移する
+      visit restaurant_path(@restaurant2)
+      # 店舗2に「編集」へのリンクがないことを確認する
+      expect(page).to have_no_content('Edit')
+    end
+  end
+end
