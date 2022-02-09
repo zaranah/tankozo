@@ -195,3 +195,54 @@ RSpec.describe "店舗編集", type: :system do
     end
   end
 end
+
+
+RSpec.describe "店舗削除", type: :system do
+  before do
+    @restaurant1 = FactoryBot.create(:restaurant)
+    @restaurant2 = FactoryBot.create(:restaurant)
+  end
+
+  context '店舗削除ができるとき' do
+    it 'ログインしたユーザーは自らが投稿した店舗の削除ができる' do
+      # 店舗１を投稿したユーザーでログインする
+      sign_in(@restaurant1.user)
+      # 店舗１の店舗詳細ページへ遷移する
+      visit restaurant_path(@restaurant1)
+      # 店舗1に「削除」へのリンクがあることを確認する
+      expect(page).to have_content('Delete')
+      # 投稿を削除するとレコードの数が1減ることを確認する
+      expect{
+        find_link('Delete', href: restaurant_path(@restaurant1)).click
+      }.to change { Restaurant.count }.by(-1)
+      # トップページに遷移したことを確認する
+      expect(current_path).to eq(root_path)
+
+      # # トップページにはツイート1の内容が存在しないことを確認する（画像）
+      # expect(page).to have_no_selector ".content_post[style='background-image: url(#{@tweet1.image});']"
+
+      # トップページにはツイート1の内容が存在しないことを確認する（店舗名）
+      expect(page).to have_no_content("#{@restaurant1.name}")
+    end
+  end
+  context '店舗削除ができないとき' do
+    it 'ログインしたユーザーは自分以外が投稿した店舗の削除ができない' do
+      # 店舗1を投稿したユーザーでログインする
+      sign_in(@restaurant1.user)
+      # 店舗2の店舗詳細ページへ遷移する
+      visit restaurant_path(@restaurant2)
+      # 店舗2に「削除」へのリンクがないことを確認する
+      expect(page).to have_no_content('Delete')
+    end
+    it 'ログアウト状態では店舗の削除ボタンがない' do
+      # 店舗1の店舗詳細ページへ遷移する
+      visit restaurant_path(@restaurant1)
+      # 店舗1に「編集」へのリンクがないことを確認する
+      expect(page).to have_no_content('Delete')
+      # 店舗2の店舗詳細ページへ遷移する
+      visit restaurant_path(@restaurant2)
+      # 店舗2に「編集」へのリンクがないことを確認する
+      expect(page).to have_no_content('Delete')
+    end
+  end
+end
