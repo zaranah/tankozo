@@ -63,7 +63,7 @@ class RestaurantsController < ApplicationController
     end
 
     @q = Restaurant.ransack(params[:q])
-    @restaurants = @q.result
+    @restaurants = @q.result.page(params[:page]).per(9)
   end
 
   private
