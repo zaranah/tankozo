@@ -13,7 +13,7 @@
     <div class="show-taste"><%= @user.favorite_taste.name %></div>
   </main>
 
-  <h2 class="titlename">投稿リスト</h2>
+  <h2 class="titlename">投稿リスト <%= @user_restaurants.count %>件</h2>
   <div class="album py-5 bg-light">
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -43,7 +43,7 @@
     </div>
   </div>
 
- <h2 class="titlename">行きたいリスト</h2>
+ <h2 class="titlename">行きたいリスト <%= @user_hopes.count %>件</h2>
   <div class="album py-5 bg-light">
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -70,7 +70,7 @@
     </div>
   </div>
 
- <h2 class="titlename">よかったリスト</h2>
+ <h2 class="titlename">よかったリスト <%= @user_likes.count %>件</h2>
   <div class="album py-5 bg-light">
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">

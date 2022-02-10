@@ -190,6 +190,10 @@
   margin-bottom: 10px;
 }
 
+.comment-comment{
+  overflow-wrap: break-word;
+}
+
 .comment-nickname {
   text-decoration: none;
   color: peachpuff;

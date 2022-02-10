@@ -96,8 +96,8 @@
         <div class="comments-texts"><% @comments.each do |comment| %>
           <div id="list"></div>
           <div class="comment-text">
-            <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}", class:"comment-nickname" %>：</strong>
-            <%= comment.comment %>
+            <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}", class:"comment-nickname" %></strong>
+            <div class="comment-comment"><%= comment.comment %></div>
             <div class="comment-time">(<%= l comment.created_at %>)</div>
           </div>
         <% end %>
