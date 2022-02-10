@@ -13,10 +13,14 @@
   margin: auto;
 }
 
+.show-img {
+  margin-top: 20px;
+}
+
 .show-line-btn{
   display: flex;
   justify-content: right;
-  margin: 20px 0;
+  margin: 15px 0;
   width: 500px;
   text-decoration: none;
 }

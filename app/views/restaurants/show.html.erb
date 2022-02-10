@@ -3,7 +3,7 @@
   <div class="show-main">
     <div class="showcontent">
         <div class="show-img" alt="">
-          <%= image_tag @restaurant.image.variant(resize: '500x500') %>
+          <%= image_tag @restaurant.image.variant( resize: "500x500^", gravity: "center", crop: "500x500+0+0" ) %>
         </div>
 
         <div class="show-line-btn">
