@@ -5,7 +5,7 @@ class RestaurantsController < ApplicationController
   before_action :header_item
 
   def index
-    @restaurants = Restaurant.order('created_at DESC')
+    @restaurants = Restaurant.order('created_at DESC').page(params[:page]).per(6)
   end
 
   def new

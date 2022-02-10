@@ -5,7 +5,7 @@
 </div>
 
 <main class="main">
-  <div class="album py-5 bg-light">
+  <div class="album pt-5 pb-4 bg-light">
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
           <% @restaurants.each do |restaurant| %>
@@ -28,6 +28,7 @@
             </div>
           <% end %>
       </div>
+      <%= paginate @restaurants %>
     </div>
   </div>
     <h2 class="pb-2 border-top"></h2>
