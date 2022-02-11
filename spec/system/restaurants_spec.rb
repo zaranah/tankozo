@@ -18,6 +18,7 @@ RSpec.describe '店舗投稿', type: :system do
       # フォームに情報を入力する
       post = @restaurant.name
       fill_in '店舗名', with: post
+      fill_in '【任意】店舗ホームページURL', with: @restaurant.restaurant_url
       expect(
         all('.collection')[0].click
       ).to have_content('北海道')
@@ -62,6 +63,7 @@ RSpec.describe '店舗投稿', type: :system do
       visit new_restaurant_path
       # フォームに空で入力する
       fill_in '店舗名', with: ''
+      fill_in '【任意】店舗ホームページURL', with: ''
       expect(
         all('.collection')[0].click
       ).to have_content('北海道')
@@ -117,6 +119,9 @@ RSpec.describe '店舗編集', type: :system do
         find('#floatingInputName').value
       ).to eq(@restaurant1.name)
       expect(
+        find('#floatingInputUrl').value
+      ).to eq(@restaurant1.restaurant_url)
+      expect(
         find('#prefecture').value
       ).to eq(@restaurant1.prefecture_id.to_s)
       expect(
@@ -136,6 +141,7 @@ RSpec.describe '店舗編集', type: :system do
       ).to eq(@restaurant1.opinion)
       # 投稿内容を編集する
       fill_in '店舗名', with: "#{@restaurant1.name}+編集したテキスト"
+      fill_in '【任意】店舗ホームページURL', with: "#{@restaurant1.restaurant_url}+編集したテキスト"
       expect(
         all('.collection')[0].click
       ).to have_content('北海道')
@@ -270,14 +276,14 @@ RSpec.describe '店舗詳細', type: :system do
     # 詳細ページに遷移する
     visit restaurant_path(@restaurant1)
     # 詳細ページにツイートの内容が含まれている
-    expect(page).to have_content(@restaurant1.name.to_s)
-    expect(page).to have_content(@restaurant1.prefecture.name.to_s)
-    expect(page).to have_content(@restaurant1.station.to_s)
-    expect(page).to have_content(@restaurant1.genre.name.to_s)
-    expect(page).to have_content(@restaurant1.food.to_s)
-    expect(page).to have_content(@restaurant1.price.name.to_s)
-    expect(page).to have_content(@restaurant1.opinion.to_s)
-    expect(page).to have_content(@restaurant1.name.to_s)
+    expect(page).to have_content(@restaurant1.name)
+    expect(page).to have_link @restaurant1.name, href: @restaurant1.restaurant_url
+    expect(page).to have_content(@restaurant1.prefecture.name)
+    expect(page).to have_content(@restaurant1.station)
+    expect(page).to have_content(@restaurant1.genre.name)
+    expect(page).to have_content(@restaurant1.food)
+    expect(page).to have_content(@restaurant1.price.name)
+    expect(page).to have_content(@restaurant1.opinion)
     # コメント用のフォームが存在する
     expect(page).to have_selector('form[id="comment-form"]')
     # 店舗投稿内に「行きたい」・「よかった」ボタンがないことを確認する
@@ -291,14 +297,14 @@ RSpec.describe '店舗詳細', type: :system do
     # 詳細ページに遷移する
     visit restaurant_path(@restaurant2)
     # 詳細ページにツイートの内容が含まれている
-    expect(page).to have_content(@restaurant2.name.to_s)
-    expect(page).to have_content(@restaurant2.prefecture.name.to_s)
-    expect(page).to have_content(@restaurant2.station.to_s)
-    expect(page).to have_content(@restaurant2.genre.name.to_s)
-    expect(page).to have_content(@restaurant2.food.to_s)
-    expect(page).to have_content(@restaurant2.price.name.to_s)
-    expect(page).to have_content(@restaurant2.opinion.to_s)
-    expect(page).to have_content(@restaurant2.name.to_s)
+    expect(page).to have_content(@restaurant2.name)
+    expect(page).to have_link @restaurant2.name, href: @restaurant2.restaurant_url
+    expect(page).to have_content(@restaurant2.prefecture.name)
+    expect(page).to have_content(@restaurant2.station)
+    expect(page).to have_content(@restaurant2.genre.name)
+    expect(page).to have_content(@restaurant2.food)
+    expect(page).to have_content(@restaurant2.price.name)
+    expect(page).to have_content(@restaurant2.opinion)
     # コメント用のフォームが存在する
     expect(page).to have_selector('form[id="comment-form"]')
     # 店舗投稿内に「行きたい」・「よかった」ボタンがあることを確認する
@@ -312,14 +318,14 @@ RSpec.describe '店舗詳細', type: :system do
     # 詳細ページに遷移する
     visit restaurant_path(@restaurant1)
     # 詳細ページにツイートの内容が含まれている
-    expect(page).to have_content(@restaurant1.name.to_s)
-    expect(page).to have_content(@restaurant1.prefecture.name.to_s)
-    expect(page).to have_content(@restaurant1.station.to_s)
-    expect(page).to have_content(@restaurant1.genre.name.to_s)
-    expect(page).to have_content(@restaurant1.food.to_s)
-    expect(page).to have_content(@restaurant1.price.name.to_s)
-    expect(page).to have_content(@restaurant1.opinion.to_s)
-    expect(page).to have_content(@restaurant1.name.to_s)
+    expect(page).to have_content(@restaurant1.name)
+    expect(page).to have_link @restaurant1.name, href: @restaurant1.restaurant_url
+    expect(page).to have_content(@restaurant1.prefecture.name)
+    expect(page).to have_content(@restaurant1.station)
+    expect(page).to have_content(@restaurant1.genre.name)
+    expect(page).to have_content(@restaurant1.food)
+    expect(page).to have_content(@restaurant1.price.name)
+    expect(page).to have_content(@restaurant1.opinion)
     # フォームが存在しないことを確認する
     expect(page).to have_no_selector('form[id="comment-form"]')
     # 「コメントの投稿には新規登録/ログインが必要です」が表示されていることを確認する
