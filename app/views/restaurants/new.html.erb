@@ -12,6 +12,10 @@
         <%= f.text_field :name, class:"form-control restaurant-name", id:"floatingInputName", placeholder:"店舗名", autofocus: true %>
         <label for="floatingInputName">店舗名</label>
       </div>
+      <div class="form-floating new">
+        <%= f.text_field :restaurant_url, class:"form-control restaurant-url", id:"floatingInputUrl", placeholder:"【任意】店舗ホームページURL" %>
+        <label for="floatingInputUrl">【任意】店舗ホームページURL</label>
+      </div>
       <div class="collection">
         <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {include_blank: "都道府県"}, {class:"select-box", id:"prefecture"}) %>
       </div>
