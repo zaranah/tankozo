@@ -7,8 +7,8 @@ const buildHTML = (XHR) => {
   const date = ("0" + now.getDate()).slice(-2);
   const html = `
     <div class="comment-text">
-    <strong><a href="/users/${item.user_id}" class="comment-nickname">${userName.nickname}</a>：</strong>
-    ${item.comment}
+    <strong><a href="/users/${item.user_id}" class="comment-nickname">${userName.nickname}</a></strong>
+    <div class="comment-comment">${item.comment}</div>
     <div class="comment-time">(${year}/${month}/${date})</div>
     </div>`;
   return html;
@@ -27,12 +27,6 @@ function comment (){
     XHR.responseType = "json";
     XHR.send(formData);
     XHR.onload = () => {
-      // const item_null = XHR.response.comment.comment;
-      
-      // if (XHR.status == 500) {
-      //   alert(`コメントを入力してください`);
-      //   return null;
-      // };
       if (XHR.status != 200) {
         alert(`Error ${XHR.status}: ${XHR.statusText}`);
         return null;

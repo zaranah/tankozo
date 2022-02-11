@@ -21,3 +21,34 @@
 body {
   background-color: #fff;
 }
+
+
+/*ページネーション自体のデザイン*/
+
+.page-ite>.active>.page-lin {
+  z-index: 3;
+  color: #fff;
+  background-color: #fce4b9;
+  border-color: #fce4b9;
+}
+
+.pagination {
+  justify-content: center;
+}
+
+.pagination>li>a {
+  border: none;
+  color: #696969;
+  margin-top: 20px;
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {
+  background: #fce4b9;
+  border-radius: 15px;
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {
+  border-radius: 15px;
+}

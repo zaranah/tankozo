@@ -3,7 +3,7 @@
   <div class="show-main">
     <div class="showcontent">
         <div class="show-img" alt="">
-          <%= image_tag @restaurant.image.variant(resize: '500x500') %>
+          <%= image_tag @restaurant.image.variant( resize: "500x500^", gravity: "center", crop: "500x500+0+0" ) %>
         </div>
 
         <div class="show-line-btn">
@@ -92,18 +92,19 @@
         <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
       <% end %>
       <div class="comments">
-        <h4>＜コメント一覧＞</h4>
+        <h4>コメント一覧</h4>
         <div class="comments-texts"><% @comments.each do |comment| %>
           <div id="list"></div>
           <div class="comment-text">
-            <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}", class:"comment-nickname" %>：</strong>
-            <%= comment.comment %>
+            <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}", class:"comment-nickname" %></strong>
+            <div class="comment-comment"><%= comment.comment %></div>
             <div class="comment-time">(<%= l comment.created_at %>)</div>
           </div>
         <% end %>
         </div>
       </div>
       </div>
+      <%= paginate @comments %>
     </div>
   </div>
 

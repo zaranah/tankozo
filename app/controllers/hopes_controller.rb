@@ -1,6 +1,11 @@
 class HopesController < ApplicationController
   before_action :authenticate_user!, only: [:create, :destroy]
-  before_action :set_hope
+  before_action :set_hope, except: :index
+
+  def index
+    @user = User.find(params[:user_id])
+    @user_hopes = @user.hopes.page(params[:page]).per(15)
+  end
 
   def create
     Hope.create(hope_params)

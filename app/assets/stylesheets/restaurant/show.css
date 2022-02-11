@@ -13,10 +13,14 @@
   margin: auto;
 }
 
+.show-img {
+  margin-top: 20px;
+}
+
 .show-line-btn{
   display: flex;
   justify-content: right;
-  margin: 20px 0;
+  margin: 15px 0;
   width: 500px;
   text-decoration: none;
 }
@@ -174,16 +178,20 @@
 }
 
 .comments {
-  padding: 25px 0;
+  padding: 25px 0 0;
 }
 
 .comments-texts {
   text-align: left;
-  margin: 0 10px;
+  margin: 30px 10px 0;
 }
 
 .comment-text {
   margin-bottom: 10px;
+}
+
+.comment-comment{
+  overflow-wrap: break-word;
 }
 
 .comment-nickname {
