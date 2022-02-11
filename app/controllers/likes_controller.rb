@@ -1,6 +1,11 @@
 class LikesController < ApplicationController
   before_action :authenticate_user!, only: [:create, :destroy]
-  before_action :set_like
+  before_action :set_like, except: :index
+
+  def index
+    @user = User.find(params[:user_id])
+    @user_likes = @user.likes.page(params[:page]).per(3)
+  end
 
   def create
     Like.create(like_params)

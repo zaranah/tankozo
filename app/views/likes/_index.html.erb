@@ -1,0 +1,41 @@
+<div class="tabs">
+  <div class ="tab_item hidden-tab_item">
+    <%= link_to "投稿リスト", user_users_path(@user.id), class:"titlename", remote: true %>
+    <%= @user.restaurants.count %>件
+  </div>
+  <div class ="tab_item hidden-tab_item">
+  <%= link_to "行きたいリスト", user_hopes_path(@user.id), class:"titlename", remote: true %>
+  <%= @user.hopes.count %>件
+  </div>
+  <div class ="tab_item">
+  <%= link_to "よかったリスト", user_likes_path(@user.id), class:"titlename", remote: true %>
+  <%= @user.likes.count %>件
+  </div>
+</div>
+
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <% if user_likes.count == 0 %>
+        <div class="no-list"><i class="fas fa-frog faa-bounce animated"></i> 未登録</div>
+      <% else %>
+        <% user_likes.each do |like| %>
+          <div class="col">
+            <div class="card shadow-sm h-100">
+              <%= image_tag like.restaurant.image.variant( resize: "300x300^", gravity: "center", crop: "300x300+0+0" ), class: "bd-placeholder-img card-img-top h-100" %>
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary"><%=link_to "View", restaurant_path(like.restaurant), class:"btn-outline-secondary user-show"%></button>
+                  </div>
+                  <small class="text-muted hopelike-list"><%= like.restaurant.name %><i class="far fa-heart faa-ring like-btn" id="like-btn"></i><%= like.restaurant.prefecture.name %></small>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <%= paginate user_likes, remote: true  %>
+</div>

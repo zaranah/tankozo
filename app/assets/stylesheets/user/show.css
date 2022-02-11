@@ -14,10 +14,53 @@
   text-align: center;
 }
 
-.titlename {
-  margin-left: 100px;
-  margin-top: 50px;
+/*タブのスタイル*/
+.tabs {
+  margin-top: 20px;
+  margin-left: 5%;
+  padding-bottom: 40px;
+  background-color: #ffe5b6;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 60%;
 }
+
+.tab_item {
+  width: calc(100%/3);
+  height: 40px;
+  background-color: #f8F9FA;
+  line-height: 43px;
+  font-size: 16px;
+  text-align: center;
+  color: #565656;
+  display: block;
+  float: left;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.album {
+  box-shadow: 0 0 10px rgba(41, 41, 41, 0.2);
+}
+
+.tab_item:hover {
+  opacity: 0.75;
+}
+
+.hidden-tab_item {
+  background-color: #d3cece;
+  color: #565656;
+}
+
+.titlename {
+  text-decoration: none;
+  color: #565656;
+}
+
+.titlename:hover {
+  text-decoration: none;
+  color: #ffbb00;
+}
+/*タブのスタイル//*/
 
 .user-show {
   text-decoration: none;
