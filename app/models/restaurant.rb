@@ -22,12 +22,13 @@ class Restaurant < ApplicationRecord
   validate :file_type, if: :was_attached?
 
   def was_attached?
-    self.image.attached?
+    image.attached?
   end
 
   def file_type
-    if !image.blob.content_type.in?(%('image/jpg image/jpeg image/png'))
-      errors.add(:image, 'は JPG/JPEG 形式または PNG 形式のみ選択してください')
+    unless image.blob.content_type.in?(%('image/jpg image/jpeg image/png'))
+      errors.add(:image,
+                 'は JPG/JPEG 形式または PNG 形式のみ選択してください')
     end
   end
 end
