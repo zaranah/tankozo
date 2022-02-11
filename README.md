@@ -35,7 +35,8 @@ https://github.com/zaranah
 
 # Tables
 ## ER
-[![Image from Gyazo](https://i.gyazo.com/0365432e67b7a8958cd507b4d7eabdb4.png)](https://gyazo.com/0365432e67b7a8958cd507b4d7eabdb4)
+[![Image from Gyazo](https://i.gyazo.com/a68da747aff9ffc2da91f2b4391924eb.png)](https://gyazo.com/a68da747aff9ffc2da91f2b4391924eb)
+
 ## users table
 
 | Column             | Type    | Options                   |
@@ -58,6 +59,7 @@ https://github.com/zaranah
 | Column                 | Type       | Options                        |
 | ---------------------- | ---------- | ------------------------------ |
 | name                   | string     | null: false                    |
+| restaurant_url         | text       |                                |
 | prefecture_id          | integer    | null: false                    |
 | station                | string     | null: false                    |
 | genre_id               | integer    | null: false                    |
