@@ -31,6 +31,7 @@
                       <button type="button" class="btn btn-sm btn-outline-secondary"><%=link_to "Edit", edit_restaurant_path(restaurant), class:"btn-outline-secondary user-show"%></button>
                     <% end %>
                   </div>
+                  <small class="text-muted hopelike-list"><%= restaurant.name %>　<%= restaurant.prefecture.name %></small>
                   <small class="text-muted"><i class="fas fa-running faa-passing-reverse hope-btn" id="hope-btn"></i><%= restaurant.hopes.length %><i class="far fa-heart faa-ring like-btn" id="like-btn"></i><%= restaurant.likes.length %></small>
                 </div>
               </div>
