@@ -10,17 +10,16 @@ class RestaurantsController < ApplicationController
 
   def new
     @restaurant = Restaurant.new
-    # flash[:notice] = ""
   end
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
 
-    # unless variable?
-    #   @restaurant.valid?
-    #   flash[:notice] = "動画は投稿できません"
-    #   return render :new
-    # end
+    unless variable?
+      @restaurant.valid?
+      return render :new
+    end
+    
     if @restaurant.save
       redirect_to root_path
     else
@@ -100,7 +99,7 @@ class RestaurantsController < ApplicationController
     ).merge(user_id: current_user.id)
   end
 
-  # def variable?
-  #   ActiveStorage.variable_content_types.include?(content_type)
-  # end
+  def variable?
+    ActiveStorage.variable_content_types.include?(content_type)
+  end
 end

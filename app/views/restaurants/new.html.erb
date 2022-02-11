@@ -36,7 +36,7 @@
       <div class="form-control">
         <div class="form-image">食品画像</div>
         <div class="form-control-sm">
-          <%= f.file_field :image, id:"image" %>
+          <%= f.file_field :image, id:"image", accept: 'image/jpg,image/jpeg,image/png' %>
         </div>
       </div>
       <div><%= f.submit "SEND", class: "re-submit sub-new" %></div>
