@@ -62,7 +62,11 @@
             </div>
           <% end %>
         </div>
-        <h1 class="show-name"><%= @restaurant.name %></h1>
+        <% if @restaurant.restaurant_url != nil %>
+          <h1><%=link_to @restaurant.name, @restaurant.restaurant_url, class:"show-edit" %></h1>
+        <% else %>
+          <h1 class="show-name"><%= @restaurant.name %></h1>
+        <% end %>
         <div class="show-line">
           <div class="show-r prefecture"><%= @restaurant.prefecture.name %></div>
           <div class="show-r show-station"><%= @restaurant.station %></div>

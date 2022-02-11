@@ -7,7 +7,11 @@ RSpec.describe Restaurant, type: :model do
 
   describe '店舗投稿' do
     context '投稿できるとき' do
+      it 'name、restaurant_url、prefecture_id、station、genre_id、food、price_id、opinion、imageが存在すれば登録できる' do
+        expect(@restaurant).to be_valid
+      end
       it 'name、prefecture_id、station、genre_id、food、price_id、opinion、imageが存在すれば登録できる' do
+        @restaurant.restaurant_url = ''
         expect(@restaurant).to be_valid
       end
     end
