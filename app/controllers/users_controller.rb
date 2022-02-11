@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @user_restaurants = @user.restaurants.page(params[:page]).per(3)
+    @user_restaurants = @user.restaurants.page(params[:page]).per(15)
     @likes_count = 0
     @user_restaurants.each do |restaurant|
       @likes_count += restaurant.likes.count

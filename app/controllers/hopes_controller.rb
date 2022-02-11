@@ -4,7 +4,7 @@ class HopesController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @user_hopes = @user.hopes.page(params[:page]).per(3)
+    @user_hopes = @user.hopes.page(params[:page]).per(15)
   end
 
   def create
