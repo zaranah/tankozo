@@ -26,5 +26,4 @@ class HopesController < ApplicationController
   def set_hope
     @restaurant = Restaurant.find(params[:restaurant_id])
   end
-  
 end

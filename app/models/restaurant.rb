@@ -24,5 +24,4 @@ class Restaurant < ApplicationRecord
   # def variable?
   #   ActiveStorage.variable_content_types.include?(image)
   # end
-
 end
