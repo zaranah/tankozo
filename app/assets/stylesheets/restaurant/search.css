@@ -21,16 +21,12 @@
   margin-left: 5vw;
 }
 
-
-
-
 .search-check{
   display:block;
 }
 
 .search-submit {
   background-color: rgb(241, 201, 139);
-
 }
 
 .search-submit:hover {

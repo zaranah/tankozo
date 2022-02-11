@@ -1,11 +1,11 @@
 .error-alert {
   display: flex;
   justify-content: center;
-  margin-bottom: 5vh;
+  margin-bottom: 10px;
 }
 
 .error-message {
-  font-size: 1.3vw;
+  font-size: 1.0vw;
   color: rgb(182, 48, 0);
   list-style: disc;
   text-align: left;

@@ -19,9 +19,4 @@ class Restaurant < ApplicationRecord
   validates :opinion, presence: true
 
   validates :image, presence: true
-
-  # , unless: :variable?
-  # def variable?
-  #   ActiveStorage.variable_content_types.include?(image)
-  # end
 end
