@@ -15,11 +15,10 @@ class RestaurantsController < ApplicationController
   def create
     @restaurant = Restaurant.new(restaurant_params)
 
-    unless variable?
-      @restaurant.valid?
-      return render :new
+    def image?
+      %w[image/jpg image/jpeg image/gif image/png].include?(icon.blob.content_type)
     end
-    
+
     if @restaurant.save
       redirect_to root_path
     else
@@ -95,11 +94,7 @@ class RestaurantsController < ApplicationController
 
   def restaurant_params
     params.require(:restaurant).permit(
-      :name, :prefecture_id, :station, :genre_id, :food, :price_id, :opinion, :image
+      :name, :restaurant_url, :prefecture_id, :station, :genre_id, :food, :price_id, :opinion, :image
     ).merge(user_id: current_user.id)
-  end
-
-  def variable?
-    ActiveStorage.variable_content_types.include?(content_type)
   end
 end
