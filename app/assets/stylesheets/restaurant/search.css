@@ -13,11 +13,11 @@
 }
 
 .search-titlefont {
-  padding: 0.4em 0.5em;/*文字の上下 左右の余白*/
+  padding: 0.4em 0.5em;
   color: rgb(141, 140, 140);
   background: #f4f4f4;
   border-left: solid 5px rgb(241, 201, 139);
-  border-bottom: solid 3px #d7d7d7;/*下線*/
+  border-bottom: solid 3px #d7d7d7;
   margin-left: 5vw;
 }
 
@@ -27,11 +27,12 @@
 
 .search-submit {
   background-color: rgb(241, 201, 139);
+  border-bottom: solid 3px rgb(211, 179, 131);
 }
 
 .search-submit:hover {
   background-color: rgb(233, 183, 108);
-  border-bottom: solid 3px #d7d7d7;
+  border-bottom: none;
 }
 
 .separate-right {
