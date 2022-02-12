@@ -14,11 +14,6 @@ class RestaurantsController < ApplicationController
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
-
-    def image?
-      %w[image/jpg image/jpeg image/gif image/png].include?(icon.blob.content_type)
-    end
-
     if @restaurant.save
       redirect_to root_path
     else
