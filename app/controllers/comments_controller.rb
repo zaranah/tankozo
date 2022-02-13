@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :authenticate_user!, only: [:create,:destroy]
+  before_action :authenticate_user!, only: [:create, :destroy]
 
   def create
     comment = Comment.new(comment_params)
@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @restaurant = Restaurant.find(params[:restaurant_id]) 
+    @restaurant = Restaurant.find(params[:restaurant_id])
     @comments = @restaurant.comments.order('created_at DESC').includes(:user).page(params[:page]).per(20)
     comment = Comment.find_by(id: params[:id], restaurant_id: params[:restaurant_id])
     comment.destroy
