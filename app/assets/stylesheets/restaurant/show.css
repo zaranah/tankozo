@@ -203,6 +203,16 @@
   color: rgb(250, 135, 34);
 }
 
+.comment-lower {
+  display: flex;
+}
+
 .comment-time {
   font-size: 4px;
+}
+
+.fa-trash-alt {
+  color: rgb(184, 184, 184);
+  size: 6px;
+  margin-left: 8px;
 }

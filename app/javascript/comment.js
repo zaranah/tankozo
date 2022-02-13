@@ -9,7 +9,13 @@ const buildHTML = (XHR) => {
     <div class="comment-text">
     <strong><a href="/users/${item.user_id}" class="comment-nickname">${userName.nickname}</a></strong>
     <div class="comment-comment">${item.comment}</div>
-    <div class="comment-time">(${year}/${month}/${date})</div>
+    <div class="comment-lower">
+      <div class="comment-time">(${year}/${month}/${date})</div>
+      <div class="comment-delete">
+      <a data-method="delete" data-confirm="本当に削除しますか？" href="/restaurants/${item.restaurant_id}/comments/${item.id}" data-remote="true" >
+        <i class="fas fa-trash-alt"></i>
+      </a>
+      </div>
     </div>`;
   return html;
 };
@@ -32,8 +38,6 @@ function comment (){
         return null;
       };
       const item_null = XHR.response.comment.comment;
-      console.log(item_null)
-
       if (item_null == '') {
         alert(`コメントを入力してください`);
         return null;

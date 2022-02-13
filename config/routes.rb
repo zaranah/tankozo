@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
 
   resources :restaurants do
-    resources :comments, only: :create
+    resources :comments, only: [:create, :destroy]
     resources :likes, only: [:create, :destroy]
     resources :hopes, only: [:create, :destroy]
     collection do
