@@ -1,0 +1,17 @@
+<% @comments.each do |comment| %>
+  <div id="list"></div>
+  <div class="comment-text">
+    <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}", class:"comment-nickname" %></strong>
+    <div class="comment-comment"><%= comment.comment %></div>
+    <div class="comment-lower">
+      <div class="comment-time">(<%= l comment.created_at %>)</div>
+      <% if comment.user == current_user %>
+        <div class="comment-delete">
+          <%= link_to restaurant_comment_path(@restaurant.id, comment.id), method: :delete, remote: true , data: {confirm: "本当に削除しますか？"} do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

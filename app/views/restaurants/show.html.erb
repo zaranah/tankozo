@@ -12,7 +12,7 @@
               <small class="text-muted"><i class="fas fa-running hope-btn" id="hope-btn"></i><%= @restaurant.hopes.length %><i class="far fa-heart faa-ring like-btn" id="like-btn"></i><%= @restaurant.likes.length %></small>
             </div>
             <div><%=link_to "Edit", edit_restaurant_path(@restaurant), class:"show-edit" %></div>
-            <div><%=link_to "Delete", restaurant_path(@restaurant), method: :delete, class:"show-delete" %></div>
+            <div><%=link_to "Delete", restaurant_path(@restaurant), method: :delete, class:"show-delete", data: {confirm: "本当に削除しますか？"} %></div>
           <% elsif  user_signed_in? && current_user.id != @restaurant.user_id  %>
             <%# 行きたい条件分岐 %>
             <div id="run">
@@ -95,16 +95,26 @@
       <% else %>
         <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
       <% end %>
-      <div class="comments">
+      <div class="comments" id="comments">
         <h4>コメント一覧</h4>
-        <div class="comments-texts"><% @comments.each do |comment| %>
+        <div class="comments-texts", id="comments_texts">
+          <% @comments.each do |comment| %>
           <div id="list"></div>
           <div class="comment-text">
             <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}", class:"comment-nickname" %></strong>
             <div class="comment-comment"><%= comment.comment %></div>
-            <div class="comment-time">(<%= l comment.created_at %>)</div>
+            <div class="comment-lower">
+              <div class="comment-time">(<%= l comment.created_at %>)</div>
+              <% if comment.user == current_user %>
+                <div class="comment-delete">
+                  <%= link_to restaurant_comment_path(@restaurant.id, comment.id), method: :delete, remote: true , data: {confirm: "本当に削除しますか？"} do %>
+                    <i class="fas fa-trash-alt"></i>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
           </div>
-        <% end %>
+          <% end %>
         </div>
       </div>
       </div>
