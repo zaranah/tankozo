@@ -50,3 +50,50 @@ RSpec.describe 'コメント投稿', type: :system do
     end
   end
 end
+
+RSpec.describe 'コメント削除', type: :system do
+  before do
+    @comment1 = FactoryBot.create(:comment)
+    @comment2 = FactoryBot.create(:comment)
+  end
+
+  context 'コメント削除ができるとき' do
+    it 'ログインしたユーザーは自らが投稿したコメントの削除ができる' do
+      # コメント１を投稿したユーザーでログインする
+      sign_in(@comment1.user)
+      # コメント1を投稿した店舗詳細ページへ遷移する
+      visit restaurant_path(@comment1.restaurant)
+      # コメントを削除するとレコードの数が1減ることを確認する
+      expect do
+        accept_alert do
+          find('.fa-trash-alt').click
+        end
+        visit restaurant_path(@comment1.restaurant)
+      end.to change { Comment.count }.by(-1)
+      # 店舗詳細ページにいることを確認する
+      expect(current_path).to eq(restaurant_path(@comment1.restaurant))
+      # トップページにはコメント1の内容が存在しないことを確認する（店舗名）
+      expect(page).to have_no_content(@comment1.comment)
+    end
+  end
+  context 'コメント削除ができないとき' do
+    it 'ログインしたユーザーは自分以外が投稿したコメントの削除ができない' do
+      # コメント１を投稿したユーザーでログインする
+      sign_in(@comment1.user)
+      # コメント2を投稿した店舗詳細ページへ遷移する
+      visit restaurant_path(@comment2.restaurant)
+      # コメント削除ボタンがないことを確認する
+      expect(page).to have_no_content('.fa-trash-alt')
+    end
+    it 'ログアウト状態ではコメントの削除ボタンがない' do
+      # コメント１を投稿した店舗詳細ページへ遷移する
+      visit restaurant_path(@comment1.restaurant)
+      # コメント削除ボタンがないことを確認する
+      expect(page).to have_no_content('.fa-trash-alt')
+      # コメント2を投稿した店舗詳細ページへ遷移する
+      visit restaurant_path(@comment2.restaurant)
+      # コメント削除ボタンがないことを確認する
+      expect(page).to have_no_content('.fa-trash-alt')
+    end
+  end
+end
