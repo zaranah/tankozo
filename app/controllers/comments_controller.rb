@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @restaurant = Restaurant.find(params[:restaurant_id])
-    @comments = @restaurant.comments.order('created_at DESC').includes(:user).page(params[:page]).per(20)
+    @comments = @restaurant.comments.page(params[:page]).per(10).order('created_at DESC').includes(:user)
     comment = Comment.find_by(id: params[:id], restaurant_id: params[:restaurant_id])
     comment.destroy
   end
