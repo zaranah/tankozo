@@ -1,13 +1,13 @@
 .new {
   margin-bottom: 10px;
-  
 }
 
-.select-box {
+.select-box-r {
   padding-left: 10px;
-  height: 15px;
-  border-radius: 0.25rem;
   color: #212529;
+  width: 100%;
+  height: 50px;
+  border-color: #ced4da;
 }
 
 .click-upload {
@@ -20,20 +20,14 @@
 
 .opinion {
   padding-bottom: 200px;
-
 }
 
 .form-image{
   text-align: left;
 }
 
-.comment-in {
-  width: 500px;
-  margin: 15px auto 0;
-}
-
 .re-submit {
-  width: 300px;
+  width: 100%;
   height: 50px;
   margin: 10px auto 20px;
   border-radius: 0.25rem;
