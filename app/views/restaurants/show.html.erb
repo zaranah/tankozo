@@ -1,9 +1,9 @@
 <main>
 
-  <div class="show-main">
+  <div class="content show-main">
     <div class="showcontent">
         <div class="show-img" alt="">
-          <%= image_tag @restaurant.image.variant( resize: "500x500^", gravity: "center", crop: "500x500+0+0" ) %>
+          <%= image_tag @restaurant.image.variant( resize: "500x500^", gravity: "center", crop: "500x500+0+0" ), class:"show_img_one" %>
         </div>
 
         <div class="show-line-btn">
@@ -76,7 +76,7 @@
           <div class="show-r show-food"><%= @restaurant.food %></div>
         </div>
         <div class="show-r price"><%= @restaurant.price.name %></div>
-        <div class="show-r opinions"><%= @restaurant.opinion %></div>
+        <div class="show-r opinions"><%= simple_format(@restaurant.opinion, {}, wrapper_tag: "div") %></div>
         <div class="show-line-author">【
           <div>著者：<%=link_to @restaurant.user.nickname, user_path(@restaurant.user), class:"show-r user-name" %></div>
           <div class="show-r user-taste">/ 好みの味付け：<%= @restaurant.user.favorite_taste.name %></div>】
