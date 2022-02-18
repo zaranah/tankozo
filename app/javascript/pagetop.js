@@ -1,4 +1,3 @@
-// anime.js利用
 /* ========================================================
 スクロールでトップに戻るボタンを表示
 =========================================================*/
@@ -15,19 +14,4 @@ window.addEventListener('scroll', function(e) {
   } else {
     document.getElementById( "btn-backtotop" ).classList.remove( "fadein" );
   }
-});
-
-/* ========================================================
-トップに戻るボタンのスムーズスクロール
-=========================================================*/
-
-document.getElementById( "btn-backtotop" ).addEventListener('click', function(e) {
-  anime.remove("html, body");
-  anime({
-    targets: "html, body",
-    scrollTop: 0,
-    dulation: 600,
-    easing: 'easeOutCubic',
-  });
-  return false;
 });
