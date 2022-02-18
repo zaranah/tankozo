@@ -1,3 +1,16 @@
+.info-group {
+  display: flex;
+}
+
+@media (max-width: 1024px) {
+  .info-group {
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    width: 80%;
+  }
+}
+
 .no-list{
   font-size: 20px;
   color: gray;
@@ -24,12 +37,28 @@
   width: 60%;
 }
 
+@media (max-width: 768px) {
+  .tabs {
+    width: 90%;
+  }
+}
+
+@media (max-width: 500px) {
+  .tab_item {
+    line-height: 20px;
+    font-size: 60%;
+  }
+  .titlename {
+    font-size: 60%;
+  }
+}
+
 .tab_item {
   width: calc(100%/3);
   height: 40px;
   background-color: #f8F9FA;
   line-height: 43px;
-  font-size: 16px;
+  /* font-size: 16px; */
   text-align: center;
   color: #565656;
   display: block;

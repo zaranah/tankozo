@@ -31,7 +31,7 @@
   
   <div class="album py-5 bg-light album-shadow">
     <div class="container">
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
         <% if @user.restaurants.count == 0 %>
           <div class="no-list"><i class="fas fa-frog faa-bounce animated"></i> 未登録</div>
         <% else %>
@@ -47,8 +47,17 @@
                         <button type="button" class="btn btn-sm btn-outline-secondary"><%=link_to "Edit", edit_restaurant_path(restaurant), class:"btn-outline-secondary user-show"%></button>
                       <% end %>
                     </div>
-                    <small class="text-muted hopelike-list"><%= restaurant.name %>　<%= restaurant.prefecture.name %></small>
-                    <small class="text-muted"><i class="fas fa-running faa-passing-reverse hope-btn" id="hope-btn"></i><%= restaurant.hopes.length %><i class="far fa-heart faa-ring like-btn" id="like-btn"></i><%= restaurant.likes.length %></small>
+                    <div class="info-group">
+                      <div class="info-group-rname">
+                        <small class="text-muted hopelike-list"><%= restaurant.name %>　</small>
+                      </div>
+                      <div class="info-group-pname">
+                        <small class="text-muted hopelike-list"><%= restaurant.prefecture.name %></small>
+                      </div>
+                    </div>
+                    <div class="hopelike-group">
+                      <small class="text-muted"><i class="fas fa-running faa-passing-reverse hope-btn" id="hope-btn"></i><%= restaurant.hopes.length %><i class="far fa-heart faa-ring like-btn" id="like-btn"></i><%= restaurant.likes.length %></small>
+                    </div>
                   </div>
                 </div>
               </div>
