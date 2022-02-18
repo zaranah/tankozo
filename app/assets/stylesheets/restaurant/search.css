@@ -23,14 +23,20 @@
 }
 
 .checkbox-box-search-prefecture{
+  display: flex;
+  align-items: center;
   display: grid;
   grid-template-columns: 1fr 3fr 1fr 3fr;
 }
 .checkbox-box-search-genre{
+  display: flex;
+  align-items: center;
   display: grid;
   grid-template-columns: 1fr 5fr;
 }
 .checkbox-box-search-price{
+  display: flex;
+  align-items: center;
   display: grid;
   grid-template-columns: 1fr 5fr;
 }
