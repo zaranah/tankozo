@@ -19,21 +19,21 @@
         <label for="floatingInputUrl">【任意】店舗ホームページURL</label>
       </div>
       <div class="collection">
-        <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box", id:"prefecture"}) %>
+        <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box-r", id:"prefecture"}) %>
       </div>
       <div class="form-floating new">
         <%= f.text_field :station, class:"form-control station", id:"floatingInputStation", placeholder:"Nickname" %>
         <label for="floatingInputStation">駅名</label>
       </div>
       <div class="collection">
-        <%= f.collection_select(:genre_id, Genre.all, :id, :name, {}, {class:"select-box", id:"genre"}) %>
+        <%= f.collection_select(:genre_id, Genre.all, :id, :name, {}, {class:"select-box-r", id:"genre"}) %>
       </div>
       <div class="form-floating new">
         <%= f.text_field :food, class:"form-control food", id:"floatingInputFood", placeholder:"アヒージョ" %>
         <label for="floatingInputFood">食品名</label>
       </div>
       <div class="collection">
-        <%= f.collection_select(:price_id, Price.all, :id, :name, {}, {class:"select-box", id:"price"}) %>
+        <%= f.collection_select(:price_id, Price.all, :id, :name, {}, {class:"select-box-r", id:"price"}) %>
       </div>
       <div class="form-floating new">
         <%= f.text_area :opinion, class:"form-control opinion h-auto pb-5", id:"floatingInputOpinion", placeholder:"評価コメント" %>
