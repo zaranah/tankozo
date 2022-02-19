@@ -2,7 +2,7 @@
   position: sticky;
   top: 0;
   background-color: white;
-  z-index: 1;
+  z-index: 3;
 }
 
 .multi{
@@ -13,6 +13,13 @@ background-color: rgb(255, 217, 160);
 color: white;
 border-bottom: solid 3px rgb(211, 179, 131);
 }
+
+@media (max-width: 400px) {
+  .multi {
+    margin-bottom: 10px;
+  }
+}
+
 
 .multi-btn{
 display: block;

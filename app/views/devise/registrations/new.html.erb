@@ -1,35 +1,33 @@
-<body class="text-center">
-  <main class="form-signin">
-    <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
-      <div class="mb-3" alt="">
-        <%= link_to image_tag('tankozouser.png' , size: '300x300'), "/" %>
-      </div>
-      <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
+<main class="form-signin text-center">
+  <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
+    <div class="mb-3" alt="">
+      <%= link_to image_tag('tankozouser.png' , size: '300x300'), "/" %>
+    </div>
+    <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
 
-      <%= render 'shared/error_messages', model: f.object %>
-      
-      <div class="collection">
-        <%= f.collection_select(:favorite_taste_id, FavoriteTaste.all, :id, :name, {}, {class:"select-box", id:"favorite-taste"}) %>
-      </div>
-      <div class="form-floating">
-        <%= f.text_area :nickname, class:"form-control nickname", id:"floatingInputname", placeholder:"Nickname", autofocus: true %>
-        <label for="floatingInputname">Nickname</label>
-      </div>
-      <div class="form-floating">
-        <%= f.email_field :email, class:"form-control email", id:"floatingInput", placeholder:"name@example.com" %>
-        <label for="floatingInput">Email address</label>
-      </div>
-      <div class="form-floating">
-        <%= f.password_field :password, class:"form-control password", id:"floatingPassword", placeholder:"Password" %>
-        <label for="floatingPassword">Password</label>
-      </div>
-      <div class="form-floating">
-        <%= f.password_field :password_confirmation, class:"form-control", id:"floatingPasswordConfirmation", placeholder:"Password Confirmation" %>
-        <label for="floatingPasswordConfirmation">Password confirmation</label>
-      </div>
-      <%= f.submit "SEND", class: "re-submit sub-user" %>
-      <p class="mt-5 mb-3 text-muted">&copy; Tankozo</p>
-    <% end %>
-  </main>
-</body>
+    <%= render 'shared/error_messages', model: f.object %>
+    
+    <div class="collection">
+      <%= f.collection_select(:favorite_taste_id, FavoriteTaste.all, :id, :name, {}, {class:"select-box", id:"favorite-taste"}) %>
+    </div>
+    <div class="form-floating">
+      <%= f.text_area :nickname, class:"form-control nickname", id:"floatingInputname", placeholder:"Nickname", autofocus: true %>
+      <label for="floatingInputname">Nickname</label>
+    </div>
+    <div class="form-floating">
+      <%= f.email_field :email, class:"form-control email", id:"floatingInput", placeholder:"name@example.com" %>
+      <label for="floatingInput">Email address</label>
+    </div>
+    <div class="form-floating">
+      <%= f.password_field :password, class:"form-control password", id:"floatingPassword", placeholder:"Password" %>
+      <label for="floatingPassword">Password</label>
+    </div>
+    <div class="form-floating">
+      <%= f.password_field :password_confirmation, class:"form-control", id:"floatingPasswordConfirmation", placeholder:"Password Confirmation" %>
+      <label for="floatingPasswordConfirmation">Password confirmation</label>
+    </div>
+    <%= f.submit "SEND", class: "re-submit sub-user" %>
+    <p class="mt-5 mb-3 text-muted">&copy; Tankozo</p>
+  <% end %>
+</main>
 

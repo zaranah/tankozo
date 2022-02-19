@@ -1,27 +1,25 @@
-<body class="text-center">
-  <main class="form-signin">
-    <%= form_with model: @user, url: user_session_path, local: true do |f| %>
-      <div class="mb-4" alt="">
-        <%= link_to image_tag('tankozouser.png' , size: '300x300'), "/" %>
-      </div>
-      <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+<main class="form-signin text-center">
+  <%= form_with model: @user, url: user_session_path, local: true do |f| %>
+    <div class="mb-4" alt="">
+      <%= link_to image_tag('tankozouser.png' , size: '300x300'), "/" %>
+    </div>
+    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
-      <%# ログイン時のエラーメッセージ  %>
-      <div class='login-flash-message'>
-        <%= flash[:alert] %>
-      </div>
-      
-      <div class="form-floating">
-        <%= f.email_field :email, class:"form-control", id:"floatingInputEmail", placeholder:"name@example.com", autofocus: true %>
-        <label for="floatingInputEmail">Email address</label>
-      </div>
-      <div class="form-floating">
-        <%= f.password_field :password, class:"form-control", id:"floatingPassword", placeholder:"Password" %>
-        <label for="floatingPassword">Password</label>
-      </div>
-      <%= f.submit "SEND", class: "re-submit sub-user" %>
-      <%# sub-userのCSSはusers/registrationに記載 %>
-      <p class="mt-5 mb-3 text-muted">&copy; Tankozo</p>
-    <% end %>
-  </main>
-</body>
+    <%# ログイン時のエラーメッセージ  %>
+    <div class='login-flash-message'>
+      <%= flash[:alert] %>
+    </div>
+    
+    <div class="form-floating">
+      <%= f.email_field :email, class:"form-control email", id:"floatingInputEmail", placeholder:"name@example.com", autofocus: true %>
+      <label for="floatingInputEmail">Email address</label>
+    </div>
+    <div class="form-floating">
+      <%= f.password_field :password, class:"form-control", id:"floatingPassword", placeholder:"Password" %>
+      <label for="floatingPassword">Password</label>
+    </div>
+    <%= f.submit "SEND", class: "re-submit sub-user" %>
+    <%# sub-userのCSSはusers/registrationに記載 %>
+    <p class="mt-5 mb-3 text-muted">&copy; Tankozo</p>
+  <% end %>
+</main>

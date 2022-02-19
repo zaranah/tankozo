@@ -1,36 +1,34 @@
-<body class="text-center">
-  <main class="form-signin">
-    <%= form_with model: current_user, local: true do |f| %>
-      <div class="mb-4" alt="">
-        <% if @likes_count <= 5 %>
-          <%= image_tag 'tankozo1.png', :size => '300x300'%>
-        <% elsif @likes_count <= 9 %>
-          <%= image_tag 'tankozo2.png', :size => '300x300'%>
-        <% else%>
-          <%= image_tag 'tankozo3.png', :size => '300x300'%>
-        <% end %>
-      </div>
-      <h1 class="h3 mb-3 fw-normal">Please Edit</h1>
+<main class="form-signin text-center">
+  <%= form_with model: current_user, local: true do |f| %>
+    <div class="mb-4" alt="">
+      <% if @likes_count <= 5 %>
+        <%= image_tag 'tankozo1.png', :size => '300x300'%>
+      <% elsif @likes_count <= 9 %>
+        <%= image_tag 'tankozo2.png', :size => '300x300'%>
+      <% else%>
+        <%= image_tag 'tankozo3.png', :size => '300x300'%>
+      <% end %>
+    </div>
+    <h1 class="h3 mb-3 fw-normal">Please Edit</h1>
 
-      <%= render 'shared/error_messages', model: f.object %>
-      
-      <div class="collection">
-        <%= f.collection_select(:favorite_taste_id, FavoriteTaste.all, :id, :name, {}, {class:"select-box", id:"favorite-taste"}) %>
-      </div>
-      <div class="form-floating">
-        <%= f.text_area :nickname, class:"form-control nickname", id:"floatingInputname", placeholder:"Nickname", autofocus: true %>
-        <label for="floatingInput">Nickname</label>
-      </div>
-      <div class="form-floating">
-        <%= f.email_field :email, class:"form-control email", id:"floatingInput", placeholder:"name@example.com" %>
-        <label for="floatingInput">Email address</label>
-      </div>
+    <%= render 'shared/error_messages', model: f.object %>
+    
+    <div class="collection">
+      <%= f.collection_select(:favorite_taste_id, FavoriteTaste.all, :id, :name, {}, {class:"select-box", id:"favorite-taste"}) %>
+    </div>
+    <div class="form-floating">
+      <%= f.text_area :nickname, class:"form-control nickname", id:"floatingInputname", placeholder:"Nickname", autofocus: true %>
+      <label for="floatingInput">Nickname</label>
+    </div>
+    <div class="form-floating">
+      <%= f.email_field :email, class:"form-control email", id:"floatingInput", placeholder:"name@example.com" %>
+      <label for="floatingInput">Email address</label>
+    </div>
 
-      <div class="checkbox mb-3">
-      </div>
-      <%= f.submit "SEND", class: "re-submit sub-user" %>
-      <%# sub-userのCSSはusers/registrationに記載 %>
-      <p class="mt-5 mb-3 text-muted">&copy; Tankozo</p>
-    <% end %>
-  </main>
-</body>
+    <div class="checkbox mb-3">
+    </div>
+    <%= f.submit "SEND", class: "re-submit sub-user" %>
+    <%# sub-userのCSSはusers/registrationに記載 %>
+    <p class="mt-5 mb-3 text-muted">&copy; Tankozo</p>
+  <% end %>
+</main>

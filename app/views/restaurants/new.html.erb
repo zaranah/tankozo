@@ -1,50 +1,48 @@
-<body class="text-center">
-  <main class="form-signin">
-    <%= form_with model: @restaurant, local: true do |f| %>
-      <div class="mb-4" alt="">
-        <%= image_tag 'tankozonew.png', :size => '300x300'%>
-      </div>
-      <h1 class="h3 mb-3 fw-normal">お店を紹介する</h1>
+<main class="form-signin text-center">
+  <%= form_with model: @restaurant, local: true do |f| %>
+    <div class="mb-4" alt="">
+      <%= image_tag 'tankozonew.png', :size => '300x300'%>
+    </div>
+    <h1 class="h3 mb-3 fw-normal">お店を紹介する</h1>
 
-      <%= render 'shared/error_messages', model: f.object %>
-      
-      <div class="form-floating new">
-        <%= f.text_field :name, class:"form-control restaurant-name", id:"floatingInputName", placeholder:"店舗名", autofocus: true %>
-        <label for="floatingInputName">店舗名</label>
+    <%= render 'shared/error_messages', model: f.object %>
+    
+    <div class="form-floating new">
+      <%= f.text_field :name, class:"form-control restaurant-name", id:"floatingInputName", placeholder:"店舗名", autofocus: true %>
+      <label for="floatingInputName">店舗名</label>
+    </div>
+    <div class="form-floating new">
+      <%= f.text_field :restaurant_url, class:"form-control restaurant-url", id:"floatingInputUrl", placeholder:"【任意】店舗ホームページURL" %>
+      <label for="floatingInputUrl">【任意】店舗ホームページURL</label>
+    </div>
+    <div class="collection">
+      <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {include_blank: "都道府県"}, {class:"select-box-r", id:"prefecture"}) %>
+    </div>
+    <div class="form-floating new">
+      <%= f.text_field :station, class:"form-control station", id:"floatingInputStation", placeholder:"Nickname" %>
+      <label for="floatingInputStation">駅名</label>
+    </div>
+    <div class="collection">
+      <%= f.collection_select(:genre_id, Genre.all, :id, :name, {include_blank: "ジャンル"}, {class:"select-box-r", id:"genre"}) %>
+    </div>
+    <div class="form-floating new">
+      <%= f.text_field :food, class:"form-control food", id:"floatingInputFood", placeholder:"アヒージョ" %>
+      <label for="floatingInputFood">食品名</label>
+    </div>
+    <div class="collection">
+      <%= f.collection_select(:price_id, Price.all, :id, :name, {include_blank: "価格帯"}, {class:"select-box-r", id:"price"}) %>
+    </div>
+    <div class="form-floating new">
+      <%= f.text_area :opinion, class:"form-control opinion h-auto pb-5", id:"floatingInputOpinion", placeholder:"評価コメント" %>
+      <label for="floatingInputOpinion" class="opinion">評価コメント</label>
+    </div>
+    <div class="form-control">
+      <div class="form-image">食品画像</div>
+      <div class="form-control-sm">
+        <%= f.file_field :image, id:"image", accept: 'image/jpg,image/jpeg,image/png' %>
       </div>
-      <div class="form-floating new">
-        <%= f.text_field :restaurant_url, class:"form-control restaurant-url", id:"floatingInputUrl", placeholder:"【任意】店舗ホームページURL" %>
-        <label for="floatingInputUrl">【任意】店舗ホームページURL</label>
-      </div>
-      <div class="collection">
-        <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {include_blank: "都道府県"}, {class:"select-box-r", id:"prefecture"}) %>
-      </div>
-      <div class="form-floating new">
-        <%= f.text_field :station, class:"form-control station", id:"floatingInputStation", placeholder:"Nickname" %>
-        <label for="floatingInputStation">駅名</label>
-      </div>
-      <div class="collection">
-        <%= f.collection_select(:genre_id, Genre.all, :id, :name, {include_blank: "ジャンル"}, {class:"select-box-r", id:"genre"}) %>
-      </div>
-      <div class="form-floating new">
-        <%= f.text_field :food, class:"form-control food", id:"floatingInputFood", placeholder:"アヒージョ" %>
-        <label for="floatingInputFood">食品名</label>
-      </div>
-      <div class="collection">
-        <%= f.collection_select(:price_id, Price.all, :id, :name, {include_blank: "価格帯"}, {class:"select-box-r", id:"price"}) %>
-      </div>
-      <div class="form-floating new">
-        <%= f.text_area :opinion, class:"form-control opinion h-auto pb-5", id:"floatingInputOpinion", placeholder:"評価コメント" %>
-        <label for="floatingInputOpinion" class="opinion">評価コメント</label>
-      </div>
-      <div class="form-control">
-        <div class="form-image">食品画像</div>
-        <div class="form-control-sm">
-          <%= f.file_field :image, id:"image", accept: 'image/jpg,image/jpeg,image/png' %>
-        </div>
-      </div>
-      <div><%= f.submit "SEND", class: "re-submit sub-new" %></div>
-      <p class="mt-5 mb-3 text-muted">&copy; Tankozo</p>
-    <% end %>
-  </main>
-</body>
+    </div>
+    <div><%= f.submit "SEND", class: "re-submit sub-new" %></div>
+    <p class="mt-5 mb-3 text-muted">&copy; Tankozo</p>
+  <% end %>
+</main>
