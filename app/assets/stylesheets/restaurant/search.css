@@ -66,11 +66,11 @@
 }
 
 @media (max-width: 768px) {
-  .search-titlefont {
-    font-size: 15px;
-  }
   .separate {
-    font-size: 1px;
+    font-size: 0.8em;
+  }
+  .search-titlefont {
+    font-size: 1.1em;
   }
   .form-label-search{
     height: 6px;
@@ -82,7 +82,7 @@
     margin-left: 5px;
   }
   .form-control-search{
-    font-size: 10px;
+    font-size: 0.8em;
     height: 20px;
   }
   .search-submit {
@@ -91,9 +91,6 @@
 }
 
 @media (max-width: 425px) {
-  .search-titlefont {
-    font-size: 15px;
-  }
   .checkbox-box-search-prefecture{
     grid-template-columns: 1fr 5fr;
   }
