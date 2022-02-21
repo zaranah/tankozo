@@ -5,13 +5,23 @@
     <%= favicon_link_tag('favicon.png') %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= javascript_pack_tag 'application' %>
+    
     <%= stylesheet_pack_tag 'application', media: 'all' %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%# font awesome %>
     <script src="https://kit.fontawesome.com/39342f9eb8.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.2.1/font-awesome-animation.css" type="text/css" media="all" />
+    <%# font %>
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700,900&display=swap" rel="stylesheet">
+    <%# slick読み込み %>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+
+    <%= javascript_pack_tag 'application' %>
+
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <%# meta charset %>
     <meta charset="UTF-8">
+    <%# レスポンシブ %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <%= render "shared/header" %>

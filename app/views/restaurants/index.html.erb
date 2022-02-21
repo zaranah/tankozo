@@ -4,6 +4,35 @@
 </div>
 </div>
 
+<div class="ranking-box">
+  <div class="ranking-left">
+    <%= image_tag 'tankozoranking.png', size: '300x300', class: "tankozoranking" %>
+  </div>
+  <div class="ranking-right">
+    <div class="rank-class">
+      <% @restaurant_likes_ranks.each.with_index(0) do |restaurant_likes_ranks, i| %>
+        <div class="rank-slickbox">
+          <div class="rank-image">
+            <%= link_to restaurant_path(restaurant_likes_ranks) do %>
+              <%= image_tag @restaurant_likes_ranks[i].image.variant( resize: "250x250^", gravity: "center", crop: "250x250+0+0" ), class: "tankozoranking" %>
+            <% end %>
+          </div>
+          <div class="rank-info">
+            <small class="text-muted">
+              <%= restaurant_likes_ranks.name %>
+            </small>
+            <small class="rank-like">
+              <i class="far fa-heart faa-tada rank-like-btn"></i>
+              <%= restaurant_likes_ranks.likes.count %>
+              よかった
+            </small>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
 <main class="main">
   <div class="album pt-5 pb-4 bg-light">
     <div class="container">
