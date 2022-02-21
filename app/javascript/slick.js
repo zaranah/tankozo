@@ -12,10 +12,10 @@ $(function() {
     arrows: false, //矢印非表示
 
     responsive: [{
-      breakpoint: 768,
+      breakpoint: 600,
       settings: {
         slidesToShow: 1,
-        // centerPadding: 'none',
+        centerPadding: '10px',
       }
     }]
   });

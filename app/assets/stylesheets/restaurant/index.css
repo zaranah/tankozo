@@ -50,10 +50,15 @@
   align-items: center;
 }
 
+.rank-name {
+  padding-top: 4px;
+}
+
 .rank-like {
   margin: 0;
   text-decoration: none;
   color: #ffbcf9;
+  align-items: center;
 }
 
 .rank-like-btn{
@@ -74,11 +79,11 @@
     width: 100vw;
     margin: 0 auto 10px;
   }
+}
 
+@media (max-width: 600px) {
   .rank-class {
-    width: 50vw;
-    margin: 0 auto;
-    /* display: flex; */
+    width: 300px;
   }
 }
 
