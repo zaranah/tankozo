@@ -6,6 +6,7 @@ class RestaurantsController < ApplicationController
 
   def index
     @restaurants = Restaurant.order('created_at DESC').page(params[:page]).per(6)
+    @restaurant_likes_ranks = Restaurant.find(Like.group(:restaurant_id).order('count(restaurant_id) desc').includes(:restaurant).limit(5).pluck(:restaurant_id))
   end
 
   def new

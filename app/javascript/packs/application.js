@@ -9,6 +9,9 @@ require("@rails/activestorage").start()
 require("channels")
 require("../comment")
 require("../pagetop")
+require('jquery')
+require("../slick")
+
 import "bootstrap"
 import "../stylesheets/application"
 

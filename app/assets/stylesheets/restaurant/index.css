@@ -1,3 +1,5 @@
+/* トップ画 */
+
 .topimage-backbox {
   background-color: #fff7e3;
 }
@@ -12,6 +14,81 @@
     height: 100%;
   }
 }
+
+/* ランキング */
+
+.ranking-box {
+  background-color: white;
+  height: 330px;
+  display: flex;
+  align-items: center;
+}
+
+.ranking-left {
+  width: 40vw;
+  text-align: center;
+  margin-left: 10%;
+  margin-right: 5%;
+}
+
+.ranking-right {
+  width: 60vw;
+  margin-right: 15%;
+}
+
+.rank-class {
+  width: 500px;
+  margin: 0 auto;
+  border-left: double 7px #fadc86;/*左線*/
+  border-right: double 7px #fadc86;/*右線*/
+}
+
+.rank-info {
+  display: flex;
+  width: 250px;
+  justify-content: right;
+  align-items: center;
+}
+
+.rank-name {
+  padding-top: 4px;
+}
+
+.rank-like {
+  margin: 0;
+  text-decoration: none;
+  color: #ffbcf9;
+  align-items: center;
+}
+
+.rank-like-btn{
+  color: #ffbcf9;
+}
+
+@media (max-width: 768px) {
+  .ranking-box {
+    display:contents;
+  }
+
+  .ranking-left {
+    width: 100vw;
+    margin: 0 auto;
+  }
+  
+  .ranking-right {
+    width: 100vw;
+    margin: 0 auto 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .rank-class {
+    width: 300px;
+  }
+}
+
+
+/* メイン */
 
 .inner {
   width: 1024px;
