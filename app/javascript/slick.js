@@ -1,5 +1,4 @@
 $(function() {
-  console.log("ok")
   $('.rank-class').slick({
     autoplay: true,
     autoplaySpeed: 0,
