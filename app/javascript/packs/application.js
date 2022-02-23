@@ -10,7 +10,7 @@ require("channels")
 require("../comment")
 require("../pagetop")
 require('jquery')
-require("../slick")
+// require("../slick")
 
 import "bootstrap"
 import "../stylesheets/application"
