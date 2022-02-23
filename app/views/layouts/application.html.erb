@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <%# meta charset %>
+    <meta charset="UTF-8">
     <title>Tankozo</title>
     <%= favicon_link_tag('favicon.png') %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
     <%= stylesheet_pack_tag 'application', media: 'all' %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%# font awesome %>
@@ -17,11 +18,7 @@
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
     <%# JavaScript読み込み %>
-    <%= javascript_pack_tag 'application' %>
-    <%# slick読み込み %>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <%# meta charset %>
-    <meta charset="UTF-8">
+    <%= javascript_pack_tag 'application' %>    
     <%# レスポンシブ %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
