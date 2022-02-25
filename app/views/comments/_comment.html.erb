@@ -1,5 +1,5 @@
+<div id="list"></div>
 <% @comments.each do |comment| %>
-  <div id="list"></div>
   <div class="comment-text">
     <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}", class:"comment-nickname" %></strong>
     <div class="comment-comment"><%= comment.comment %></div>

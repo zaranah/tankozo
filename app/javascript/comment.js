@@ -22,6 +22,7 @@ const buildHTML = (XHR) => {
 
 function comment (){
   const submit = document.getElementById("comment-submit");
+  if (!submit) return null;
 
   submit.addEventListener("click", (e) => {
     e.preventDefault();
