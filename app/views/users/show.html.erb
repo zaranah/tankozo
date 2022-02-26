@@ -17,15 +17,15 @@
 <div class="tabs">
   <div class ="tab_item">
     <%= link_to "投稿リスト", user_users_path(@user.id), class:"titlename", remote: true %>
-    <%= @user_restaurants.count %>件
+    <%= @user.restaurants.count %>件
   </div>
   <div class ="tab_item hidden-tab_item">
   <%= link_to "行きたいリスト", user_hopes_path(@user.id), class:"titlename", remote: true %>
-  <%= @user_hopes.count %>件
+  <%= @user.hopes.count %>件
   </div>
   <div class ="tab_item hidden-tab_item">
   <%= link_to "よかったリスト", user_likes_path(@user.id), class:"titlename", remote: true %>
-  <%= @user_likes.count %>件
+  <%= @user.likes.count %>件
   </div>
 </div>
   
@@ -66,7 +66,7 @@
         <% end %>
       </div>
     </div>
-    <%= paginate @user_restaurants %>
+    <%= paginate @user_restaurants, remote: true %>
   </div>
 </div>
 
