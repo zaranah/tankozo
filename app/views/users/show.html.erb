@@ -35,7 +35,7 @@
         <% if @user.restaurants.count == 0 %>
           <div class="no-list"><i class="fas fa-frog faa-bounce animated"></i> 未登録</div>
         <% else %>
-          <% @user.restaurants.each do |restaurant| %>
+          <% @user_restaurants.each do |restaurant| %>
             <div class="col">
               <div class="card shadow-sm h-100">
                 <%= image_tag restaurant.image.variant( resize: "300x300^", gravity: "center", crop: "300x300+0+0" ), class: "bd-placeholder-img card-img-top h-100" %>
