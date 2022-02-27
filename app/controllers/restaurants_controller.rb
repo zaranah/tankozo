@@ -10,12 +10,13 @@ class RestaurantsController < ApplicationController
   end
 
   def new
-    @restaurant = Restaurant.new
+    @restaurant_tag = RestaurantTag.new
   end
 
   def create
-    @restaurant = Restaurant.new(restaurant_params)
-    if @restaurant.save
+    @restaurant_tag = RestaurantTag.new(restaurant_tag_params)
+    if @restaurant_tag.valid?
+      @restaurant_tag.save
       redirect_to root_path
     else
       render :new
@@ -88,8 +89,8 @@ class RestaurantsController < ApplicationController
     end
   end
 
-  def restaurant_params
-    params.require(:restaurant).permit(
+  def restaurant_tag_params
+    params.require(:restaurant_tag).permit(
       :name, :restaurant_url, :prefecture_id, :station, :genre_id, :food, :price_id, :opinion, :image
     ).merge(user_id: current_user.id)
   end
