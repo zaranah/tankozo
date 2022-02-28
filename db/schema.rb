@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_11_065630) do
+ActiveRecord::Schema.define(version: 2022_02_28_022959) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -61,6 +61,15 @@ ActiveRecord::Schema.define(version: 2022_02_11_065630) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
+  create_table "restaurant_tag_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "restaurant_id"
+    t.bigint "tag_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["restaurant_id"], name: "index_restaurant_tag_relations_on_restaurant_id"
+    t.index ["tag_id"], name: "index_restaurant_tag_relations_on_tag_id"
+  end
+
   create_table "restaurants", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.integer "prefecture_id", null: false
@@ -74,6 +83,12 @@ ActiveRecord::Schema.define(version: 2022_02_11_065630) do
     t.datetime "updated_at", precision: 6, null: false
     t.text "restaurant_url"
     t.index ["user_id"], name: "index_restaurants_on_user_id"
+  end
+
+  create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "tag_name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -97,5 +112,7 @@ ActiveRecord::Schema.define(version: 2022_02_11_065630) do
   add_foreign_key "hopes", "users"
   add_foreign_key "likes", "restaurants"
   add_foreign_key "likes", "users"
+  add_foreign_key "restaurant_tag_relations", "restaurants"
+  add_foreign_key "restaurant_tag_relations", "tags"
   add_foreign_key "restaurants", "users"
 end
