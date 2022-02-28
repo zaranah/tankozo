@@ -97,7 +97,7 @@ class RestaurantsController < ApplicationController
 
   def restaurant_tag_params
     params.require(:restaurant_tag).permit(
-      :name, :restaurant_url, :prefecture_id, :station, :genre_id, :food, :price_id, :opinion, :image
+      :name, :restaurant_url, :prefecture_id, :station, :genre_id, :food, :price_id, :opinion, :tag_name, :image
     ).merge(user_id: current_user.id)
   end
 end
