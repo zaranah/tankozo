@@ -62,6 +62,11 @@
             </div>
           <% end %>
         </div>
+        <div class="show-tag-box">
+          <% @restaurant.tags.each do |tag| %>
+            <p class="show-tag"><%= tag.tag_name %></p>
+          <% end %>
+        </div>
         <% if @restaurant.restaurant_url != nil %>
           <h1><%=link_to @restaurant.name, @restaurant.restaurant_url, class:"show-edit" %></h1>
         <% else %>
