@@ -37,11 +37,13 @@ class RestaurantTag
   def save
     restaurant = Restaurant.create(
       name: name, prefecture_id: prefecture_id, station: station, genre_id: genre_id, food: food, price_id: price_id, opinion: opinion, image: image, restaurant_url: restaurant_url, user_id: user_id)
-    tag_list = tag_name.gsub(" ", "") .split(',')
+    tag_list = tag_name.gsub(" ","").gsub("　","").split(',')
     tag_list.each do |tag_one|
       tag = Tag.where(tag_name: tag_one).first_or_initialize
-      tag.save
-      RestaurantTagRelation.create(restaurant_id: restaurant.id, tag_id: tag.id)
+      if tag_one != ""
+        tag.save
+        RestaurantTagRelation.create(restaurant_id: restaurant.id, tag_id: tag.id)
+      end
     end
   end
 
@@ -53,7 +55,7 @@ class RestaurantTag
   tag_name = params.delete(:tag_name)
 
   if tag_name.present?
-    tag_list = tag_name.gsub(" ", "") .split(',')
+    tag_list = tag_name.gsub(" ","").gsub("　","").split(',')
     tag_list.each do |tag_one|
       tag = Tag.where(tag_name: tag_one).first_or_initialize
       if tag_one != ""
