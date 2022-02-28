@@ -119,6 +119,13 @@
   padding-left: 10px;
 }
 
+.show-tag-box-zero {
+  height: 50px;
+  text-align: center;
+  vertical-align: middle;
+  color: #797878;
+}
+
 .show-tag {
   position: relative;
 	display: inline-block;
@@ -126,7 +133,6 @@
 	padding: .6em .6em .6em 1.2em;
 	line-height: 1;
 	color: #fff;
-  /* color: rgb(110, 109, 109); */
 	text-decoration: none;
 	background-color: #fcdb8f;
   box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);
@@ -147,7 +153,6 @@
 	left: 0;
 	content: '#';
 	color: #fff;
-  /* color: rgb(110, 109, 109); */
 }
 
 .show-name {
