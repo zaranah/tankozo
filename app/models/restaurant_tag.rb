@@ -2,7 +2,10 @@ class RestaurantTag
   include ActiveModel::Model
   
   # 保存する両方のカラム名を記載する
-  attr_accessor :name, :prefecture_id, :station, :genre_id, :food, :price_id, :opinion, :user_id, :restaurant_url, :image
+  attr_accessor(
+    :name, :prefecture_id, :station, :genre_id, :food, :price_id, :opinion, :user_id, :restaurant_url, :image,
+    :id, :created_at, :datetime, :updated_at, :datetime
+  )
   
   # 必要なバリデーションを記載する
   with_options presence: true do
@@ -33,5 +36,9 @@ class RestaurantTag
   def save
     Restaurant.create(
       name: name, prefecture_id: prefecture_id, station: station, genre_id: genre_id, food: food, price_id: price_id, opinion: opinion, image: image, restaurant_url: restaurant_url, user_id: user_id)
+  end
+
+  def update(params, restaurant)
+    restaurant.update(params)
   end
 end
