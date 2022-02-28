@@ -7,7 +7,9 @@ ja:
       user:
         nickname: ニックネーム
         favorite_taste_id: お好みの味付け
-      restaurant:
+  activemodel:
+    attributes:
+      restaurant_tag:
         name: 店舗名
         prefecture_id: 都道府県
         station: 駅名
