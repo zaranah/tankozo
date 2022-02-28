@@ -46,6 +46,23 @@ class RestaurantTag
   end
 
   def update(params, restaurant)
+
+  #一度タグの紐付けを消す
+  restaurant.restaurant_tag_relations.destroy_all
+  #paramsの中のタグの情報を削除。同時に、返り値としてタグの情報を変数に代入
+  tag_name = params.delete(:tag_name)
+
+  if tag_name.present?
+    tag_list = tag_name.gsub(" ", "") .split(',')
+    tag_list.each do |tag_one|
+      tag = Tag.where(tag_name: tag_one).first_or_initialize
+      if tag_one != ""
+        tag.save
+        RestaurantTagRelation.create(restaurant_id: restaurant.id, tag_id: tag.id)
+      end
+    end
+  end
+
     restaurant.update(params)
   end
 end
