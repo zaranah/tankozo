@@ -15,7 +15,7 @@
       </div>
       <div class="form-floating new">
         <%= f.text_field :restaurant_url, class:"form-control restaurant-url", id:"floatingInputUrl", placeholder:"【任意】店舗ホームページURL" %>
-        <label for="floatingInputUrl">【任意】店舗ホームページURL</label>
+        <label for="floatingInputUrl">店舗ホームページURL<small>【任意】</small></label>
       </div>
       <div class="collection">
         <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box-r", id:"prefecture"}) %>
@@ -38,6 +38,10 @@
         <%= f.text_area :opinion, class:"form-control opinion h-auto pb-5", id:"floatingInputOpinion", placeholder:"評価コメント" %>
         <label for="floatingInputOpinion" class="opinion">評価コメント</label>
       </div>
+      <div class="form-floating new">
+      <%= f.text_area :tag_name, class:"form-control opinion h-auto pb-5", id:"floatingInputTag", placeholder:'タグ付け(","で区切る。空白不可。)' %>
+      <label for="floatingInputTag" class="tag">タグ<small>【任意】　(","で区切る。空白不可。)</small></label>
+    </div>
       <div class="form-control">
         <div class="form-image">食品画像</div>
         <div class="form-control-sm">
