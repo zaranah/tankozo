@@ -35,6 +35,7 @@ class RestaurantsController < ApplicationController
   def edit
     restaurant_attributes = @restaurant.attributes
     @restaurant_tag = RestaurantTag.new(restaurant_attributes)
+    @restaurant_tag.tag_name = @restaurant.tags.pluck(:tag_name).join(',')
   end
 
   def update
