@@ -33,10 +33,16 @@ class RestaurantsController < ApplicationController
   end
 
   def edit
+    restaurant_attributes = @restaurant.attributes
+    @restaurant_tag = RestaurantTag.new(restaurant_attributes)
   end
 
   def update
-    if @restaurant.update(restaurant_params)
+    @restaurant_tag = RestaurantTag.new(restaurant_tag_params)
+    # 画像を選択し直していない場合は、既存の画像をセットする
+    @restaurant_tag.image ||= @restaurant.image.blob
+    if @restaurant_tag.valid?
+      @restaurant_tag.update(restaurant_tag_params, @restaurant)
       redirect_to restaurant_path(@restaurant)
     else
       render :edit
