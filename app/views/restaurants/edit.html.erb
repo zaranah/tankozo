@@ -1,7 +1,7 @@
 <%# 店舗投稿（new）時と同じCSSを使用 %>
 
   <main class="form-signin text-center">
-    <%= form_with model: @restaurant, local: true do |f| %>
+    <%= form_with model: @restaurant_tag, url: restaurant_path, method: :patch, local: true do |f| %>
       <div class="mb-4" alt="">
         <%= image_tag 'tankozoedit.png', :size => '300x300'%>
       </div>
