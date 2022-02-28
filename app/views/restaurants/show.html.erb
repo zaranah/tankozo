@@ -65,7 +65,7 @@
         <% if @restaurant.tags.present? %>
           <div class="show-tag-box">
             <% @restaurant.tags.each do |tag| %>
-              <p class="show-tag"><%= tag.tag_name %></p>
+              <p class="show-tag"><%=link_to tag.tag_name, tag_path(tag), class:"show-tag-btn" %></p>
             <% end %>
           </div>
         <% else %>
