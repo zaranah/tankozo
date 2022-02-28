@@ -9,5 +9,7 @@ class Restaurant < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :hopes, dependent: :destroy
   has_one_attached :image
+  has_many :restaurant_tag_relations
+  has_many :tags, through: :restaurant_tag_relations
 
 end
