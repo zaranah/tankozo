@@ -2,7 +2,10 @@ require 'rails_helper'
 
 RSpec.describe '店舗投稿', type: :system do
   before do
+    user = FactoryBot.create(:user)
     @restaurant = FactoryBot.create(:restaurant)
+    image = fixture_file_upload('public/images/test_image.png', "image/png")
+    @restaurant_tag = FactoryBot.build(:restaurant_tag, user_id: user.id, image: image)
   end
 
   context '店舗投稿に成功したとき' do
@@ -16,28 +19,29 @@ RSpec.describe '店舗投稿', type: :system do
       # 新規投稿ページへ移動する
       visit new_restaurant_path
       # フォームに情報を入力する
-      post = @restaurant.name
+      post = @restaurant_tag.name
       fill_in '店舗名', with: post
-      fill_in '【任意】店舗ホームページURL', with: @restaurant.restaurant_url
+      fill_in '店舗ホームページURL', with: @restaurant_tag.restaurant_url
       expect(
         all('.collection')[0].click
       ).to have_content('北海道')
       all('option[value="2"]')[0].click
-      fill_in '駅名', with: @restaurant.station
+      fill_in '駅名', with: @restaurant_tag.station
       expect(
         all('.collection')[1].click
       ).to have_content('寿司')
       all('option[value="2"]')[1].click
-      fill_in '食品名', with: @restaurant.food
+      fill_in '食品名', with: @restaurant_tag.food
       expect(
         all('.collection')[2].click
       ).to have_content('〜1,000円')
       all('option[value="2"]')[2].click
-      fill_in '評価コメント', with: @restaurant.opinion
+      fill_in '評価コメント', with: @restaurant_tag.opinion
+      fill_in 'タグ', with: @restaurant_tag.tag_name
       # 添付する画像を定義する
       image_path = Rails.root.join('public/images/test_image.png')
       # 画像選択フォームに画像を添付する
-      attach_file('restaurant[image]', image_path)
+      attach_file('restaurant_tag[image]', image_path)
       # 送信するとTweetモデルのカウントが1上がることを確認する
       expect do
         find('input[name="commit"]').click
@@ -76,6 +80,7 @@ RSpec.describe '店舗投稿', type: :system do
         all('.collection')[2].click
       ).to have_content('〜1,000円')
       fill_in '評価コメント', with: ''
+      fill_in 'タグ', with: ''
       # DBに保存されていないことを確認する
       expect  do
         find('input[name="commit"]').click
@@ -100,8 +105,11 @@ end
 
 RSpec.describe '店舗編集', type: :system do
   before do
+    user = FactoryBot.create(:user)
     @restaurant1 = FactoryBot.create(:restaurant)
     @restaurant2 = FactoryBot.create(:restaurant)
+    tag = FactoryBot.create(:tag)
+    restaurant_tag_relation = FactoryBot.create(:restaurant_tag_relation, restaurant_id: @restaurant1.id, tag_id: tag.id)
   end
 
   context '店舗編集ができるとき' do
@@ -139,9 +147,12 @@ RSpec.describe '店舗編集', type: :system do
       expect(
         find('#floatingInputOpinion').value
       ).to eq(@restaurant1.opinion)
+      expect(
+        find('#floatingInputTag').value
+      ).to eq(@restaurant1.tags[0].tag_name)
       # 投稿内容を編集する
       fill_in '店舗名', with: "#{@restaurant1.name}+編集したテキスト"
-      fill_in '【任意】店舗ホームページURL', with: "#{@restaurant1.restaurant_url}+編集したテキスト"
+      fill_in '店舗ホームページURL', with: "#{@restaurant1.restaurant_url}+編集したテキスト"
       expect(
         all('.collection')[0].click
       ).to have_content('北海道')
@@ -157,10 +168,11 @@ RSpec.describe '店舗編集', type: :system do
       ).to have_content('〜1,000円')
       all('option[value="3"]')[2].click
       fill_in '評価コメント', with: "#{@restaurant1.opinion}+編集したテキスト"
+      fill_in 'タグ', with: "#{@restaurant1.tags[0].tag_name}+編集したテキスト"
       # 添付する画像を定義する
       image_path = Rails.root.join('public/images/test_image2.png')
       # 画像選択フォームに画像を添付する
-      attach_file('restaurant[image]', image_path)
+      attach_file('restaurant_tag[image]', image_path)
       # 編集してもTweetモデルのカウントは変わらないことを確認する
       expect do
         find('input[name="commit"]').click
@@ -204,6 +216,7 @@ end
 
 RSpec.describe '店舗削除', type: :system do
   before do
+    user = FactoryBot.create(:user)
     @restaurant1 = FactoryBot.create(:restaurant)
     @restaurant2 = FactoryBot.create(:restaurant)
   end
@@ -218,7 +231,10 @@ RSpec.describe '店舗削除', type: :system do
       expect(page).to have_content('Delete')
       # 投稿を削除するとレコードの数が1減ることを確認する
       expect do
-        find_link('Delete', href: restaurant_path(@restaurant1)).click
+        accept_alert do
+          find_link('Delete', href: restaurant_path(@restaurant1)).click
+        end
+        visit root_path
       end.to change { Restaurant.count }.by(-1)
       # トップページに遷移したことを確認する
       expect(current_path).to eq(root_path)
@@ -232,9 +248,12 @@ RSpec.describe '店舗削除', type: :system do
       visit restaurant_path(@restaurant1)
       # コメントを5つDBに追加する
       FactoryBot.create_list(:comment, 5, restaurant_id: @restaurant1.id, user_id: @restaurant1.user.id)
-      # 「チャットを終了する」ボタンをクリックすることで、作成した5つのメッセージが削除されていることを確認する
+      # 店舗削除することで、作成した5つのコメントが削除されていることを確認する
       expect do
-        find_link('Delete', href: restaurant_path(@restaurant1)).click
+        accept_alert do
+          find_link('Delete', href: restaurant_path(@restaurant1)).click
+        end
+        visit root_path
       end.to change { @restaurant1.comments.count }.by(-5)
       # トップページに遷移していることを確認する
       expect(current_path).to eq(root_path)
@@ -264,8 +283,13 @@ end
 
 RSpec.describe '店舗詳細', type: :system do
   before do
+    user = FactoryBot.create(:user)
     @restaurant1 = FactoryBot.create(:restaurant)
     @restaurant2 = FactoryBot.create(:restaurant)
+    tag1 = FactoryBot.create(:tag)
+    tag2 = FactoryBot.create(:tag)
+    restaurant_tag_relation1 = FactoryBot.create(:restaurant_tag_relation, restaurant_id: @restaurant1.id, tag_id: tag1.id)
+    restaurant_tag_relation2 = FactoryBot.create(:restaurant_tag_relation, restaurant_id: @restaurant2.id, tag_id: tag2.id)
   end
 
   it 'ログインしたユーザーは自分が投稿した店舗詳細ページに遷移してコメント投稿欄が表示される' do
@@ -284,6 +308,7 @@ RSpec.describe '店舗詳細', type: :system do
     expect(page).to have_content(@restaurant1.food)
     expect(page).to have_content(@restaurant1.price.name)
     expect(page).to have_content(@restaurant1.opinion)
+    expect(page).to have_content(@restaurant1.tags[0].tag_name)
     # コメント用のフォームが存在する
     expect(page).to have_selector('form[id="comment-form"]')
     # 店舗投稿内に「行きたい」・「よかった」ボタンがないことを確認する
@@ -305,6 +330,7 @@ RSpec.describe '店舗詳細', type: :system do
     expect(page).to have_content(@restaurant2.food)
     expect(page).to have_content(@restaurant2.price.name)
     expect(page).to have_content(@restaurant2.opinion)
+    expect(page).to have_content(@restaurant2.tags[0].tag_name)
     # コメント用のフォームが存在する
     expect(page).to have_selector('form[id="comment-form"]')
     # 店舗投稿内に「行きたい」・「よかった」ボタンがあることを確認する
@@ -326,6 +352,7 @@ RSpec.describe '店舗詳細', type: :system do
     expect(page).to have_content(@restaurant1.food)
     expect(page).to have_content(@restaurant1.price.name)
     expect(page).to have_content(@restaurant1.opinion)
+    expect(page).to have_content(@restaurant1.tags[0].tag_name)
     # フォームが存在しないことを確認する
     expect(page).to have_no_selector('form[id="comment-form"]')
     # 「コメントの投稿には新規登録/ログインが必要です」が表示されていることを確認する
