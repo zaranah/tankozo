@@ -15,7 +15,6 @@
                 </div>
                 <div class="col-12">
                 <%= f.label :prefecture_id_in, '都道府県', class:"form-label form-label-search" %>
-                <br>
                   <div class="checkbox-box-search-prefecture">
                     <%= f.collection_check_boxes(:prefecture_id_in, Prefecture.all, :id, :name, {include_blank: "---"}, class:"checkbox-search") %>
                   </div>
@@ -26,7 +25,6 @@
                 </div>
                 <div class="col-12">
                 <%= f.label :genre_id_in, 'ジャンル', class:"form-label form-label-search" %>
-                <br>
                   <div class="checkbox-box-search-genre">
                     <%= f.collection_check_boxes(:genre_id_in, Genre.all, :id, :name, {include_blank: "---"}, class:"checkbox-search") %>
                   </div>
@@ -37,7 +35,6 @@
                 </div>
                 <div class="col-12">
                   <%= f.label :price_id_in, '価格帯', class:"form-label form-label-search" %>
-                <br>
                   <div class="checkbox-box-search-price">
                     <%= f.collection_check_boxes(:price_id_in, Price.all, :id, :name, {include_blank: "---"}, class:"checkbox-search") %>
                   </div>
