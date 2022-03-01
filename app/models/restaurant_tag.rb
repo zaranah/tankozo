@@ -10,6 +10,7 @@ class RestaurantTag
   
   # 必要なバリデーションを記載する
   with_options presence: true do
+    validates :user_id
     validates :name
     validates :station
     validates :food

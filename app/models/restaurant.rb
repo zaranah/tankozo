@@ -11,5 +11,4 @@ class Restaurant < ApplicationRecord
   has_one_attached :image
   has_many :restaurant_tag_relations, dependent: :destroy
   has_many :tags, through: :restaurant_tag_relations, dependent: :destroy
-
 end
