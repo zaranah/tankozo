@@ -10,12 +10,13 @@ class RestaurantsController < ApplicationController
   end
 
   def new
-    @restaurant = Restaurant.new
+    @restaurant_tag = RestaurantTag.new
   end
 
   def create
-    @restaurant = Restaurant.new(restaurant_params)
-    if @restaurant.save
+    @restaurant_tag = RestaurantTag.new(restaurant_tag_params)
+    if @restaurant_tag.valid?
+      @restaurant_tag.save
       redirect_to root_path
     else
       render :new
@@ -32,10 +33,17 @@ class RestaurantsController < ApplicationController
   end
 
   def edit
+    restaurant_attributes = @restaurant.attributes
+    @restaurant_tag = RestaurantTag.new(restaurant_attributes)
+    @restaurant_tag.tag_name = @restaurant.tags.pluck(:tag_name).join(',')
   end
 
   def update
-    if @restaurant.update(restaurant_params)
+    @restaurant_tag = RestaurantTag.new(restaurant_tag_params)
+    # 画像を選択し直していない場合は、既存の画像をセットする
+    @restaurant_tag.image ||= @restaurant.image.blob
+    if @restaurant_tag.valid?
+      @restaurant_tag.update(restaurant_tag_params, @restaurant)
       redirect_to restaurant_path(@restaurant)
     else
       render :edit
@@ -88,9 +96,9 @@ class RestaurantsController < ApplicationController
     end
   end
 
-  def restaurant_params
-    params.require(:restaurant).permit(
-      :name, :restaurant_url, :prefecture_id, :station, :genre_id, :food, :price_id, :opinion, :image
+  def restaurant_tag_params
+    params.require(:restaurant_tag).permit(
+      :name, :restaurant_url, :prefecture_id, :station, :genre_id, :food, :price_id, :opinion, :tag_name, :image
     ).merge(user_id: current_user.id)
   end
 end

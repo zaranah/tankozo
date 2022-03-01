@@ -15,5 +15,7 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
+
+  resources :tags, only: :show
   
 end

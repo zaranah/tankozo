@@ -35,7 +35,7 @@ https://github.com/zaranah
 
 # Tables
 ## ER
-[![Image from Gyazo](https://i.gyazo.com/a68da747aff9ffc2da91f2b4391924eb.png)](https://gyazo.com/a68da747aff9ffc2da91f2b4391924eb)
+[![Image from Gyazo](https://i.gyazo.com/fab24c35aaf51aa9d78b67d83571fcf9.png)](https://gyazo.com/fab24c35aaf51aa9d78b67d83571fcf9)
 
 ## users table
 
@@ -74,6 +74,8 @@ https://github.com/zaranah
 - has_many :comments
 - has_many :hopes
 - has_many :likes
+- has_many :restaurant_tag_relations
+- has_many :tags, through: :restaurant_tag_relations
 
 ## comments table
 
@@ -111,3 +113,26 @@ https://github.com/zaranah
 
 - belongs_to :user
 - belongs_to :restaurant
+
+## restaurant_tag_relations table
+
+| Column     | Type       | Options                        |
+| ---------- | ---------- | ------------------------------ |
+| restaurant | references | null: false, foreign_key: true |
+| tag        | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :restaurant
+- belongs_to :tag
+
+## tags table
+
+| Column     | Type       | Options                   |
+| ---------- | ---------- | ------------------------- |
+| tag_name   | string     | null: false, unique: true |
+
+### Association
+
+- has_many :restaurant_tag_relations
+- has_many :restaurants, through: :restaurant_tag_relations

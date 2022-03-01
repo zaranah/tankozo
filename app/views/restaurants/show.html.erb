@@ -62,7 +62,18 @@
             </div>
           <% end %>
         </div>
-        <% if @restaurant.restaurant_url != nil %>
+        <% if @restaurant.tags.present? %>
+          <div class="show-tag-box">
+            <% @restaurant.tags.each do |tag| %>
+              <p class="show-tag"><%=link_to tag.tag_name, tag_path(tag), class:"show-tag-btn" %></p>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="show-tag-box-zero">
+            <h6>--- タグ未設定 ---</h6>
+          </div>
+        <% end %>
+        <% if @restaurant.restaurant_url.present? %>
           <h1><%=link_to @restaurant.name, @restaurant.restaurant_url, class:"show-edit" %></h1>
         <% else %>
           <h1 class="show-name"><%= @restaurant.name %></h1>

@@ -1,7 +1,7 @@
 .show-main {
   text-align: center;
   position: relative;
-  height: 940px;
+  height: 1070px;
 }
 
 .showcontent {
@@ -19,7 +19,7 @@
 
 @media (max-width: 500px) {
   .show-main {
-    height: 840px;
+    height: 970px;
   }
   .showcontent {
     width: 100%;
@@ -32,7 +32,7 @@
 
 @media (max-width: 400px) {
   .show-main {
-    height: 760px;
+    height: 890px;
   }
 }
 
@@ -109,6 +109,59 @@
   width: 25px;
   height: 30px;
   font-size: 25px;
+}
+
+.show-tag-box {
+  height: 100px;
+  text-align: left;
+  overflow: scroll;
+  margin-bottom: 30px;
+  padding-left: 10px;
+}
+
+.show-tag-box-zero {
+  height: 50px;
+  text-align: center;
+  vertical-align: middle;
+  color: #797878;
+}
+
+.show-tag {
+  position: relative;
+	display: inline-block;
+	margin: 0 .6em .6em .6em;
+	padding: .6em .6em .6em 1.2em;
+	line-height: 1;
+	color: #fff;
+	text-decoration: none;
+	background-color: #fcdb8f;
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);
+}
+
+.show-tag:before {
+	position: absolute;
+	top: 0;
+	left: -1em;
+	content: '';
+	border-width: 1.1em 1em 1.1em 0;
+	border-style: solid;
+	border-color: transparent #fcdb8f transparent transparent;
+}
+.show-tag:after {
+	position: absolute;
+	top: center;
+	left: 0;
+	content: '#';
+	color: #fff;
+}
+
+.show-tag-btn {
+  text-decoration: none;
+  color: #fff;
+}
+
+.show-tag-btn:hover {
+  color: rgb(250, 135, 34);
 }
 
 .show-name {

@@ -1,0 +1,37 @@
+.tagshow-box {
+  background-color: #f8f9fa;
+  padding-top: 40px;
+  padding-left: 10%;
+}
+
+.tagshow-name {
+  position: relative;
+	display: inline-block;
+	margin: 0 .6em .6em .6em;
+  padding: .2em 1em .2em 1.5em;
+  line-height: 2;
+	color: #fff;
+	text-decoration: none;
+	background-color: #fcdb8f;
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);
+  font-size: 24px;
+}
+
+.tagshow-name:before {
+	position: absolute;
+	top: 0;
+	left: -1em;
+	content: '';
+	border-width: 1.2em 1em 1.2em 0;
+	border-style: solid;
+	border-color: transparent #fcdb8f transparent transparent;
+}
+
+.tagshow-name:after {
+	position: absolute;
+	top: center;
+	left: 0;
+	content: '#';
+	color: #fff;
+  padding-left: .3em;
+}
