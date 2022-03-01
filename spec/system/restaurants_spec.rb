@@ -4,7 +4,7 @@ RSpec.describe '店舗投稿', type: :system do
   before do
     user = FactoryBot.create(:user)
     @restaurant = FactoryBot.create(:restaurant)
-    image = fixture_file_upload('public/images/test_image.png', "image/png")
+    image = fixture_file_upload('public/images/test_image.png', 'image/png')
     @restaurant_tag = FactoryBot.build(:restaurant_tag, user_id: user.id, image: image)
   end
 

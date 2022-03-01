@@ -7,6 +7,7 @@ class TagsController < ApplicationController
   end
 
   private
+
   def header_item
     if user_signed_in?
       @user = current_user
