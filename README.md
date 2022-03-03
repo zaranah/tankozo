@@ -7,6 +7,10 @@ http://52.199.17.26/
 
 [![Image from Gyazo](https://i.gyazo.com/ec80041188652884e1336e0c3a7727e9.png)](https://gyazo.com/ec80041188652884e1336e0c3a7727e9)
 
+## Basic
+ID: tantan
+Password: tan3tongue6
+
 ## Test user info
 Email address: test@test.com  
 Password: testtest123
