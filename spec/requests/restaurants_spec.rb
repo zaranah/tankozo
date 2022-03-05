@@ -103,7 +103,7 @@ RSpec.describe "Restaurants", type: :request do
       delete "/restaurants/#{@restaurant.id}", params: { restaurant_id: @restaurant }
       expect(response).to redirect_to root_path
     end
-      it 'ログアウト状態でnewアクションにリクエストすると異常のレスポンスが返ってくる' do
+      it 'ログアウト状態でdestroyアクションにリクエストすると異常のレスポンスが返ってくる' do
       delete "/restaurants/#{@restaurant.id}", params: { restaurant_id: @restaurant }
       expect(response.status).to eq 302
     end
