@@ -11,7 +11,7 @@ RSpec.describe '店舗投稿', type: :system do
   context '店舗投稿に成功したとき' do
     it 'ログインしたユーザーは新規投稿できる' do
       # ログインする
-      sign_in(@restaurant.user)
+      sign_in_support(@restaurant.user)
       # ヘッダードロップダウンに投稿ページがあることを確認する
       expect(
         find('.dropdown').click
@@ -58,7 +58,7 @@ RSpec.describe '店舗投稿', type: :system do
   context '店舗投稿ができないとき' do
     it '送る値が空の為、メッセージの送信に失敗する' do
       # ログインする
-      sign_in(@restaurant.user)
+      sign_in_support(@restaurant.user)
       # ヘッダードロップダウンに投稿ページがあることを確認する
       expect(
         find('.dropdown').click
@@ -115,7 +115,7 @@ RSpec.describe '店舗編集', type: :system do
   context '店舗編集ができるとき' do
     it 'ログインしたユーザーは自分が投稿した店舗の編集ができる' do
       # 店舗１を投稿したユーザーでログインする
-      sign_in(@restaurant1.user)
+      sign_in_support(@restaurant1.user)
       # 店舗１の店舗詳細ページへ遷移する
       visit restaurant_path(@restaurant1)
       # 店舗1に「編集」へのリンクがあることを確認する
@@ -187,7 +187,7 @@ RSpec.describe '店舗編集', type: :system do
   context '店舗編集ができないとき' do
     it 'ログインしたユーザーは自分以外が投稿したツイートの編集画面には遷移できない' do
       # 店舗1を投稿したユーザーでログインする
-      sign_in(@restaurant1.user)
+      sign_in_support(@restaurant1.user)
       # 店舗2の店舗詳細ページへ遷移する
       visit restaurant_path(@restaurant2)
       # 店舗2に「編集」へのリンクがないことを確認する
@@ -224,7 +224,7 @@ RSpec.describe '店舗削除', type: :system do
   context '店舗削除ができるとき' do
     it 'ログインしたユーザーは自らが投稿した店舗の削除ができる' do
       # 店舗１を投稿したユーザーでログインする
-      sign_in(@restaurant1.user)
+      sign_in_support(@restaurant1.user)
       # 店舗１の店舗詳細ページへ遷移する
       visit restaurant_path(@restaurant1)
       # 店舗1に「削除」へのリンクがあることを確認する
@@ -243,7 +243,7 @@ RSpec.describe '店舗削除', type: :system do
     end
     it '店舗を削除すると、店舗内のコメントがすべて削除されている' do
       # 店舗１を投稿したユーザーでログインする
-      sign_in(@restaurant1.user)
+      sign_in_support(@restaurant1.user)
       # 店舗１の店舗詳細ページへ遷移する
       visit restaurant_path(@restaurant1)
       # コメントを5つDBに追加する
@@ -262,7 +262,7 @@ RSpec.describe '店舗削除', type: :system do
   context '店舗削除ができないとき' do
     it 'ログインしたユーザーは自分以外が投稿した店舗の削除ができない' do
       # 店舗1を投稿したユーザーでログインする
-      sign_in(@restaurant1.user)
+      sign_in_support(@restaurant1.user)
       # 店舗2の店舗詳細ページへ遷移する
       visit restaurant_path(@restaurant2)
       # 店舗2に「削除」へのリンクがないことを確認する
@@ -294,7 +294,7 @@ RSpec.describe '店舗詳細', type: :system do
 
   it 'ログインしたユーザーは自分が投稿した店舗詳細ページに遷移してコメント投稿欄が表示される' do
     # 店舗１を投稿したユーザーでログインする
-    sign_in(@restaurant1.user)
+    sign_in_support(@restaurant1.user)
     # 店舗投稿内に「詳細」へのリンクがあることを確認する
     expect(page).to have_content('View')
     # 詳細ページに遷移する
@@ -316,7 +316,7 @@ RSpec.describe '店舗詳細', type: :system do
   end
   it 'ログインしたユーザーは自分が投稿していない店舗詳細ページに遷移してコメント投稿欄、「行きたい」・「よかった」ボタンが表示される' do
     # 店舗１を投稿したユーザーでログインする
-    sign_in(@restaurant1.user)
+    sign_in_support(@restaurant1.user)
     # 店舗投稿内に「詳細」へのリンクがあることを確認する
     expect(page).to have_content('View')
     # 詳細ページに遷移する

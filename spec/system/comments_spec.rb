@@ -9,7 +9,7 @@ RSpec.describe 'コメント投稿', type: :system do
   context 'コメント投稿に成功したとき' do
     it 'ログインしたユーザーはレストラン詳細ページでコメント投稿できる' do
       # ログインする
-      sign_in(@comment.user)
+      sign_in_support(@comment.user)
       # レストラン詳細ページに遷移する
       visit restaurant_path(@restaurant)
       # フォームに情報を入力してコメントするとCommentモデルのカウントが1上がっていることを確認する
@@ -29,7 +29,7 @@ RSpec.describe 'コメント投稿', type: :system do
   context 'コメント投稿ができないとき' do
     it '送る値が空の為、メッセージの送信に失敗する' do
       # ログインする
-      sign_in(@comment.user)
+      sign_in_support(@comment.user)
       # レストラン詳細ページに遷移する
       visit restaurant_path(@restaurant)
       # フォームに空で入力する
@@ -60,7 +60,7 @@ RSpec.describe 'コメント削除', type: :system do
   context 'コメント削除ができるとき' do
     it 'ログインしたユーザーは自らが投稿したコメントの削除ができる' do
       # コメント１を投稿したユーザーでログインする
-      sign_in(@comment1.user)
+      sign_in_support(@comment1.user)
       # コメント1を投稿した店舗詳細ページへ遷移する
       visit restaurant_path(@comment1.restaurant)
       # コメントを削除するとレコードの数が1減ることを確認する
@@ -79,7 +79,7 @@ RSpec.describe 'コメント削除', type: :system do
   context 'コメント削除ができないとき' do
     it 'ログインしたユーザーは自分以外が投稿したコメントの削除ができない' do
       # コメント１を投稿したユーザーでログインする
-      sign_in(@comment1.user)
+      sign_in_support(@comment1.user)
       # コメント2を投稿した店舗詳細ページへ遷移する
       visit restaurant_path(@comment2.restaurant)
       # コメント削除ボタンがないことを確認する
