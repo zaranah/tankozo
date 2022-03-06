@@ -100,6 +100,7 @@ RSpec.describe "Restaurants", type: :request do
   describe 'DELETE #destroy' do
     it 'destroyアクションにリクエストすると正常にレスポンスが返ってくる' do 
       sign_in @restaurant.user
+      get "/restaurants/#{@restaurant.id}", params: { restaurant_id: @restaurant }
       delete "/restaurants/#{@restaurant.id}", params: { restaurant_id: @restaurant }
       expect(response).to redirect_to root_path
     end
