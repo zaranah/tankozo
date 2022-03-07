@@ -335,6 +335,16 @@ RSpec.describe '店舗詳細', type: :system do
     expect(page).to have_selector('form[id="comment-form"]')
     # 店舗投稿内に「行きたい」・「よかった」ボタンがあることを確認する
     expect(page).to have_content('行きたい' && 'よかった')
+    # 店舗投稿内の「行きたい」ボタンを正常にクリックできることを確認する
+    expect do
+      find('.fa-running').click
+      visit restaurant_path(@restaurant2)
+    end.to change { Hope.count }.by(1)
+    # 店舗投稿内の「よかった」ボタンを正常にクリックできることを確認する
+    expect do
+      find('.fa-heart').click
+      visit restaurant_path(@restaurant2)
+    end.to change { Like.count }.by(1)
   end
   it 'ログインしていない状態でツイート詳細ページに遷移できるもののコメント投稿欄が表示されない' do
     # トップページに移動する
