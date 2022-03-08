@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Likes", type: :system do
+RSpec.describe 'Likes', type: :system do
   before do
     @restaurant1 = FactoryBot.create(:restaurant)
     @restaurant2 = FactoryBot.create(:restaurant)
@@ -60,5 +60,4 @@ RSpec.describe "Likes", type: :system do
       end.to change { Like.count }.by(-1)
     end
   end
-
 end

@@ -10,7 +10,7 @@ RSpec.describe 'Tags', type: :request do
       get "/tags/#{@tag.id}", params: { tag_id: @tag }
       expect(response.status).to eq 200
     end
-    it 'showアクションにリクエストするとレスポンスにタグ名が存在する' do 
+    it 'showアクションにリクエストするとレスポンスにタグ名が存在する' do
       get "/tags/#{@tag.id}", params: { tag_id: @tag }
       expect(response.body).to include(@tag.tag_name)
     end
