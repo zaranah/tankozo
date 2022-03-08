@@ -53,4 +53,35 @@ RSpec.describe "Likes", type: :system do
     end
   end
 
+  describe 'destroy' do
+    it 'ログインしたユーザーは自分が投稿していない店舗詳細ページにて「行きたい」・「よかった」ボタンを消すことができる' do
+      # 店舗１を投稿したユーザーでログインする
+      sign_in_support(@restaurant1.user)
+      # 詳細ページに遷移する
+      visit restaurant_path(@restaurant2)
+      # 店舗投稿内に「行きたい」・「よかった」ボタンがあることを確認する
+      expect(page).to have_content('行きたい' && 'よかった')
+      # 店舗投稿内の「行きたい」ボタンを正常にクリックできることを確認する
+      expect do
+        find('.fa-running').click
+        visit restaurant_path(@restaurant2)
+      end.to change { Hope.count }.by(1)
+      # 店舗投稿内の「よかった」ボタンを正常にクリックできることを確認する
+      expect do
+        find('.fa-heart').click
+        visit restaurant_path(@restaurant2)
+      end.to change { Like.count }.by(1)
+      # 店舗投稿内の「行きたい」ボタンをもう一度押すと削除できることを確認する
+      expect do
+        find('.fa-running').click
+        visit restaurant_path(@restaurant2)
+      end.to change { Hope.count }.by(-1)
+      # 店舗投稿内の「よかった」ボタンをもう一度押すと削除できることを確認する
+      expect do
+        find('.fa-heart').click
+        visit restaurant_path(@restaurant2)
+      end.to change { Like.count }.by(-1)
+    end
+  end
+
 end
