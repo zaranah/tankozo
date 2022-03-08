@@ -2,13 +2,8 @@ require 'rails_helper'
 
 RSpec.describe "Likes", type: :system do
   before do
-    user = FactoryBot.create(:user)
     @restaurant1 = FactoryBot.create(:restaurant)
     @restaurant2 = FactoryBot.create(:restaurant)
-    tag1 = FactoryBot.create(:tag)
-    tag2 = FactoryBot.create(:tag)
-    restaurant_tag_relation1 = FactoryBot.create(:restaurant_tag_relation, restaurant_id: @restaurant1.id, tag_id: tag1.id)
-    restaurant_tag_relation2 = FactoryBot.create(:restaurant_tag_relation, restaurant_id: @restaurant2.id, tag_id: tag2.id)
   end
 
   describe 'create' do
