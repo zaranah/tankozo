@@ -8,7 +8,7 @@ http://52.199.17.26/
 [![Image from Gyazo](https://i.gyazo.com/ec80041188652884e1336e0c3a7727e9.png)](https://gyazo.com/ec80041188652884e1336e0c3a7727e9)
 
 ## Basic
-ID: tantan
+ID: tantan  
 Password: tan3tongue6
 
 ## Test user info
@@ -26,6 +26,16 @@ When you get lots of likes from others, your avator changes.
 [![Image from Gyazo](https://i.gyazo.com/04db39e6532beaacaf30ab706e4e1777.png)](https://gyazo.com/04db39e6532beaacaf30ab706e4e1777)
 
 0 →→→→→→→→→→→→→→→→→→→→→→→→→→→→→ ∞
+
+## The reasons why I made this
+- I think that we can find the good restaurants by posting the best restaurant for each ones.
+- Also, it's easier and more usuful to find our favorite restaurant when we can check the introducer's favorite taste.
+
+## The points that I worked out
+- The color making you get hungry.
+- The funny and cute setting that your avotor's tongue is getting longer when you get lots of likes.
+- The easy find by the searching and tagging function. 
+- The asynchronous access to more usuful when you do likes, hopes and page transition on your page.
 
 ## Description
 To know some real good restaurants.
