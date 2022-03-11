@@ -119,3 +119,30 @@ RSpec.describe 'ログイン', type: :system do
     end
   end
 end
+
+
+RSpec.describe 'マイページ', type: :system do
+  before do
+    @user = FactoryBot.create(:user)
+    @user2 = FactoryBot.create(:user)
+  end
+
+  it 'ログインしたユーザーは自分のマイページに遷移してユーザー情報が表示される' do
+    # 店舗１を投稿したユーザーでログインする
+    sign_in_support(@user)
+    # マイページに遷移する
+    visit user_path(@user)
+    # マイページにユーザー情報が含まれている
+    expect(page).to have_content(@user.nickname)
+    expect(page).to have_content(@user.favorite_taste.name)
+  end
+  it 'ログインしたユーザーは自分以外のマイページに遷移してユーザー情報が表示される' do
+    # 店舗１を投稿したユーザーでログインする
+    sign_in_support(@user)
+    # マイページに遷移する
+    visit user_path(@user2)
+    # マイページにユーザー情報が含まれている
+    expect(page).to have_content(@user2.nickname)
+    expect(page).to have_content(@user2.favorite_taste.name)
+  end
+end
