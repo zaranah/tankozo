@@ -173,13 +173,13 @@ RSpec.describe '店舗編集', type: :system do
       image_path = Rails.root.join('public/images/test_image2.png')
       # 画像選択フォームに画像を添付する
       attach_file('restaurant_tag[image]', image_path)
-      # 編集してもTweetモデルのカウントは変わらないことを確認する
+      # 編集してもRestaurantモデルのカウントは変わらないことを確認する
       expect do
         find('input[name="commit"]').click
       end.to change { Restaurant.count }.by(0)
       # 店舗詳細ページに推移したことを確認する
       expect(current_path).to eq(restaurant_path(@restaurant1))
-      # トップページには先ほど変更した内容のツイートが存在することを確認する（店舗名）
+      # トップページには先ほど変更した内容が存在することを確認する（店舗名）
       expect(page).to have_content("#{@restaurant1.name}+編集したテキスト")
     end
   end
