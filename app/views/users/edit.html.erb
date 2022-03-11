@@ -17,12 +17,12 @@
       <%= f.collection_select(:favorite_taste_id, FavoriteTaste.all, :id, :name, {}, {class:"select-box", id:"favorite-taste"}) %>
     </div>
     <div class="form-floating">
-      <%= f.text_area :nickname, class:"form-control nickname", id:"floatingInputname", placeholder:"Nickname", autofocus: true %>
-      <label for="floatingInput">Nickname</label>
+      <%= f.text_area :nickname, class:"form-control nickname", id:"floatingInputNickname", placeholder:"Nickname", autofocus: true %>
+      <label for="floatingInputNickname">Nickname</label>
     </div>
     <div class="form-floating">
-      <%= f.email_field :email, class:"form-control email", id:"floatingInput", placeholder:"name@example.com" %>
-      <label for="floatingInput">Email address</label>
+      <%= f.email_field :email, class:"form-control email", id:"floatingInputEmailaddress", placeholder:"name@example.com" %>
+      <label for="floatingInputEmailaddress">Email address</label>
     </div>
 
     <div class="checkbox mb-3">
