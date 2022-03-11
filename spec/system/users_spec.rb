@@ -120,7 +120,6 @@ RSpec.describe 'ログイン', type: :system do
   end
 end
 
-
 RSpec.describe 'マイページ', type: :system do
   before do
     @user = FactoryBot.create(:user)
@@ -144,5 +143,85 @@ RSpec.describe 'マイページ', type: :system do
     # マイページにユーザー情報が含まれている
     expect(page).to have_content(@user2.nickname)
     expect(page).to have_content(@user2.favorite_taste.name)
+  end
+end
+
+RSpec.describe 'ユーザー編集', type: :system do
+  before do
+    @user = FactoryBot.create(:user)
+    @user2 = FactoryBot.create(:user)
+  end
+
+  context '店舗編集ができるとき' do
+    it 'ログインしたユーザーは自分のユーザー情報の編集ができる' do
+      # トップページに移動する
+      visit root_path
+      # トップページに「ログイン」へのリンクがあることを確認する
+      expect(
+        find('.dropdown').click
+      ).to have_content('ログイン')
+      # ログインページへ移動する
+      visit new_user_session_path
+      # すでに保存されているユーザーのemailとpasswordを入力する
+      fill_in 'Email address', with: @user.email
+      fill_in 'Password', with: @user.password
+      # ログインボタンをクリックする
+      find('input[name="commit"]').click
+      # トップページに遷移していることを確認する
+      expect(current_path).to eq(root_path)
+      # ヘッダーをクリックすると編集ボタンが表示されることを確認する
+      expect(
+        find('.dropdown').click
+      ).to have_content('Edit profile')
+      # 編集ページへ遷移する
+      visit edit_user_path(@user)
+      # すでに登録済みの内容がフォームに入っていることを確認する
+      expect(
+        find('#floatingInputNickname').value
+      ).to eq(@user.nickname)
+      expect(
+        find('#favorite-taste').value
+      ).to eq(@user.favorite_taste_id.to_s)
+      expect(
+        find('#floatingInputEmailaddress').value
+      ).to eq(@user.email)
+      # ユーザー情報を編集する
+      expect(
+        all('.collection')[0].click
+      ).to have_content('薄味派')
+      all('option[value="3"]')[0].click
+      fill_in 'Nickname', with: "#{@user.nickname}+編集したテキスト"
+      fill_in 'Email address', with: "#{@user.email}test"
+      # 編集してもUserモデルのカウントは変わらないことを確認する
+      expect do
+        find('input[name="commit"]').click
+      end.to change { User.count }.by(0)
+      # マイページに推移したことを確認する
+      expect(current_path).to eq(user_path(@user))
+      # トップページには先ほど変更した内容が存在することを確認する
+      expect(page).to have_content("#{@user.nickname}+編集したテキスト")
+    end
+  end
+
+  context 'ユーザー編集ができないとき' do
+    it 'ログインしたユーザーは自分以外が投稿したツイートの編集画面には遷移できない' do
+      # ログインページへ移動する
+      visit new_user_session_path
+      # すでに保存されているユーザーのemailとpasswordを入力する
+      fill_in 'Email address', with: @user.email
+      fill_in 'Password', with: @user.password
+      # ログインボタンをクリックする
+      find('input[name="commit"]').click
+      # 編集ページへの推移を試みる
+      visit edit_user_path(@user2)
+      # 編集ページへ推移できず、トップページにいることを確認する
+      expect(current_path).to eq(root_path)
+    end
+    it 'ログインしていないとツイートの編集画面には遷移できない' do
+      # 編集ページへの推移を試みる
+      visit edit_user_path(@user)
+      # 編集ページへ推移できず、ログインページにいることを確認する
+      expect(current_path).to eq(new_user_session_path)
+    end
   end
 end
