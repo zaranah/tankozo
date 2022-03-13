@@ -120,6 +120,42 @@ RSpec.describe 'ログイン', type: :system do
   end
 end
 
+RSpec.describe 'ログアウト', type: :system do
+  before do
+    @user = FactoryBot.create(:user)
+  end
+  context 'ログアウトができるとき' do
+    it 'ログアウトに成功し、トップページに遷移する' do
+      # トップページに移動する
+      visit root_path
+      # トップページに「ログイン」へのリンクがあることを確認する
+      expect(
+        find('.dropdown').click
+      ).to have_content('ログイン')
+      # ログインページへ移動する
+      visit new_user_session_path
+      # すでに保存されているユーザーのemailとpasswordを入力する
+      fill_in 'Email address', with: @user.email
+      fill_in 'Password', with: @user.password
+      # ログインボタンをクリックする
+      find('input[name="commit"]').click
+      # トップページに遷移していることを確認する
+      expect(current_path).to eq(root_path)
+      # ヘッダーをクリックするとログアウトボタンが表示されることを確認する
+      expect(
+        find('.dropdown').click
+      ).to have_content('Sign out')
+      all('li')[4].click
+      # トップページに遷移していることを確認する
+      expect(current_path).to eq(root_path)
+      # 新規登録ページ、ログインページへ遷移するボタンが表示されていることを確認する
+      expect(
+        find('.dropdown').click
+      ).to have_content('新規登録' && 'ログイン')
+    end
+  end
+end
+
 RSpec.describe 'マイページ', type: :system do
   before do
     @user = FactoryBot.create(:user)
