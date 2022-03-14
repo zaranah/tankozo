@@ -1,4 +1,4 @@
-# Tankozo
+# たん小僧
 
 [![Image from Gyazo](https://i.gyazo.com/5f0010719e425066209283674de006c9.png)](https://gyazo.com/5f0010719e425066209283674de006c9)
 
@@ -7,19 +7,21 @@ http://52.199.17.26/
 
 [![Image from Gyazo](https://i.gyazo.com/ec80041188652884e1336e0c3a7727e9.png)](https://gyazo.com/ec80041188652884e1336e0c3a7727e9)
 
-## Basic
+## Basic認証
 ID: tantan  
 Password: tan3tongue6
 
-## Test user info
+## テストユーザー情報
 Email address: test@test.com  
 Password: testtest123
 
-## Introduction
-Tankozo is the application to find a tasty restaurants.  
-You can introduce your best restaurants ever.  
+## 紹介
+たん小僧は美味しいレストランを紹介または見つけることができるアプリです。  
+投稿する際は食品ごとに自分にとって一番美味しいお店のみ紹介するので、
+本当におすすめできるお店が掲載されるように工夫しています。  
+例）一番美味しいと思う親子丼のお店が「招福亭」の場合、「招福亭」のみ投稿し、他の親子丼を紹介する投稿はしない。
 
-When you get lots of likes from others, your avator changes.
+また、自分の投稿した店舗に対する「よかった数」に応じて、アバターの舌が伸びるのでその辺りもお楽しみください。
 
 [![Image from Gyazo](https://i.gyazo.com/90c5aaaff984dcab1479ce76c51c0b3a.png)](https://gyazo.com/90c5aaaff984dcab1479ce76c51c0b3a)
 [![Image from Gyazo](https://i.gyazo.com/8aaec14e129d8cab27b92ee1f61b7f6b.png)](https://gyazo.com/8aaec14e129d8cab27b92ee1f61b7f6b)
@@ -27,58 +29,55 @@ When you get lots of likes from others, your avator changes.
 
 0 →→→→→→→→→→→→→→→→→→→→→→→→→→→→→ ∞
 
-## The reasons why I made this
-- I think that we can find the good restaurants by posting the best restaurant for each ones.
-- Also, it's easier and more usuful to find our favorite restaurant when we can check the introducer's favorite taste.
+## このアプリを作成した理由
+- 自分にとって一番美味しいお店のみ投稿されていくことで、本当に美味しいお店のみが発見できるアプリがあるといいなと思ったため
+- また、投稿者の味の好みを掲載することで、自分と同じ味の好みの投稿からよりお気に入りのお店を見つけられると思ったため
 
-## The points that I worked out
-- The color making you get hungry.
-- The funny and cute setting that your avotor's tongue is getting longer when you get lots of likes.
-- The easy find by the searching and tagging function. 
-- The asynchronous access to more usuful when you do likes, hopes and page transition on your page.
+## 工夫したポイント
+- 見ていてお腹の空くようなカラーを目指しました
+- よかった数に応じてアバターの舌が伸びることで面白さと可愛さを表現しました
+- ワード検索、複数検索、タグ検索など機能を充実させることで検索のしやすさ、使い勝手を工夫しました
+- よかった、行きたいボタンを押すとき、マイページ内でのページ推移、コメント投稿・削除は非同期通信にてできるようにすることで使いやすさを工夫しました
 
-## Description
-To know some real good restaurants.
+## 要件定義
+[要件定義](https://docs.google.com/spreadsheets/d/1uHMzZSmTfgDPQwHV-c8mBO7f20mlDJwTTLANjF9kX7Q/edit#gid=1785908763)
 
-## Requirements definition
-[Requirements definition](https://docs.google.com/spreadsheets/d/1uHMzZSmTfgDPQwHV-c8mBO7f20mlDJwTTLANjF9kX7Q/edit#gid=1785908763)
-
-## Version
+## バージョン
 Ruby 2.6.5  
 Rails 6.0.0
 
-## Usage
-### Introducer(Sign in user)
-1. Sign up
-2. Post a good restaurant
-3. Likes or hopes others'ones
-(Like: when you visited the restaurant and like it.  
-Hope: when you want to visit the restaurant someday.)
-4. Comment ones
-5. See the restaurants which you post, like and hope
-### Viewer1(Sign in user)
-1. Sign in
-2. See some restaurants
-3. Likes or hopes ones  
-(Like: when you visited the restaurant and like it.  
-Hope: when you want to visit the restaurant someday.)
-4. Comment ones
-5. See the restaurants which you post, like and hope
-### Viewer2
-1. See some restaurants
+## 使い方
+### 投稿者(サインイン)
+1. サインイン
+2. お気に入りのレストランを投稿する
+3. よかったまたはいきたいボタンを押す
+(よかった: そのお店に実際に行ってみて良かった場合のボタン  
+行きたい: そのお店にいつか行ってみたいと思った場合のボタン)
+4. お店の投稿にコメントをする
+5. マイページにて自分が投稿したお店、よかった・行きたいボタンを押した投稿を見ることができる
+### 閲覧者(サインイン)
+1. サインイン
+2. レストランを閲覧する
+3. よかったまたはいきたいボタンを押す
+(よかった: そのお店に実際に行ってみて良かった場合のボタン  
+行きたい: そのお店にいつか行ってみたいと思った場合のボタン)
+4. お店の投稿にコメントをする
+5. マイページにて自分がよかった・行きたいボタンを押した投稿を見ることができる
+### 閲覧者
+1. レストランを閲覧する
 
 
-## Demo
-Likes or hopes ones
+## デモ
+よかったまたはいきたいボタンを押す
 [![Image from Gyazo](https://i.gyazo.com/323cf24bd1c42ffa30919104ffe881a1.gif)](https://gyazo.com/323cf24bd1c42ffa30919104ffe881a1)
 
-See the restaurants which you post, like and hope
+マイページにて自分が投稿したお店、よかった・行きたいボタンを押した投稿を見ることができる
 [![Image from Gyazo](https://i.gyazo.com/dce3ea136424714dd7cb5690e0fbbca4.gif)](https://gyazo.com/dce3ea136424714dd7cb5690e0fbbca4)
 
-## Author
+## 作成者
 https://github.com/zaranah
 
-# Tables
+# テーブル
 ## ER
 [![Image from Gyazo](https://i.gyazo.com/fab24c35aaf51aa9d78b67d83571fcf9.png)](https://gyazo.com/fab24c35aaf51aa9d78b67d83571fcf9)
 
