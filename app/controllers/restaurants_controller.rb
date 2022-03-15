@@ -75,6 +75,9 @@ class RestaurantsController < ApplicationController
     @restaurants = @q.result.page(params[:page]).per(9)
   end
 
+  def intro
+  end
+
   private
 
   def set_item
