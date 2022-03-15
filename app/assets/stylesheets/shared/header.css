@@ -5,6 +5,10 @@
   z-index: 3;
 }
 
+.header-btn {
+  display: flex;
+}
+
 .multi{
 border-radius: 0.25rem;
 margin-right: 1rem;
