@@ -5,8 +5,9 @@
         <img src="<%= asset_path "tankozoheader.png" %>" width="100%" height="40" class="bi me-2">
       </a>
 
-      <div class="col-lg-auto ms-lg-auto ">
-        <div><%= link_to 'Multiple search', search_restaurants_path, class:"multi-btn multi" %></div>
+      <div class="col-lg-auto ms-lg-auto header-btn">
+        <div><%= link_to 'Intro', intro_restaurants_path, class:"multi-btn multi" %></div>
+        <div><%= link_to 'Multi search', search_restaurants_path, class:"multi-btn multi" %></div>
       </div>
 
       <%= search_form_for Restaurant.ransack(params[:q]), url: search_restaurants_path, html: {id: "detailed-search-form"}, class: "col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" do |f| %>

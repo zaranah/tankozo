@@ -1,0 +1,65 @@
+.intro-name {
+  font-size: 13rem;
+  color: white;
+  padding-top: 10%;
+  padding-left: 5%;
+}
+
+.intro-text {
+  font-size: 1rem;
+  padding-left: 40%;
+}
+
+.intro-first {
+  height: 600px;
+  background-color: #fff7e3;
+  background-image: url(tankozo_intro.png);
+}
+
+.intro-likes {
+  font-size: 10rem;
+  height: 400px;
+  background-color: #ffffff;
+  padding-left: 5%;
+}
+
+.intro-likes-title {
+  color: rgb(90, 90, 90);
+}
+
+.intro-second {
+  padding-top: 7%;
+  height: 600px;
+  background-color: #e7e6e6;
+}
+
+.intro-tongue {
+  font-size: 1.3rem;
+  padding: 5px auto;
+  text-align: center;
+  position: relative;
+  width: 50%;
+  margin: 0 auto;
+  line-height: 3;
+  background-color: #fff;
+  border-radius: 20px;
+}
+
+.intro-tongue:before {
+  content: "";
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  width: 0;
+  height: 0;
+  margin-left: -15px;
+  border: 15px solid transparent;
+  border-top-color: #fff;
+}
+
+.tongue-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
+}
