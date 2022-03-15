@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :hopes, only: [:create, :destroy]
     collection do
       get 'search'
+      get 'intro'
     end
   end
 
