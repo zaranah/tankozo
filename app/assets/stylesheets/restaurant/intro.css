@@ -1,3 +1,9 @@
+.intro-first {
+  height: 600px;
+  background-color: #fff7e3;
+  background-image: url(tankozo_intro.png);
+}
+
 .intro-name {
   font-size: 13rem;
   color: white;
@@ -8,12 +14,6 @@
 .intro-text {
   font-size: 1rem;
   padding-left: 40%;
-}
-
-.intro-first {
-  height: 600px;
-  background-color: #fff7e3;
-  background-image: url(tankozo_intro.png);
 }
 
 .intro-likes {
@@ -28,7 +28,7 @@
 }
 
 .intro-second {
-  padding-top: 7%;
+  padding-top: 8%;
   height: 600px;
   background-color: #e7e6e6;
 }
@@ -62,4 +62,91 @@
   justify-content: center;
   align-items: center;
   margin-top: 5%;
+}
+
+@media (max-width: 1000px) {
+  .intro-first {
+    height: 400px;
+  }
+
+  .intro-name {
+    font-size: 8rem;
+    padding-top: 5%;
+    padding-left: 30px;
+  }
+  
+  .intro-text {
+    padding-left: 15%;
+  }
+  
+  .intro-likes {
+    height: 250px;
+  }
+  
+  .intro-likes-title {
+    font-size: 5rem;
+    padding-left: 30px;
+  }
+  
+  .intro-second {
+    padding-top: 4%;
+    height: 400px;
+  }
+  
+  .intro-tongue {
+    width: 500px;
+  }
+
+  .tankozo-intro-img {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media (min-width: 500px) {
+  .br-sp {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .intro-first {
+    height: 270px;
+  }
+
+  .intro-name {
+    font-size: 5rem;
+    padding-top: 2%;
+    padding-left: 15px;
+  }
+  
+  .intro-text {
+    font-size: 0.8rem;
+    padding-left: 15px;
+  }
+  
+  .intro-likes {
+    height: 220px;
+  }
+  
+  .intro-likes-title {
+    font-size: 3rem;
+    padding-left: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .intro-second {
+    padding-top: 4%;
+    height: 200px;
+  }
+  
+  .intro-tongue {
+    font-size: 0.8rem;
+    width: 310px;
+  }
+    
+  .tankozo-intro-img {
+    width: 100px;
+    height: 100px;
+  }
 }
