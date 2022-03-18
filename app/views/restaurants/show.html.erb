@@ -61,6 +61,16 @@
               <small class="text-muted"><i class="fas fa-running faa-passing-reverse hope-btn" id="hope-btn"></i><%= @restaurant.hopes.length %> 行きたい<i class="far fa-heart faa-ring like-btn" id="like-btn"></i><%= @restaurant.likes.length %> よかった</small>
             </div>
           <% end %>
+          <%# line share %>
+          <script language="JavaScript">
+            document.write(line_button_tag());
+              function line_button_tag(){
+                let tag= "<div class='line-it-button' data-lang='ja' data-type='share-b' data-env='REAL' data-url='{0}' data-color='default' data-size='small' data-count='false' data-ver='3' style='display: none;'></div>";
+                tag = tag.replace(/\{0\}/g, location.href);
+                return tag;
+              }
+          </script>
+          <%# line share //%>
         </div>
         <% if @restaurant.tags.present? %>
           <div class="show-tag-box">
