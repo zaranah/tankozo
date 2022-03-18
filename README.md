@@ -5,7 +5,7 @@
 ## URL
 http://52.199.17.26/
 
-[![Image from Gyazo](https://i.gyazo.com/ec80041188652884e1336e0c3a7727e9.png)](https://gyazo.com/ec80041188652884e1336e0c3a7727e9)
+[![Image from Gyazo](https://i.gyazo.com/5b7ea442acacaad1b67ae83e0ede7db0.png)](https://gyazo.com/5b7ea442acacaad1b67ae83e0ede7db0)
 
 ## Basic認証
 ID: tantan  
@@ -38,7 +38,7 @@ Password: testtest123
 - 見ていてお腹の空くようなカラーリング
 - よかった数に応じてアバターの舌が伸びる面白さ・可愛さ
 - ワード検索、複数検索、タグ検索など機能を充実させることで検索のしやすさ、使い勝手
-- よかった、行きたいボタンを押すとき、マイページ内でのページ推移、コメント投稿・削除が非同期通信にてできることによる使いやすさ
+- よかった、行きたいボタンを押すとき、マイページ内でのページ推移、コメント投稿・削除非同期通信にてできることによる使いやすさ
 
 ## 要件定義
 [要件定義](https://docs.google.com/spreadsheets/d/1uHMzZSmTfgDPQwHV-c8mBO7f20mlDJwTTLANjF9kX7Q/edit#gid=1785908763)
