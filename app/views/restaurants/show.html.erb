@@ -100,7 +100,7 @@
         <div class="show-r opinions"><%= simple_format(@restaurant.opinion, {}, wrapper_tag: "div") %></div>
         <div class="show-line-author">【
           <div>著者：<%=link_to @restaurant.user.nickname, user_path(@restaurant.user), class:"show-r user-name" %></div>
-          <div class="show-r user-taste">/ 好みの味付け：<%= @restaurant.user.favorite_taste.name %></div>】
+          <div class="show-r user-taste">/ 好みの味付け：<%=link_to @restaurant.user.favorite_taste.name, taste_path(@restaurant.user.favorite_taste_id), class:"show-r user-name" %></div>】
         </div>
     </div>
   </div>
