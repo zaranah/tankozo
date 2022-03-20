@@ -18,5 +18,6 @@ Rails.application.routes.draw do
   end
 
   resources :tags, only: :show
+  resources :tastes, only: :show
   
 end
