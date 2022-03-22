@@ -44,8 +44,8 @@ Password: testtest123
 [要件定義](https://docs.google.com/spreadsheets/d/1uHMzZSmTfgDPQwHV-c8mBO7f20mlDJwTTLANjF9kX7Q/edit#gid=1785908763)
 
 ## バージョン
-Ruby 2.6.5  
-Rails 6.0.0
+- Ruby 2.6.5  
+- Rails 6.0.0
 
 ## 使い方
 ### 投稿者(サインイン)
