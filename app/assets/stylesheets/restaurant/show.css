@@ -166,6 +166,7 @@
 
 .show-name {
   margin-top: 30px;
+  border-bottom: solid 3px rgb(250, 203, 162);
 }
 
 .show-r {
