@@ -23,9 +23,7 @@ Password: testtest123
 
 また、自分の投稿した店舗に対する「よかった数」に応じて、アバターの舌が伸びるのでその辺りもお楽しみください。
 
-[![Image from Gyazo](https://i.gyazo.com/90c5aaaff984dcab1479ce76c51c0b3a.png)](https://gyazo.com/90c5aaaff984dcab1479ce76c51c0b3a)
-[![Image from Gyazo](https://i.gyazo.com/8aaec14e129d8cab27b92ee1f61b7f6b.png)](https://gyazo.com/8aaec14e129d8cab27b92ee1f61b7f6b)
-[![Image from Gyazo](https://i.gyazo.com/04db39e6532beaacaf30ab706e4e1777.png)](https://gyazo.com/04db39e6532beaacaf30ab706e4e1777)
+[![Image from Gyazo](https://i.gyazo.com/9e6d13432f06f8773fa7730698d17185.png)](https://gyazo.com/9e6d13432f06f8773fa7730698d17185)
 
 0 →→→→→→→→→→→→→→→→→→→→→→→→→→→→→ ∞
 
