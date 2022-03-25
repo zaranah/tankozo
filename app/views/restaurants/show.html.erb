@@ -89,14 +89,16 @@
           <h1 class="show-name"><%= @restaurant.name %></h1>
         <% end %>
         <div class="show-line">
+          <div><i class="fas fa-map-marker-alt showmark margintop"></i></div>
           <div class="show-r prefecture"><%= @restaurant.prefecture.name %></div>
           <div class="show-r show-station"><%= @restaurant.station %></div>
         </div>
         <div class="show-line">
+          <div><i class="fas fa-utensils showmark margintop"></i></div>
           <div class="show-r genre"><%= @restaurant.genre.name %></div>
           <div class="show-r show-food"><%= @restaurant.food %></div>
         </div>
-        <div class="show-r price"><%= @restaurant.price.name %></div>
+        <div class="show-r price"><i class="fas fa-yen-sign showmark"></i><%= @restaurant.price.name %></div>
         <div class="show-r opinions"><%= simple_format(@restaurant.opinion, {}, wrapper_tag: "div") %></div>
         <div class="show-line-author">【
           <div>著者：<%=link_to @restaurant.user.nickname, user_path(@restaurant.user), class:"show-r user-name" %></div>

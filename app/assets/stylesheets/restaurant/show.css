@@ -1,7 +1,8 @@
 .show-main {
   text-align: center;
   position: relative;
-  height: 1070px;
+  /* height: 1085px; */
+  height: 1100px;
 }
 
 .showcontent {
@@ -19,7 +20,8 @@
 
 @media (max-width: 500px) {
   .show-main {
-    height: 970px;
+    /* height: 985px; */
+    height: 1000px;
   }
   .showcontent {
     width: 100%;
@@ -32,7 +34,8 @@
 
 @media (max-width: 400px) {
   .show-main {
-    height: 890px;
+    /* height: 905px; */
+    height: 920px;
   }
 }
 
@@ -166,7 +169,12 @@
 
 .show-name {
   margin-top: 30px;
-  border-bottom: solid 3px rgb(250, 203, 162);
+  padding-bottom: 15px;
+  border-bottom: solid 1.5px rgb(250, 203, 162);
+}
+
+.margintop {
+  margin-top: 13px;
 }
 
 .show-r {
@@ -176,6 +184,12 @@
 .show-line {
   display: flex;
   justify-content: center;
+}
+
+.showmark {
+  color: #797878;
+  font-size: 20px;
+  margin-right: 8px;
 }
 
 .show-station, .show-food, .user-taste {
