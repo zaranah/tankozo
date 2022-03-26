@@ -7,9 +7,16 @@
 .intro-name {
   font-size: 13rem;
   color: white;
-  padding-top: 10%;
+  padding-top: 7%;
   padding-left: 5%;
   text-shadow: 1px 2px 3px #808080;
+}
+
+.bgcl {
+  background-color: rgba(173, 171, 171, 0.3);
+  color: rgb(85, 84, 84);
+  /* text-shadow: 1px 1px 1px #e6e4e4; */
+  padding: 15px 0;
 }
 
 .intro-text {
@@ -117,17 +124,20 @@
 
 @media (max-width: 600px) {
   .intro-first {
-    height: 270px;
+    height: 240px;
+    background-size: 125%;
+    /* background-size: 30%; */
   }
 
   .intro-name {
     font-size: 5rem;
-    padding-top: 2%;
+    padding-top: 0.5%;
     padding-left: 15px;
+    margin-bottom: 0;
   }
   
   .intro-text {
-    font-size: 0.8rem;
+    font-size: 0.6rem;
     padding-left: 15px;
   }
   
