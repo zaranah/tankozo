@@ -1,8 +1,8 @@
 .show-main {
   text-align: center;
   position: relative;
-  /* height: 1085px; */
   height: 1100px;
+  font-family:"Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
 }
 
 .showcontent {
@@ -20,7 +20,6 @@
 
 @media (max-width: 500px) {
   .show-main {
-    /* height: 985px; */
     height: 1000px;
   }
   .showcontent {
@@ -34,7 +33,6 @@
 
 @media (max-width: 400px) {
   .show-main {
-    /* height: 905px; */
     height: 920px;
   }
 }
@@ -235,6 +233,7 @@
 
 .show-sub {
   text-align: center;
+  font-family:"Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
 }
 
 .comment-container {
