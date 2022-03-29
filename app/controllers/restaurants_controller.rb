@@ -5,8 +5,8 @@ class RestaurantsController < ApplicationController
   before_action :header_item
 
   def index
-    @restaurants = Restaurant.order('created_at DESC').page(params[:page]).per(6)
-    @restaurant_likes_ranks = Restaurant.find(Like.group(:restaurant_id).order('count(restaurant_id) desc').includes(:restaurant).limit(5).pluck(:restaurant_id))
+    @restaurants = Restaurant.includes({image_attachment: :blob}).order('created_at DESC').page(params[:page]).per(6)
+    @restaurant_likes_ranks = Restaurant.includes({image_attachment: :blob}).find(Like.group(:restaurant_id).order('count(restaurant_id) desc').includes(:restaurant).limit(5).pluck(:restaurant_id))
   end
 
   def new
@@ -71,7 +71,7 @@ class RestaurantsController < ApplicationController
       params[:q][:food_cont_any] = squished_keywords.split(' ')
     end
 
-    @q = Restaurant.ransack(params[:q])
+    @q = Restaurant.includes({image_attachment: :blob}).ransack(params[:q])
     @restaurants = @q.result.page(params[:page]).per(15)
   end
 
