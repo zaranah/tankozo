@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user_restaurants = @user.restaurants.page(params[:page]).per(15)
+    @user_restaurants = @user.restaurants.includes(:hopes, :likes, {image_attachment: :blob}).page(params[:page]).per(15)
     @likes_count = 0
     @user_restaurants.each do |restaurant|
       @likes_count += restaurant.likes.count
