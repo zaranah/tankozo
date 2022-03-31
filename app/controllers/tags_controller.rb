@@ -3,7 +3,7 @@ class TagsController < ApplicationController
 
   def show
     @tag = Tag.find(params[:id])
-    @tags = @tag.restaurants.page(params[:page]).per(15)
+    @tags = @tag.restaurants.includes({image_attachment: :blob}).page(params[:page]).per(15)
   end
 
   private
