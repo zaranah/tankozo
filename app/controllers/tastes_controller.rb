@@ -4,7 +4,7 @@ class TastesController < ApplicationController
   def show
     @users = User.where(favorite_taste_id: params[:id])
     @taste_name = @users[0].favorite_taste.name
-    @restaurants = Restaurant.where(user_id: @users.ids)
+    @restaurants = Restaurant.includes({image_attachment: :blob}).where(user_id: @users.ids)
     @tastes = @restaurants.page(params[:page]).per(15)
   end
 
