@@ -75,6 +75,7 @@ class RestaurantsController < ApplicationController
     @restaurants = @q.result.page(params[:page]).per(15)
   end
 
+  # IntroからAboutに変更
   def intro
   end
 
